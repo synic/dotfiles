@@ -1,34 +1,34 @@
- ! General
- !urxvt*termName:  rxvt-256color
- urxvt*loginShell:         true
- urxvt*scrollBar:         false
- urxvt*secondaryScroll:    true
- urxvt*saveLines:         65535
- urxvt*cursorBlink:       false
- urxvt*urgentOnBell:       true
- !urxvt*override-redirect:false
- !urxvt*borderLess:       false
- !urxvt*internalBorder:       0
- !urxvt*externalBorder:       0
- 
- ! Extensions
- urxvt*perl-lib:        /usr/lib/urxvt/perl/
- urxvt*perl-ext-common: default,matcher,searchable-scrollback,tabbed
- urxvt*urlLauncher:     /usr/bin/chromium
- urxvt*matcher.button:  1
- !  - catch ugly URLs
- urxvt.cutchars:        `()'*<>[]{|}"
- 
- ! Appearance
- !  - use a bitmap font
- !  - use xft for drawing fonts
- urxvt*font:       xft:Deja Vu Sans Mono:pixelsize=11:dpi=81
- urxvt*boldFont:   xft:Deja Vu Sans Mono:bold:pixelsize=11:dpi=81
- !  - cursor
- urxvt*cursorColor: #DCDCCC
- !  - pseudo transparency
- urxvt*shading:   25 
- urxvt*transparent:true
+! General
+!urxvt*termName:  rxvt-256color
+urxvt*loginShell:         true
+urxvt*scrollBar:         false
+urxvt*secondaryScroll:    true
+urxvt*saveLines:         65535
+urxvt*cursorBlink:       false
+urxvt*urgentOnBell:       true
+!urxvt*override-redirect:false
+!urxvt*borderLess:       false
+!urxvt*internalBorder:       0
+!urxvt*externalBorder:       0
+
+! Extensions
+urxvt*perl-lib:        /usr/lib/urxvt/perl/
+urxvt*perl-ext-common: default,matcher,searchable-scrollback,tabbed
+urxvt*urlLauncher:     /usr/bin/chromium
+urxvt*matcher.button:  2
+!  - catch ugly URLs
+urxvt.cutchars:        `()'*<>[]{|}"
+
+! Appearance
+!  - use a bitmap font
+!  - use xft for drawing fonts
+urxvt*font:       xft:Deja Vu Sans Mono:pixelsize=11:dpi=81
+urxvt*boldFont:   xft:Deja Vu Sans Mono:bold:pixelsize=11:dpi=81
+!  - cursor
+urxvt*cursorColor: #DCDCCC
+!  - pseudo transparency
+urxvt*shading:   25 
+urxvt*transparent:true
 ! black
 URxvt.color0  : #2E2E34343636
 URxvt.color8  : #555557575353
@@ -56,10 +56,11 @@ URxvt.color15 : #EEEEEEEEECEC
 
 URxvt*foreground:White
 URxvt*background:Black
- URxvt.tabbed.tabbar-fg: 2
+URxvt.tabbed.tabbar-fg: 2
 URxvt.tabbed.tabbar-bg: 0
 URxvt.tabbed.tab-fg:    3
 URxvt.tabbed.tab-bg:    0
 URxvt*scrollTtyOutput:      false
 URxvt*scrollWithBuffer:     true
 URxvt*scrollTtyKeypress:    true
+Xcursor.theme: pArch-32

@@ -75,7 +75,7 @@ layouts =
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, layouts[1])
+    tags[s] = awful.tag({ 1, 2, 3, 4 }, s, layouts[1])
 end
 -- }}}
 
@@ -102,6 +102,26 @@ mytextclock = awful.widget.textclock({ align = "right"}, "%b %d %l:%M %p" )
 
 -- Create a systray
 mysystray = widget({ type = "systray" })
+
+pacwidget = widget({type = "textbox"})
+
+pacwidget_t = awful.tooltip({ objects = { pacwidget},})
+
+vicious.register(pacwidget, vicious.widgets.pkg,
+                function(widget,args)
+                    local io = { popen = io.popen }
+                    local s = io.popen("pacman -Qu")
+                    local str = ''
+
+                    for line in s:lines() do
+                        str = str .. line .. "\n"
+                    end
+                    pacwidget_t:set_text(str)
+                    s:close()
+                    return "U:" .. args[1]
+                end, 1800, "Arch")
+
+                --'1800' means check every 30 minutes
 
 -- Initialize widget
 cpuwidget = awful.widget.graph()
@@ -243,6 +263,9 @@ for s = 1, screen.count() do
         volwidget.widget,
         spacer,
         weatherwidget,
+        spacer,
+        pacwidget,
+        spacer,
         s == 1 and mysystray or nil,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
