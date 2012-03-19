@@ -136,6 +136,16 @@ cpuwidget:set_gradient_colors({ "#FF5656", "#88A175", "#AECF96" })
 -- Register widget
 vicious.register(cpuwidget, vicious.widgets.cpu, "$1")
 
+-- Network Interface Monitor
+netwidget = widget({
+    type = 'textbox',
+    name = 'netwidget',
+    align = 'right'
+})
+
+vicious.register(netwidget, vicious.widgets.net,
+'${eth0 down_kb}/${eth0 up_kb}', nil, nil, 3)
+
 -- Initialize widget
 memwidget = awful.widget.progressbar()
 -- Progressbar properties
@@ -157,7 +167,10 @@ function(widget, args)
 end, 30000, "KSLC")
 
 spacer = widget({ type = "textbox" })
-spacer.text = " "
+spacer.text = "|"
+
+blank = widget({ type = "textbox" })
+blank.text = " "
 
 batwidget = awful.widget.progressbar()
 batwidget:set_width(8)
@@ -262,20 +275,22 @@ for s = 1, screen.count() do
             layout = awful.widget.layout.horizontal.leftright
         },
         mylayoutbox[s],
-        spacer,
+        blank,
         mytextclock,
-        spacer,
+        blank,
         batwidget.widget,
         cpuwidget.widget,
         memwidget.widget,
         volwidget.widget,
-        spacer,
+        blank,
         volmute,
+        spacer,
+        netwidget,
         spacer,
         weatherwidget,
         spacer,
         pacwidget,
-        spacer,
+        blank,
         s == 1 and mysystray or nil,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
