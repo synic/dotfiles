@@ -51,6 +51,7 @@ editor_cmd = terminal .. " -e " .. editor
 modkey = "Mod4"
 --ctrl = "Control"
 --alt = "Mod1"
+screensaver = "xscreensaver-command -lock"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 layouts =
@@ -330,8 +331,8 @@ globalkeys = awful.util.table.join(
         end),
 
     -- Standard program
-    awful.key({ modkey, "Shift" }, "l", function() awful.util.spawn( "slock" ) end),
-    awful.key({ "Mod1", "Control" }, "l", function() awful.util.spawn( "slock" ) end),
+    awful.key({ modkey, "Shift" }, "l", function() awful.util.spawn( screensaver ) end),
+    awful.key({ "Mod1", "Control" }, "l", function() awful.util.spawn( screensaver ) end),
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
@@ -497,7 +498,7 @@ end
 do
   local cmds = 
   { 
-    "xautolock -time 10 -locker slock",
+    "xscreensaver -no-splash",
     --and so on...
   }
 
