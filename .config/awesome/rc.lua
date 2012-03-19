@@ -75,7 +75,7 @@ layouts =
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ 1, 2, 3, 4 }, s, layouts[1])
+    tags[s] = awful.tag({ "⠐", "⠡", "⠪", "⠵", "⠻", "⠿"  }, s, layouts[1])
 end
 -- }}}
 
@@ -169,6 +169,8 @@ batwidget:set_gradient_colors({ "#AECF96", "#88A175", "#FF5656" })
 vicious.register(batwidget, vicious.widgets.bat, "$2", 61, "BAT0")
 
 
+volmute = widget({ type = "textbox" })
+
 volwidget = awful.widget.progressbar()
 volwidget:set_width(8)
 volwidget:set_height(20)
@@ -177,7 +179,12 @@ volwidget:set_background_color("#494B4F")
 volwidget:set_border_color(nil)
 volwidget:set_color("#AECF96")
 volwidget:set_gradient_colors({ "#AECF96", "#88A175", "#FF5656" })
-vicious.register(volwidget, vicious.widgets.volume, "$1", 1, "Master")
+vicious.register(volwidget, vicious.widgets.volume, 
+function(widget, stuff)
+    volmute.text = stuff[2]
+    return stuff[1]
+end, 1, "Master")
+
 
 -- Create a wibox for each screen and add it
 --
@@ -262,6 +269,8 @@ for s = 1, screen.count() do
         memwidget.widget,
         volwidget.widget,
         spacer,
+        volmute,
+        spacer,
         weatherwidget,
         spacer,
         pacwidget,
@@ -329,6 +338,7 @@ globalkeys = awful.util.table.join(
     awful.key({modkey }, "p", function() awful.util.spawn( "dmenu_run" ) end),
     awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer set Master 5+") end),
     awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer set Master 5-") end),
+    awful.key({ }, "XF86AudioMute", function() awful.util.spawn("amixer set Master toggle") end),
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
     awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
@@ -385,6 +395,13 @@ end
 -- This should map on the top row of your keyboard, usually 1 to 9.
 for i = 1, keynumber do
     globalkeys = awful.util.table.join(globalkeys,
+        awful.key({ "Control" }, "F" .. i,
+                  function ()
+                        local screen = mouse.screen
+                        if tags[screen][i] then
+                            awful.tag.viewonly(tags[screen][i])
+                        end
+                  end),
         awful.key({ modkey }, "#" .. i + 9,
                   function ()
                         local screen = mouse.screen
