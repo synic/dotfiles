@@ -111,3 +111,4 @@ export ANDROID_HOME=~/Projects/android-sdk-linux
 alias mplayer='mplayer -softvol -softvol-max 800'
 alias ls='ls --color'
 export TERM=xterm-color
+alias pacman="packer --noedit"

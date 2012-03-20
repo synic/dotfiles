@@ -15,7 +15,7 @@ urxvt*urgentOnBell:       true
 urxvt*perl-lib:        /usr/lib/urxvt/perl/
 urxvt*perl-ext-common: default,matcher,searchable-scrollback,tabbed
 urxvt*urlLauncher:     /usr/bin/chromium
-urxvt*matcher.button:  2
+urxvt*matcher.button:  3
 !  - catch ugly URLs
 urxvt.cutchars:        `()'*<>[]{|}"
 

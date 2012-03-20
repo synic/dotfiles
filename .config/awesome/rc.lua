@@ -9,6 +9,20 @@ require("naughty")
 require("revelation")
 require("vicious")
 
+
+-- {{{ Local Config
+modkey = "Mod4"
+cpumax = 1
+interface = "eth0"
+showbattery = true
+screensaver = "xscreensaver-command -lock"
+terminal = "urxvt -geometry 80x20"
+editor = os.getenv("EDITOR") or "vim"
+editor_cmd = terminal .. " -e " .. editor
+f, err = loadfile("/home/synic/.config/awesome/localconfig.lua")
+if f then f() end
+-- }}}
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -38,22 +52,7 @@ end
 -- Themes define colours, icons, and wallpapers
 beautiful.init("/home/synic/.config/awesome/themes/zenburn/theme.lua")
 
--- This is used later as the default terminal and editor to run.
-terminal = "Terminal --geometry=80x20"
-editor = os.getenv("EDITOR") or "nano"
-editor_cmd = terminal .. " -e " .. editor
-
--- Default modkey.
--- Usually, Mod4 is the key with a logo between Control and Alt.
--- If you do not like this or do not have such a key,
--- I suggest you to remap Mod4 to another key using xmodmap or other tools.
--- However, you can use another modifier like Mod1, but it may interact with others.
-modkey = "Mod4"
---ctrl = "Control"
---alt = "Mod1"
-screensaver = "xscreensaver-command -lock"
-
--- Table of layouts to cover with awful.layout.inc, order matters.
+-- Table of layouts to cover with awful.layout.inc, order matters. {{{
 layouts =
 {
     awful.layout.suit.floating,
@@ -72,28 +71,23 @@ layouts =
 -- }}}
 
 -- {{{ Tags
--- Define a tag table which hold all screen tags.
-tags = {}
-for s = 1, screen.count() do
-    -- Each screen has its own tag table.
-    tags[s] = awful.tag({ "⠐", "⠡", "⠪", "⠵", "⠻", "⠿"  }, s, layouts[1])
-end
--- }}}
-
--- {{{ Menu
--- Create a laucher widget and a main menu
-myawesomemenu = {
-   { "restart", awesome.restart },
-   { "quit", awesome.quit }
+tags = {
+    settings = {
+        { 
+            names  = { "⠐", "⠡", "⠪", "⠵" },
+            layout = { layouts[1], layouts[1], layouts[1], layouts[1] }
+        },
+        { 
+            names  = { "⠐", "⠡", "⠪", "⠵" },
+            layout = { layouts[2], layouts[1], layouts[2], layouts[1] }
+        }
+    }
 }
 
-mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "open terminal", terminal }
-                                  }
-                        })
+for s = 1, screen.count() do
+     tags[s] = awful.tag(tags.settings[s].names, s, tags.settings[s].layout)
+end
 
-mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
-                                     menu = mymainmenu })
 -- }}}
 
 -- {{{ Wibox
@@ -104,47 +98,19 @@ mytextclock = awful.widget.textclock({ align = "right"}, "%b %d %l:%M %p" )
 -- Create a systray
 mysystray = widget({ type = "systray" })
 
-pacwidget = widget({type = "textbox"})
-
-pacwidget_t = awful.tooltip({ objects = { pacwidget},})
-
-vicious.register(pacwidget, vicious.widgets.pkg,
-                function(widget,args)
-                    local io = { popen = io.popen }
-                    local s = io.popen("pacman -Qu")
-                    local str = ''
-
-                    for line in s:lines() do
-                        str = str .. line .. "\n"
-                    end
-                    pacwidget_t:set_text(str)
-                    s:close()
-                    return "U:" .. args[1]
-                end, 1800, "Arch")
-
-                --'1800' means check every 30 minutes
 
 -- Initialize widget
 cpuwidget = awful.widget.graph()
 -- Graph properties
 cpuwidget:set_width(35)
 cpuwidget:set_background_color("#494B4F")
-cpuwidget:set_color("#FF5656")
-cpuwidget:set_gradient_colors({ "#FF5656", "#88A175", "#AECF96" })
-
+cpuwidget:set_color("#96CACF")
+cpuwidget:set_scale(true)
+cpuwidget:set_max_value(cpumax)
+--cpuwidget:set_gradient_colors({ "#FF5656", "#88A175", "#AECF96" })
 
 -- Register widget
 vicious.register(cpuwidget, vicious.widgets.cpu, "$1")
-
--- Network Interface Monitor
-netwidget = widget({
-    type = 'textbox',
-    name = 'netwidget',
-    align = 'right'
-})
-
-vicious.register(netwidget, vicious.widgets.net,
-'${eth0 down_kb}/${eth0 up_kb}', nil, nil, 3)
 
 -- Initialize widget
 memwidget = awful.widget.progressbar()
@@ -154,8 +120,8 @@ memwidget:set_height(20)
 memwidget:set_vertical(true)
 memwidget:set_background_color("#494B4F")
 memwidget:set_border_color(nil)
-memwidget:set_color("#FF5656")
-memwidget:set_gradient_colors({ "#AECF96", "#88A175", "#FF5656" })
+memwidget:set_color("#CF96AE")
+--memwidget:set_gradient_colors({ "#AECF96", "#88A175", "#FF5656" })
 -- Register widget
 vicious.register(memwidget, vicious.widgets.mem, "$1", 13)
 
@@ -166,8 +132,8 @@ function(widget, args)
 
 end, 30000, "KSLC")
 
-spacer = widget({ type = "textbox" })
-spacer.text = "|"
+spacer = widget({ type = "imagebox" })
+spacer.image = image(awful.util.getdir("config") .. "/separator.png")
 
 blank = widget({ type = "textbox" })
 blank.text = " "
@@ -178,10 +144,13 @@ batwidget:set_height(20)
 batwidget:set_vertical(true)
 batwidget:set_background_color("#494B4F")
 batwidget:set_border_color(nil)
-batwidget:set_color("#AECF96")
-batwidget:set_gradient_colors({ "#AECF96", "#88A175", "#FF5656" })
+batwidget:set_color("#9B96CF")
+--batwidget:set_gradient_colors({ "#AECF96", "#88A175", "#FF5656" })
 vicious.register(batwidget, vicious.widgets.bat, "$2", 61, "BAT0")
-
+batterywidget = batwidget.widget
+if showbattery == false then
+    batterywidget = nil
+end
 
 volmute = widget({ type = "textbox" })
 
@@ -192,10 +161,14 @@ volwidget:set_vertical(true)
 volwidget:set_background_color("#494B4F")
 volwidget:set_border_color(nil)
 volwidget:set_color("#AECF96")
-volwidget:set_gradient_colors({ "#AECF96", "#88A175", "#FF5656" })
+--volwidget:set_gradient_colors({ "#AECF96", "#88A175", "#FF5656" })
 vicious.register(volwidget, vicious.widgets.volume, 
 function(widget, stuff)
-    volmute.text = stuff[2]
+    if stuff[2] == "♫" then
+        volmute.text = "●"
+    else
+        volmute.text = "○"
+    end
     return stuff[1]
 end, 1, "Master")
 
@@ -278,20 +251,23 @@ for s = 1, screen.count() do
         blank,
         mytextclock,
         blank,
-        batwidget.widget,
+        s == 1 and mysystray or nil,
+        blank,
+--        spacer,
         cpuwidget.widget,
+--        spacer,
+        batterywidget,
         memwidget.widget,
+--        spacer,
         volwidget.widget,
         blank,
         volmute,
-        spacer,
-        netwidget,
-        spacer,
-        weatherwidget,
-        spacer,
-        pacwidget,
         blank,
-        s == 1 and mysystray or nil,
+--        netwidget,
+--        spacer,
+        weatherwidget,
+        --spacer,
+        --pacwidget,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
     }
@@ -322,7 +298,6 @@ globalkeys = awful.util.table.join(
             awful.client.focus.byidx(-1)
             if client.focus then client.focus:raise() end
         end),
-    awful.key({ modkey,           }, "w", function () mymainmenu:show({keygrabber=true}) end),
 
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
@@ -351,10 +326,10 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
-    awful.key({modkey }, "p", function() awful.util.spawn( "dmenu_run" ) end),
-    awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer set Master 5+") end),
-    awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer set Master 5-") end),
-    awful.key({ }, "XF86AudioMute", function() awful.util.spawn("amixer set Master toggle") end),
+    awful.key({modkey }, "p", function() awful.util.spawn( "dmenu_run", false ) end),
+    awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer set Master 5%+", false) end),
+    awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer set Master 5%-", false) end),
+    awful.key({ }, "XF86AudioMute", function() awful.util.spawn("amixer set Master toggle", false) end),
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
     awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
@@ -382,6 +357,7 @@ globalkeys = awful.util.table.join(
 clientkeys = awful.util.table.join(
     awful.key({ modkey,           }, "f",      function (c) c.fullscreen = not c.fullscreen  end),
     awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end),
+    awful.key({ "Mod1",           }, "F4",     function (c) c:kill()                         end),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end),
     awful.key({ modkey,           }, "o",      awful.client.movetoscreen                        ),
@@ -461,6 +437,7 @@ awful.rules.rules = {
     { rule = { },
       properties = { border_width = beautiful.border_width,
                      border_color = beautiful.border_normal,
+                     size_hints_honor = false,
                      focus = true,
                      keys = clientkeys,
                      buttons = clientbuttons } },
@@ -468,6 +445,11 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "gimp" },
       properties = { floating = true } },
+
+    { rule = { class = "Exaile" },
+      properties = { floating = true, tag = tags[2][2] }},
+    { rule = { class = "chromium" },
+        properties = { floating = true, tag = tags[1][1] }},
     -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { tag = tags[1][2] } },
@@ -506,19 +488,17 @@ client.add_signal("unfocus", function(c) c.border_color = beautiful.border_norma
 -- }}}
 
 -- {{{ Autorun Apps
-function run_once(prg)
-  awful.util.spawn_with_shell("pgrep -u $USER -x " .. prg .. " || (" .. prg .. ")")
-end
-
-do
-  local cmds = 
-  { 
-    "xscreensaver -no-splash",
-    --and so on...
-  }
-
-  for _,i in pairs(cmds) do
-    run_once(i)
+function run_once(cmd)
+  findme = cmd
+  firstspace = cmd:find(" ")
+  if firstspace then
+    findme = cmd:sub(0, firstspace-1)
   end
+  awful.util.spawn_with_shell("pgrep -u $USER -x " .. findme .. " > /dev/null || (" .. cmd .. ")")
 end
+
+run_once("xscreensaver -no-splash")
+--
 -- }}}
+--
+-- vim: foldmethod=marker

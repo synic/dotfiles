@@ -12,7 +12,7 @@ theme.wallpaper_cmd = { "awsetbg /home/synic/.config/awesome/themes/zenburn/zenb
 -- }}}
 
 -- {{{ Styles
-theme.font      = "sans 8"
+theme.font      = "Deja Vu Sans 8"
 
 -- {{{ Colors
 theme.fg_normal = "#DCDCCC"
@@ -24,7 +24,7 @@ theme.bg_urgent = "#3F3F3F"
 -- }}}
 
 -- {{{ Borders
-theme.border_width  = "2"
+theme.border_width  = "1"
 theme.border_normal = "#3F3F3F"
 theme.border_focus  = "#6F6F6F"
 theme.border_marked = "#CC9393"

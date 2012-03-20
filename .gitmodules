@@ -4,3 +4,6 @@
 [submodule ".config/awesome/revelation"]
 	path = .config/awesome/revelation
 	url = https://github.com/bioe007/awesome-revelation.git
+[submodule ".vim"]
+	path = .vim
+	url = git@bitbucket.org:synic/dotvim.git
