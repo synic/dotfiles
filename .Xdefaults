@@ -13,7 +13,7 @@ urxvt*urgentOnBell:       true
 
 ! Extensions
 urxvt*perl-lib:        /usr/lib/urxvt/perl/
-urxvt*perl-ext-common: default,matcher,searchable-scrollback,tabbed
+urxvt*perl-ext-common: default,matcher,searchable-scrollback,tabbedex
 urxvt*urlLauncher:     /usr/bin/chromium
 urxvt*matcher.button:  3
 !  - catch ugly URLs

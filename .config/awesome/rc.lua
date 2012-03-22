@@ -14,7 +14,7 @@ require("vicious")
 modkey = "Mod4"
 cpumax = 1
 interface = "eth0"
-showbattery = true
+showbattery = false
 screensaver = "xscreensaver-command -lock"
 terminal = "urxvt -geometry 80x20"
 editor = os.getenv("EDITOR") or "vim"
@@ -450,6 +450,8 @@ awful.rules.rules = {
       properties = { floating = true, tag = tags[2][2] }},
     { rule = { class = "chromium" },
         properties = { floating = true, tag = tags[1][1] }},
+    { rule = { class = "gvim" },
+        properties = { floating = true } },
     -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { tag = tags[1][2] } },
