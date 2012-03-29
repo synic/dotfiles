@@ -8,6 +8,7 @@ require("beautiful")
 require("naughty")
 require("revelation")
 require("vicious")
+require("blingbling")
 
 
 -- {{{ Local Config

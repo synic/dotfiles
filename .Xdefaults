@@ -5,7 +5,7 @@ urxvt*scrollBar:         false
 urxvt*secondaryScroll:    true
 urxvt*saveLines:         65535
 urxvt*cursorBlink:       false
-urxvt*urgentOnBell:       true
+urxvt*urgentOnBell:       false
 !urxvt*override-redirect:false
 !urxvt*borderLess:       false
 !urxvt*internalBorder:       0
