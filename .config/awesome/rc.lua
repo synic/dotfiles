@@ -22,6 +22,8 @@ editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 f, err = loadfile("/home/synic/.config/awesome/localconfig.lua")
 if f then f() end
+
+naughty.config.default_preset.position = "bottom_right"
 -- }}}
 
 -- {{{ Error handling
@@ -80,7 +82,7 @@ tags = {
         },
         { 
             names  = { "⠐", "⠡", "⠪", "⠵" },
-            layout = { layouts[2], layouts[1], layouts[2], layouts[1] }
+            layout = { layouts[7], layouts[1], layouts[2], layouts[1] }
         }
     }
 }
@@ -501,6 +503,7 @@ function run_once(cmd)
 end
 
 run_once("xscreensaver -no-splash")
+run_once("/home/synic/bin/fnotify")
 --
 -- }}}
 --
