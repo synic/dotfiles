@@ -8,7 +8,6 @@ require("beautiful")
 require("naughty")
 require("revelation")
 require("vicious")
-require("blingbling")
 
 
 -- {{{ Local Config
@@ -329,7 +328,12 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
-    awful.key({modkey }, "p", function() awful.util.spawn( "dmenu_run", false ) end),
+    awful.key({ modkey },            "p",     function ()
+        awful.util.spawn("dmenu_run -i -nb '" .. 
+            beautiful.bg_normal .. "' -nf '" .. beautiful.fg_normal .. 
+            "' -sb '" .. beautiful.bg_focus .. 
+            "' -sf '" .. beautiful.fg_focus .. "'") 
+        end),
     awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer set Master 5%+", false) end),
     awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer set Master 5%-", false) end),
     awful.key({ }, "XF86AudioMute", function() awful.util.spawn("amixer set Master toggle", false) end),
@@ -504,6 +508,8 @@ end
 
 run_once("xscreensaver -no-splash")
 run_once("/home/synic/bin/fnotify")
+run_once("gnome-settings-daemon")
+run_once("mintupdate-launcher")
 --
 -- }}}
 --

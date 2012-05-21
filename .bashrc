@@ -112,3 +112,4 @@ alias mplayer='mplayer -softvol -softvol-max 800'
 alias ls='ls --color'
 export TERM=xterm
 alias pacman="packer --noedit"
+source /usr/local/bin/virtualenvwrapper.sh
