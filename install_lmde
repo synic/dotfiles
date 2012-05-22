@@ -1,0 +1,37 @@
+#!/usr/bin/python
+
+import os
+import urllib
+
+PACKAGES = """
+python-pip
+python-dev
+chromium
+vim-gtk
+git
+xfonts-terminus
+nvidia-settings
+nvidia-xconfig
+awesome
+awesome-extra
+rxvt-unicode-256color
+xscreensaver
+kdenlive
+picasa
+suckless-tools
+"""
+
+FILES = (
+    ("https://raw.github.com/synic/urxvt-tabbedex/master/tabbedex", "/usr/lib/urxvt/perl/tabbedex"),
+)
+
+os.system("apt-get install %s" % PACKAGES.replace("\n", " "))
+
+for remote, local in FILES:
+    data = urllib.urlopen(remote).read()
+    h = open(local, "w")
+    h.write(data)
+    h.close()
+    print "Wrote %s" % local
+
+os.system("pip install virtualenv virtualenvwrapper")
