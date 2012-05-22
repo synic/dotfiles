@@ -91,7 +91,6 @@ xscreensaver.passwd.thermometer.width: 8
 !datestamp format--see the strftime(3) manual page for details
 xscreensaver.dateFormat: %I:%M%P %a %b %d, %Y
 !
-xscreensaver.timeout: 5
 xscreensaver.timeout: 0:10:00
 xscreensaver.cycle: 0:10:00
 xscreensaver.lock: True

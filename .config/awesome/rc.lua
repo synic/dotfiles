@@ -332,7 +332,7 @@ globalkeys = awful.util.table.join(
         awful.util.spawn("dmenu_run -i -nb '" .. 
             beautiful.bg_normal .. "' -nf '" .. beautiful.fg_normal .. 
             "' -sb '" .. beautiful.bg_focus .. 
-            "' -sf '" .. beautiful.fg_focus .. "'") 
+            "' -sf '" .. beautiful.fg_focus .. "'", false) 
         end),
     awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer set Master 5%+", false) end),
     awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer set Master 5%-", false) end),
@@ -508,7 +508,7 @@ end
 
 run_once("xscreensaver -no-splash")
 run_once("/home/synic/bin/fnotify")
-run_once("gnome-settings-daemon")
+run_once("mate-settings-daemon")
 run_once("mintupdate-launcher")
 --
 -- }}}
