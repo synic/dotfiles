@@ -1,0 +1,7 @@
+#!/bin/sh
+
+sleep 1 && urxvt -e bpython &
+sleep 2 && urxvt &
+sleep 1 && urxvt & 
+sleep 1 && urxvt &
+urxvt -e ssh -X -p2222 ircguy@shittybum.com

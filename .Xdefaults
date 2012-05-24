@@ -14,7 +14,7 @@ urxvt*urgentOnBell:       false
 ! Extensions
 urxvt*perl-lib:        /usr/lib/urxvt/perl/
 urxvt*perl-ext-common: default,matcher,searchable-scrollback,tabbedex
-urxvt*urlLauncher:     /usr/bin/chromium-browser
+urxvt*urlLauncher:     /usr/bin/chromium
 urxvt*matcher.button:  3
 !  - catch ugly URLs
 urxvt.cutchars:        `()'*<>[]{|}"
@@ -22,8 +22,8 @@ urxvt.cutchars:        `()'*<>[]{|}"
 ! Appearance
 !  - use a bitmap font
 !  - use xft for drawing fonts
-urxvt*font:       xft:Terminus:pixelsize=11:dpi=81
-urxvt*boldFont:   xft:Terminus:bold:pixelsize=11:dpi=81
+urxvt*font:       xft:Ubuntu Mono:pixelsize=12:antialias=true
+urxvt*boldFont:   xft:Ubuntu Mono:bold:pixelsize=12:antialias=true
 !  - cursor
 urxvt*cursorColor: #DCDCCC
 !  - pseudo transparency

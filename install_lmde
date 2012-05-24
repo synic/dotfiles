@@ -35,3 +35,4 @@ for remote, local in FILES:
     print "Wrote %s" % local
 
 os.system("pip install virtualenv virtualenvwrapper")
+os.system("nvidia-xconfig")
