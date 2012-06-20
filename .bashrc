@@ -106,7 +106,7 @@ source ~/.git-completion.sh
 export PS1='\[\e[1;33m\][\u@\h \W$(__git_ps1 " (%s)")]\$\[\e[0m\] '
 export PYTHONPATH=~/Projects/statler3:~/Projects/statler3/apps
 export DJANGO_SETTINGS_MODULE=statler3.settings
-export PATH=$PATH:~/bin:~/Projects/android-sdk-linux/tools:~/Projects/android-sdk-linux/platform-tools
+export PATH=$PATH:~/bin:~/Projects/android-sdk-linux/tools:~/Projects/android-sdk-linux/platform-tools:/opt/java/bin
 export ANDROID_HOME=~/Projects/android-sdk-linux
 alias mplayer='mplayer -softvol -softvol-max 800'
 alias ls='ls --color'

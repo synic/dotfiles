@@ -6,18 +6,16 @@ import urllib
 PACKAGES = """
 python-pip
 python-dev
-chromium
+chromium-browser
 vim-gtk
 git
 xfonts-terminus
 nvidia-settings
-nvidia-xconfig
 awesome
 awesome-extra
 rxvt-unicode-256color
 xscreensaver
 kdenlive
-picasa
 suckless-tools
 """
 

@@ -1,0 +1,3 @@
+#!/bin/sh
+
+python /home/synic/bin/pyrnotify.py 4321 & ssh -R 4321:localhost:4321 -P2222 ircguy@shittybum.com
