@@ -10,6 +10,7 @@
 theme = {}
 theme.wallpaper_cmd = { "awsetbg /home/synic/.config/awesome/themes/zenburn/zenburn-background.png" }
 theme.wallpaper_cmd = { "awsetbg /home/synic/.config/awesome/wallpapers/enderpaper.png" }
+theme.wallpaper_cmd = { "awsetbg /home/synic/.config/awesome/wallpapers/earlyblossom.jpg" }
 -- }}}
 
 -- {{{ Styles

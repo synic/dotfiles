@@ -1,11 +1,13 @@
 ! General
-!urxvt*termName:  rxvt-256color
+urxvt*termName:  xterm-256color
 urxvt*loginShell:         true
 urxvt*scrollBar:         false
 urxvt*secondaryScroll:    true
 urxvt*saveLines:         65535
 urxvt*cursorBlink:       false
 urxvt*urgentOnBell:       false
+URxvt*keysym.Home: \033[1~
+URxvt*keysym.End: \033[4~
 !urxvt*override-redirect:false
 !urxvt*borderLess:       false
 !urxvt*internalBorder:       0
@@ -29,8 +31,8 @@ urxvt*boldFont:   xft:Ubuntu Mono:bold:pixelsize=12:antialias=true
 !  - cursor
 urxvt*cursorColor: #DCDCCC
 !  - pseudo transparency
-urxvt*shading:   8 
-urxvt*transparent:true
+! urxvt*shading:   8 
+! urxvt*transparent:true
 ! black
 URxvt.color0  : #2E2E34343636
 URxvt.color8  : #555557575353

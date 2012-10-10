@@ -8,6 +8,9 @@ python-pip
 python-dev
 chromium-browser
 vim-gtk
+xutils-dev
+feh
+exuberant-ctags
 git
 xfonts-terminus
 nvidia-settings

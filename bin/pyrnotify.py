@@ -51,6 +51,8 @@ import socket
 import subprocess
 import shlex
 
+DUMPOUT = open("/home/synic/bin/crap.txt", "w")
+
 SCRIPT_NAME    = "pyrnotify"
 SCRIPT_AUTHOR  = "Krister Svanlund <krister.svanlund@gmail.com>"
 SCRIPT_VERSION = "0.6"
@@ -117,18 +119,20 @@ def accept_connections(s):
         try:
             urgency, icon, title, body = shlex.split(data)
             subprocess.call(["notify-send", "-u", urgency, "-c", "IRC", "-i", icon, title, body])
+            subprocess.call(["aplay", "/home/synic/bin/POP.WAV"],
+                stdout=DUMPOUT, stderr=DUMPOUT)
         except ValueError as e:
             pass
         except OSError as e:
             pass
-    accept_connections(s)
 
 def weechat_client(argv):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.bind(("localhost", int(argv[1] if len(sys.argv) > 1 else 1234)))
     s.listen(5)
     try:
-        accept_connections(s)
+        while True:
+            accept_connections(s)
     except KeyboardInterrupt as e:
         pass
     finally:

@@ -110,6 +110,4 @@ export PATH=$PATH:~/bin:~/Projects/android-sdk-linux/tools:~/Projects/android-sd
 export ANDROID_HOME=~/Projects/android-sdk-linux
 alias mplayer='mplayer -softvol -softvol-max 800'
 alias ls='ls --color'
-export TERM=xterm
 alias pacman="packer --noedit"
-source /usr/local/bin/virtualenvwrapper.sh

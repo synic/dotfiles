@@ -77,11 +77,11 @@ tags = {
     settings = {
         { 
             names  = { "⠐", "⠡", "⠪", "⠵" },
-            layout = { layouts[1], layouts[1], layouts[1], layouts[1] }
+            layout = { layouts[6], layouts[1], layouts[2], layouts[1] }
         },
         { 
             names  = { "⠐", "⠡", "⠪", "⠵" },
-            layout = { layouts[7], layouts[1], layouts[2], layouts[1] }
+            layout = { layouts[1], layouts[1], layouts[2], layouts[1] }
         }
     }
 }
@@ -316,7 +316,7 @@ globalkeys = awful.util.table.join(
         end),
     awful.key({ "Mod1",           }, "Tab",
         function ()
-            awful.client.focus.history.previous()
+            awful.client.focus.byidx(1)
             if client.focus then
                 client.focus:raise()
             end
@@ -338,6 +338,12 @@ globalkeys = awful.util.table.join(
     awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer set Master 5%-", false) end),
     awful.key({ }, "XF86AudioMute", function() awful.util.spawn("amixer set Master toggle", false) end),
 
+    -- regular keys for those idiot keyboards that don't have volume keys
+
+    awful.key({ modkey, "Control" }, "Up", function () awful.util.spawn("amixer set Master 5%+", false) end),
+    awful.key({ modkey, "Control" }, "Down", function () awful.util.spawn("amixer set Master 5%-", false) end),
+    awful.key({ modkey, "Control" }, "Right", function () awful.util.spawn("amixer set Master toggle", false) end),
+
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
     awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
     awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1)      end),
@@ -348,6 +354,10 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
 
     awful.key({ modkey, "Control" }, "n", awful.client.restore),
+
+    -- Disper
+    awful.key({ modkey, "Shift"   }, "F1", function () awful.util.spawn("disper -d auto -e", false) end),
+    awful.key({ modkey, "Shift"   }, "F2", function () awful.util.spawn("disper -e -dHDMI2,HDMI3 -r 1920x1080,1920x1080 -t left", false) end),
 
     -- Prompt
     awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
@@ -454,10 +464,14 @@ awful.rules.rules = {
       properties = { floating = true } },
 
     { rule = { class = "Exaile" },
-      properties = { floating = true, tag = tags[2][2] }},
+      properties = { floating = true }},
     { rule = { class = "chromium" },
         properties = { floating = true, tag = tags[1][1] }},
     { rule = { class = "gvim" },
+        properties = { floating = true } },
+    { rule = { class = "Thunar" },
+        properties = { floating = true } },
+    { rule = { class = "processing-app-Base" },
         properties = { floating = true } },
     -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },
@@ -507,9 +521,8 @@ function run_once(cmd)
 end
 
 run_once("xscreensaver -no-splash")
-run_once("/home/synic/bin/fnotify")
-run_once("mate-settings-daemon")
-run_once("mintupdate-launcher")
+run_once("nm-applet --sm-disable")
+--run_once("gnome-settings-daemon")
 --
 -- }}}
 --
