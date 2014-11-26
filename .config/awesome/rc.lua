@@ -8,6 +8,7 @@ require("beautiful")
 require("naughty")
 require("revelation")
 require("vicious")
+require("pulseaudio")
 
 
 -- {{{ Local Config
@@ -15,7 +16,7 @@ modkey = "Mod4"
 cpumax = 1
 interface = "eth0"
 showbattery = false
-screensaver = "xscreensaver-command -lock"
+screensaver = "i3lock -c 000000"
 terminal = "urxvt -geometry 80x20"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
@@ -163,16 +164,19 @@ volwidget:set_vertical(true)
 volwidget:set_background_color("#494B4F")
 volwidget:set_border_color(nil)
 volwidget:set_color("#AECF96")
---volwidget:set_gradient_colors({ "#AECF96", "#88A175", "#FF5656" })
-vicious.register(volwidget, vicious.widgets.volume, 
-function(widget, stuff)
-    if stuff[2] == "♫" then
-        volmute.text = "●"
-    else
+
+function updateVolume()
+    v = pulseaudio.volumeInfo()
+    if v == "x" then
         volmute.text = "○"
+        v = 0
+    else
+        volmute.text = "●"
     end
-    return stuff[1]
-end, 1, "Master")
+
+    volwidget:set_value(v)
+end
+updateVolume()
 
 
 -- Create a wibox for each screen and add it
@@ -334,9 +338,9 @@ globalkeys = awful.util.table.join(
             "' -sb '" .. beautiful.bg_focus .. 
             "' -sf '" .. beautiful.fg_focus .. "'", false) 
         end),
-    awful.key({ }, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer set Master 5%+", false) end),
-    awful.key({ }, "XF86AudioLowerVolume", function () awful.util.spawn("amixer set Master 5%-", false) end),
-    awful.key({ }, "XF86AudioMute", function() awful.util.spawn("amixer set Master toggle", false) end),
+    awful.key({ }, "XF86AudioRaiseVolume", function () pulseaudio.volumeUp(); updateVolume(); end),
+    awful.key({ }, "XF86AudioLowerVolume", function () pulseaudio.volumeDown();  updateVolume(); end),
+    awful.key({ }, "XF86AudioMute", function() pulseaudio.volumeMute(); updateVolume(); end),
 
     -- regular keys for those idiot keyboards that don't have volume keys
 
@@ -357,7 +361,7 @@ globalkeys = awful.util.table.join(
 
     -- Disper
     awful.key({ modkey, "Shift"   }, "F1", function () awful.util.spawn("disper -d auto -e", false) end),
-    awful.key({ modkey, "Shift"   }, "F2", function () awful.util.spawn("disper -e -dHDMI2,HDMI3 -r 1920x1080,1920x1080 -t left", false) end),
+    awful.key({ modkey, "Shift"   }, "F2", function () awful.util.spawn("disper -e -dDP4,DP3 -r 1920x1080,1920x1080", false) end),
 
     -- Prompt
     awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
@@ -520,9 +524,11 @@ function run_once(cmd)
   awful.util.spawn_with_shell("pgrep -u $USER -x " .. findme .. " > /dev/null || (" .. cmd .. ")")
 end
 
-run_once("xscreensaver -no-splash")
+--run_once("xscreensaver -no-splash")
 run_once("nm-applet --sm-disable")
---run_once("gnome-settings-daemon")
+run_once("xautolock -time 5 -locker 'i3lock -c 000000'")
+--run_once("git annex assistant --autostart /home/synic/Projects/eventboard.io")
+run_once("xfsettingsd --replace --no-daemon")
 --
 -- }}}
 --

@@ -30,7 +30,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-extras python django virtualenvwrapper command-not-found wd)
+plugins=(git git-extras python django virtualenvwrapper command-not-found wd zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -43,3 +43,4 @@ export PATH=$PATH:/opt/gcc-arm-none-eabi-4_8-2014q3/bin
 bindkey -v
 bindkey '\e[3~' delete-char
 bindkey '^R' history-incremental-search-backward
+export PATH=~/pebble-dev/PebbleSDK-2.8.1/bin:$PATH
