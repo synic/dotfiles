@@ -83,6 +83,10 @@ tags = {
         { 
             names  = { "⠐", "⠡", "⠪", "⠵" },
             layout = { layouts[1], layouts[1], layouts[2], layouts[1] }
+        },
+        {
+            names  = { "⠐", "⠡", "⠪", "⠵" },
+            layout = { layouts[1], layouts[1], layouts[2], layouts[1] }
         }
     }
 }
@@ -344,9 +348,9 @@ globalkeys = awful.util.table.join(
 
     -- regular keys for those idiot keyboards that don't have volume keys
 
-    awful.key({ modkey, "Control" }, "Up", function () awful.util.spawn("amixer set Master 5%+", false) end),
-    awful.key({ modkey, "Control" }, "Down", function () awful.util.spawn("amixer set Master 5%-", false) end),
-    awful.key({ modkey, "Control" }, "Right", function () awful.util.spawn("amixer set Master toggle", false) end),
+    awful.key({ modkey, "Control" }, "Up", function () pulseaudio.volumeUp(); updateVolume(); end),
+    awful.key({ modkey, "Control" }, "Down", function () pulseaudio.volumeDown();  updateVolume(); end),
+    awful.key({ modkey, "Control" }, "Right", function() pulseaudio.volumeMute(); updateVolume(); end),
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
     awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
@@ -360,8 +364,8 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
     -- Disper
-    awful.key({ modkey, "Shift"   }, "F1", function () awful.util.spawn("disper -d auto -e", false) end),
-    awful.key({ modkey, "Shift"   }, "F2", function () awful.util.spawn("disper -e -dDP4,DP3 -r 1920x1080,1920x1080", false) end),
+    awful.key({ modkey, "Shift"   }, "F1", function () awful.util.spawn("/home/synic/bin/undock", false) end),
+    awful.key({ modkey, "Shift"   }, "F2", function () awful.util.spawn("/home/synic/bin/dock", false) end),
 
     -- Prompt
     awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),

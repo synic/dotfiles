@@ -1,0 +1,3 @@
+#!/bin/sh
+
+disper -s -d eDP1 -r auto
