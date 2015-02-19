@@ -1,0 +1,18 @@
+#!/usr/bin/env python
+
+import os
+import os.path
+import uuid
+import urlparse
+
+fn = "/tmp/%s.jpg" % str(uuid.uuid4())
+sn = os.path.basename(fn)
+os.system("import %s" % fn)
+os.system("notify-send \"Uploading %s\" ..." % sn)
+os.system("scp %s shittybum.com:~/vt/screenshots" % fn)
+
+url = "http://synicworld.com/media/screenshots/%s" % sn
+
+os.system("echo -n \"%s\" | xclip -selection primary" % url)
+
+os.system("notify-send 'Copied to clipboard.'")

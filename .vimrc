@@ -105,8 +105,8 @@ function CustomTabLine()
     let i = 0
     let t = tabpagenr()
     while i < tabpagenr('$')
-        let buflist = tabpagebuflist(i + 1) 
-        let winnr = tabpagewinnr(i + 1) 
+        let buflist = tabpagebuflist(i + 1)
+        let winnr = tabpagewinnr(i + 1)
         " select the highlighting
         if (i + 1) == t
             let s .= '%#TabLineSel#'
@@ -140,7 +140,7 @@ function CustomTabLine()
     return s
 endfunction
 
-set tabline=%!CustomTabLine() 
+set tabline=%!CustomTabLine()
 
 " fugitive
 nnoremap <silent> <leader>gs :Gstatus<CR>
@@ -191,3 +191,4 @@ let g:UltiSnipsSnippetDirectories = ['UltiSnips.Local']
 
 " bufexplorer
 let g:bufExplorerSortBy = 'mru'
+au VimEnter * ToggleStripWhitespaceOnSave

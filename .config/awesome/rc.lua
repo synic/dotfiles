@@ -76,11 +76,11 @@ layouts =
 -- {{{ Tags
 tags = {
     settings = {
-        { 
+        {
             names  = { "⠐", "⠡", "⠪", "⠵" },
             layout = { layouts[6], layouts[1], layouts[2], layouts[1] }
         },
-        { 
+        {
             names  = { "⠐", "⠡", "⠪", "⠵" },
             layout = { layouts[1], layouts[1], layouts[2], layouts[1] }
         },
@@ -133,7 +133,7 @@ memwidget:set_color("#CF96AE")
 vicious.register(memwidget, vicious.widgets.mem, "$1", 13)
 
 weatherwidget = widget({ type = "textbox" })
-vicious.register(weatherwidget, vicious.widgets.weather, 
+vicious.register(weatherwidget, vicious.widgets.weather,
 function(widget, args)
     return args["{tempf}"] .. "F"
 
@@ -337,10 +337,10 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
     awful.key({ modkey },            "p",     function ()
-        awful.util.spawn("dmenu_run -i -nb '" .. 
-            beautiful.bg_normal .. "' -nf '" .. beautiful.fg_normal .. 
-            "' -sb '" .. beautiful.bg_focus .. 
-            "' -sf '" .. beautiful.fg_focus .. "'", false) 
+        awful.util.spawn("dmenu_run -i -nb '" ..
+            beautiful.bg_normal .. "' -nf '" .. beautiful.fg_normal ..
+            "' -sb '" .. beautiful.bg_focus ..
+            "' -sf '" .. beautiful.fg_focus .. "'", false)
         end),
     awful.key({ }, "XF86AudioRaiseVolume", function () pulseaudio.volumeUp(); updateVolume(); end),
     awful.key({ }, "XF86AudioLowerVolume", function () pulseaudio.volumeDown();  updateVolume(); end),
@@ -366,6 +366,7 @@ globalkeys = awful.util.table.join(
     -- Disper
     awful.key({ modkey, "Shift"   }, "F1", function () awful.util.spawn("/home/synic/bin/undock", false) end),
     awful.key({ modkey, "Shift"   }, "F2", function () awful.util.spawn("/home/synic/bin/dock", false) end),
+    awful.key({ modkey, "Shift"   }, "s", function() awful.util.spawn("/home/synic/bin/screenshot", false) end),
 
     -- Prompt
     awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
