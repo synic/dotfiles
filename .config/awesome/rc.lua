@@ -165,8 +165,6 @@ function getBatteryLevel()
         percent = tonumber(v)
     end
 
-    naughty.notify({title="fart", text=percent, timeout=0})
-
     batwidget:set_value(percent)
 end
 
@@ -174,7 +172,7 @@ end
 if showbattery == false then
     batterywidget = nil
 else
-    battimer = timer({timeout=30})
+    battimer = timer({timeout=60})
     battimer:add_signal("timeout", getBatteryLevel)
     battimer:start()
     getBatteryLevel()
