@@ -16,6 +16,7 @@ modkey = "Mod4"
 cpumax = 1
 interface = "eth0"
 showbattery = false
+secondbattery = false
 screensaver = "i3lock -c 000000"
 terminal = "urxvt -geometry 80x20"
 editor = os.getenv("EDITOR") or "vim"
@@ -152,12 +153,33 @@ batwidget:set_vertical(true)
 batwidget:set_background_color("#494B4F")
 batwidget:set_border_color(nil)
 batwidget:set_color("#9B96CF")
---batwidget:set_gradient_colors({ "#AECF96", "#88A175", "#FF5656" })
-vicious.register(batwidget, vicious.widgets.bat, "$2", 61, "BAT0")
+batwidget:set_max_value(100)
 batterywidget = batwidget.widget
+
+function getBatteryLevel()
+    local f = io.popen("/home/synic/bin/batlevel")
+    local v = f:read()
+    f:close()
+    local percent = 0
+    if v ~= nil then
+        percent = tonumber(v)
+    end
+
+    naughty.notify({title="fart", text=percent, timeout=0})
+
+    batwidget:set_value(percent)
+end
+
+
 if showbattery == false then
     batterywidget = nil
+else
+    battimer = timer({timeout=30})
+    battimer:add_signal("timeout", getBatteryLevel)
+    battimer:start()
+    getBatteryLevel()
 end
+
 
 volmute = widget({ type = "textbox" })
 
@@ -533,7 +555,7 @@ end
 run_once("nm-applet --sm-disable")
 run_once("xautolock -time 5 -locker 'i3lock -c 000000'")
 --run_once("git annex assistant --autostart /home/synic/Projects/eventboard.io")
-run_once("xfsettingsd --replace --no-daemon")
+run_once("unity-settings-daemon")
 --
 -- }}}
 --

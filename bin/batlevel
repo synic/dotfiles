@@ -1,0 +1,22 @@
+#!/usr/bin/env python
+
+import os
+import os.path
+
+BASE = "/sys/class/power_supply"
+
+items = os.listdir(BASE)
+batteries = []
+
+for item in items:
+    if item.startswith('BAT'):
+        h = open(os.path.join(BASE, item, "capacity"), 'r')
+        try:
+            percent = int(h.read().strip())
+            batteries.append(percent)
+        except ValueError:
+            pass
+
+total = len(batteries) * 100
+print int((sum(batteries) / float(total)) * 100)
+
