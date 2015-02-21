@@ -1,4 +1,3 @@
 #!/bin/sh
 
-disper -s -d eDP1 -r auto
-sleep 1 && disper -e -d DP4,DP3,eDP1 -r auto
+autorandr -l docked

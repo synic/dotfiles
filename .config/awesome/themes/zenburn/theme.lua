@@ -8,9 +8,9 @@
 
 -- {{{ Main
 theme = {}
-theme.wallpaper_cmd = { "awsetbg /home/synic/.config/awesome/themes/zenburn/zenburn-background.png" }
-theme.wallpaper_cmd = { "awsetbg /home/synic/.config/awesome/wallpapers/enderpaper.png" }
-theme.wallpaper_cmd = { "awsetbg /home/synic/.config/awesome/wallpapers/earlyblossom.jpg" }
+--theme.wallpaper_cmd = { "awsetbg /home/synic/.config/awesome/themes/zenburn/zenburn-background.png" }
+--theme.wallpaper_cmd = { "awsetbg /home/synic/.config/awesome/wallpapers/enderpaper.png" }
+theme.wallpaper_cmd = { "feh --bg-scale /home/synic/.config/awesome/wallpapers/earlyblossom.jpg" }
 -- }}}
 
 -- {{{ Styles

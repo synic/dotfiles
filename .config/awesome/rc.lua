@@ -388,7 +388,10 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "F6", function () awful.util.spawn("xbacklight -inc 10", false) end),
 
     -- dock/undock --
-    awful.key({ modkey,           }, "F7", function () awful.util.spawn("/home/synic/bin/autorandr -c", false) end),
+    awful.key({ modkey,           }, "F7", function () awful.util.spawn("/home/synic/bin/dock", false) end),
+
+    -- screenshot --
+    awful.key({ modkey,           }, "s", function () awful.util.spawn("/home/synic/bin/screenshot", false) end),
 
     -- Prompt
     awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
@@ -556,6 +559,7 @@ run_once("nm-applet --sm-disable")
 run_once("xautolock -time 5 -locker 'i3lock -c 000000'")
 --run_once("git annex assistant --autostart /home/synic/Projects/eventboard.io")
 run_once("unity-settings-daemon")
+run_once("/home/synic/bin/autorandr -c")
 --
 -- }}}
 --
