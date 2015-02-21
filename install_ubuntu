@@ -6,7 +6,6 @@ import urllib
 PACKAGES = """
 python-pip
 python-dev
-chromium-browser
 vim-gtk
 xutils-dev
 feh
