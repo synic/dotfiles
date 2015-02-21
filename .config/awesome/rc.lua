@@ -387,10 +387,8 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "F5", function () awful.util.spawn("xbacklight -dec 10", false) end),
     awful.key({ modkey,           }, "F6", function () awful.util.spawn("xbacklight -inc 10", false) end),
 
-    -- Disper
-    awful.key({ modkey, "Shift"   }, "F1", function () awful.util.spawn("/home/synic/bin/undock", false) end),
-    awful.key({ modkey, "Shift"   }, "F2", function () awful.util.spawn("/home/synic/bin/dock", false) end),
-    awful.key({ modkey, "Shift"   }, "s", function() awful.util.spawn("/home/synic/bin/screenshot", false) end),
+    -- dock/undock --
+    awful.key({ modkey,           }, "F7", function () awful.util.spawn("/home/synic/bin/autorandr -c", false) end),
 
     -- Prompt
     awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
