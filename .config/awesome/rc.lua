@@ -383,6 +383,10 @@ globalkeys = awful.util.table.join(
 
     awful.key({ modkey, "Control" }, "n", awful.client.restore),
 
+    -- brightness on thinkpad x250 --
+    awful.key({ modkey,           }, "F5", function () awful.util.spawn("xbacklight -dec 10", false) end),
+    awful.key({ modkey,           }, "F6", function () awful.util.spawn("xbacklight -inc 10", false) end),
+
     -- Disper
     awful.key({ modkey, "Shift"   }, "F1", function () awful.util.spawn("/home/synic/bin/undock", false) end),
     awful.key({ modkey, "Shift"   }, "F2", function () awful.util.spawn("/home/synic/bin/dock", false) end),

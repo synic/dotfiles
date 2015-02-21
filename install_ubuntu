@@ -13,13 +13,14 @@ feh
 exuberant-ctags
 git
 xfonts-terminus
-nvidia-settings
 awesome
 awesome-extra
 rxvt-unicode-256color
 xscreensaver
-kdenlive
 suckless-tools
+xbacklight
+xclip
+imagemagick
 """
 
 FILES = (
@@ -36,4 +37,3 @@ for remote, local in FILES:
     print "Wrote %s" % local
 
 os.system("pip install virtualenv virtualenvwrapper")
-os.system("nvidia-xconfig")
