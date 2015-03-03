@@ -1,25 +1,26 @@
+-- Imports {{{
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
 awful.rules = require("awful.rules")
-require("awful.autofocus")
+awful.autofocus = require("awful.autofocus")
 -- Widget and layout library
 local wibox = require("wibox")
 -- Theme handling library
 local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
-local menubar = require("menubar")
 -- Load Debian menu entries
+local menubar = require("menubar")
 require("debian.menu")
 -- pulseaudio control
 local pulseaudio = require("pulseaudio")
 -- vicious
 vicious = require('vicious')
-
-naughty.config.defaults.position = "bottom_right"
+-- }}}
 
 -- {{{ Local Config
+naughty.config.defaults.position = "bottom_right"
 modkey = "Mod4"
 cpumax = 1
 interface = "eth0"
@@ -31,8 +32,6 @@ editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 f, err = loadfile("/home/synic/.config/awesome/localconfig.lua")
 if f then f() end
-
--- naughty.config.default_preset.position = "bottom_right"
 -- }}}
 
 -- {{{ Error handling
@@ -70,6 +69,7 @@ beautiful.init("/home/synic/.config/awesome/themes/zenburn/theme.lua")
 -- I suggest you to remap Mod4 to another key using xmodmap or other tools.
 -- However, you can use another modifier like Mod1, but it may interact with others.
 modkey = "Mod4"
+-- }}}
 
 -- Table of layouts to cover with awful.layout.inc, order matters. {{{
 local layouts =
@@ -118,6 +118,7 @@ local tags = {
 for s = 1, screen.count() do
      tags[s] = awful.tag(tags.settings[s].names, s, tags.settings[s].layout)
 end
+-- }}}
 
 -- {{{ Menu
 -- Create a laucher widget and a main menu
@@ -144,7 +145,7 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- {{{ Wibox
 -- Create a textclock widget
 mytextclock = awful.widget.textclock()
-vicious.register(mytextclock, vicious.widgets.date, "%b %d %l:%M %p")
+vicious.register(mytextclock, vicious.widgets.date, "%b %d, %l:%M %p", 60)
 
 -- Initialize widget
 cpuwidget = awful.widget.graph()
@@ -157,7 +158,7 @@ cpuwidget:set_max_value(cpumax)
 --cpuwidget:set_gradient_colors({ "#FF5656", "#88A175", "#AECF96" })
 
 -- Register widget
-vicious.register(cpuwidget, vicious.widgets.cpu, "$1")
+vicious.register(cpuwidget, vicious.widgets.cpu, "$1 ", 2)
 
 -- Initialize widget
 memwidget = awful.widget.progressbar()
@@ -331,7 +332,11 @@ for s = 1, screen.count() do
     right_layout:add(volwidget)
     right_layout:add(memwidget)
     right_layout:add(batwidget)
-    right_layout:add(cpuwidget)
+
+    local cpulayout = wibox.layout.mirror()
+    cpulayout:set_widget(cpuwidget)
+
+    right_layout:add(cpulayout)
     right_layout:add(space)
     right_layout:add(mytextclock)
     if s == 1 then
@@ -431,8 +436,13 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey,           }, "F5", function () awful.util.spawn("xbacklight -dec 10", false) end),
     awful.key({ modkey,           }, "F6", function () awful.util.spawn("xbacklight -inc 10", false) end),
 
+    awful.key({ modkey, "Control" }, "F5", function () awful.util.spawn("xbacklight -set 5", false) end),
+    awful.key({ modkey, "Control" }, "F6", function () awful.util.spawn("xbacklight -set 100", false) end),
+
+
     -- dock/undock --
     awful.key({ modkey,           }, "F7", function () awful.util.spawn("/home/synic/bin/dock", false) end),
+    awful.key({ modkey, "Control" }, "F7", function () awful.util.spawn("disper -e -d DP2-1,DP2-2,eDP1 -r auto", false) end),
 
     -- screenshot --
     awful.key({ modkey,           }, "s", function () awful.util.spawn("/home/synic/bin/screenshot", false) end),
@@ -618,6 +628,8 @@ client.connect_signal("manage", function (c, startup)
     end
 end)
 
+client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
+client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
 -- {{{ Autorun Apps
 function run_once(cmd)
@@ -629,16 +641,11 @@ function run_once(cmd)
   awful.util.spawn_with_shell("pgrep -u $USER -x " .. findme .. " > /dev/null || (" .. cmd .. ")")
 end
 
---run_once("xscreensaver -no-splash")
 run_once("nm-applet --sm-disable")
 run_once("xautolock -time 5 -locker 'i3lock -c 000000'")
---run_once("git annex assistant --autostart /home/synic/Projects/eventboard.io")
 run_once("unity-settings-daemon")
 run_once("/home/synic/bin/dock")
---
 
-client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
-client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
---
+
 -- vim: foldmethod=marker
