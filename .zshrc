@@ -34,6 +34,10 @@ plugins=(git git-extras python django virtualenvwrapper command-not-found wd zsh
 
 source $ZSH/oh-my-zsh.sh
 
+# aliases!
+alias ll="ls -AF"
+alias cp="rsync -avh --progress"
+
 # Customize to your needs...
 setopt no_auto_menu
 export PATH=/home/synic/bin:/home/synic/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/home/synic/bin:/home/synic/Projects/android-sdk-linux/tools:/home/synic/Projects/android-sdk-linux/platform-tools:/opt/java/bin
@@ -43,3 +47,5 @@ export OPENCM3_DIR=~/Projects/libopencm3
 bindkey -v
 bindkey '\e[3~' delete-char
 bindkey '^R' history-incremental-search-backward
+fortune -a
+echo ""

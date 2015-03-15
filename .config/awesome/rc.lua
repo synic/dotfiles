@@ -27,7 +27,8 @@ interface = "eth0"
 showbattery = false
 secondbattery = false
 screensaver = "i3lock -c 000000"
-terminal = "urxvt -geometry 80x20"
+browser = "google-chrome"
+terminal = "urxvt"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 f, err = loadfile("/home/synic/.config/awesome/localconfig.lua")
@@ -178,7 +179,7 @@ vicious.register(weatherwidget, vicious.widgets.weather,
 function(widget, args)
     return args["{tempf}"] .. "F "
 
-end, 30000, "KSLC")
+end, 14400, "KSLC")
 
 spacer = wibox.widget.imagebox()
 spacer:set_image(awful.util.getdir("config") .. "/separator.png")
@@ -407,7 +408,6 @@ globalkeys = awful.util.table.join(
         end),
 
     -- Standard program
-    awful.key({ "Mod1", "Control" }, "l", function() awful.util.spawn( screensaver ) end),
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
@@ -415,6 +415,7 @@ globalkeys = awful.util.table.join(
     awful.key({ }, "XF86AudioRaiseVolume", function () pulseaudio.volumeUp(); updateVolume(); end),
     awful.key({ }, "XF86AudioLowerVolume", function () pulseaudio.volumeDown();  updateVolume(); end),
     awful.key({ }, "XF86AudioMute", function() pulseaudio.volumeMute(); updateVolume(); end),
+    awful.key({ }, "XF86HomePage", function() awful.util.spawn(browser) end),
 
     -- regular keys for those idiot keyboards that don't have volume keys
 
@@ -422,6 +423,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "Down", function () pulseaudio.volumeDown();  updateVolume(); end),
     awful.key({ modkey, "Control" }, "Right", function() pulseaudio.volumeMute(); updateVolume(); end),
 
+    awful.key({ "Mod1", "Control" }, "l",     function () awful.util.spawn(screensaver, false) end),
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
     awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
     awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1)      end),

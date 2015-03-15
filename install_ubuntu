@@ -15,7 +15,6 @@ xfonts-terminus
 awesome
 awesome-extra
 rxvt-unicode-256color
-suckless-tools
 xbacklight
 xclip
 imagemagick
@@ -24,7 +23,6 @@ i3lock
 xautolock
 libxss1
 libappindicator1
-libindicator1
 """
 
 FILES = (
@@ -42,5 +40,3 @@ for remote, local in FILES:
 
 os.system("pip install virtualenv virtualenvwrapper")
 
-os.system("cd /tmp; wget https://dl.google.com/linux/direct/google-chrome-stable_current_i386.deb")
-os.system("dpkg -i /tmp/google-chrome-stable_current_i386.deb")
