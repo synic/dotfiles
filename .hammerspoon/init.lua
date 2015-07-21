@@ -161,7 +161,7 @@ hs.hotkey.bind(hyper, "p", function()
 end)
 
 -----------------------------------------------
--- hyper [ for right 2/3 of the screen
+-- hyper [ for left 2/3 of the screen
 -----------------------------------------------
 
 hs.hotkey.bind(hyper, "[", function()
@@ -279,7 +279,7 @@ hs.alert.show("Config loaded")
 -- Hyper i to show window hints
 -----------------------------------------------
 
-hs.hotkey.bind(hyper, "i", function()
+hs.hotkey.bind(hyper, "q", function()
     hs.hints.windowHints()
 end)
 
