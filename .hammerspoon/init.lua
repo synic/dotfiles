@@ -127,10 +127,10 @@ hs.hotkey.bind(hyper, "c", function()
 end)
 
 -----------------------------------------------
--- hyper o for left 1/3 of the screen
+-- hyper [ for left 1/3 of the screen
 -----------------------------------------------
 
-hs.hotkey.bind(hyper, "o", function()
+hs.hotkey.bind(hyper, "[", function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -161,10 +161,10 @@ hs.hotkey.bind(hyper, "p", function()
 end)
 
 -----------------------------------------------
--- hyper [ for left 2/3 of the screen
+-- hyper o for left 2/3 of the screen
 -----------------------------------------------
 
-hs.hotkey.bind(hyper, "[", function()
+hs.hotkey.bind(hyper, "o", function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -195,10 +195,10 @@ hs.hotkey.bind(hyper, "]", function()
 end)
 
 -----------------------------------------------
--- hyper n for left top 1/3 of the screen
+-- hyper 9 for left top 1/3 of the screen
 -----------------------------------------------
 
-hs.hotkey.bind(hyper, "n", function()
+hs.hotkey.bind(hyper, "9", function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -212,10 +212,10 @@ hs.hotkey.bind(hyper, "n", function()
 end)
 
 -----------------------------------------------
--- hyper m for left bottom 1/3 of the screen
+-- hyper n for left bottom 1/3 of the screen
 -----------------------------------------------
 
-hs.hotkey.bind(hyper, "m", function()
+hs.hotkey.bind(hyper, "n", function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -230,10 +230,10 @@ end)
 
 
 -----------------------------------------------
--- hyper 9 for right top 1/3 of the screen
+-- hyper 0 for right top 1/3 of the screen
 -----------------------------------------------
 
-hs.hotkey.bind(hyper, "9", function()
+hs.hotkey.bind(hyper, "0", function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -248,10 +248,10 @@ end)
 
 
 -----------------------------------------------
--- hyper 0 for right bottom 1/3 of the screen
+-- hyper m for right bottom 1/3 of the screen
 -----------------------------------------------
 
-hs.hotkey.bind(hyper, "0", function()
+hs.hotkey.bind(hyper, "m", function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
