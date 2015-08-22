@@ -21,8 +21,10 @@
      better-defaults
      emacs-lisp
      git
+     javascript
      css
-     javascript-mode
+     html
+     arduino-mode
      markdown
      python
      org
@@ -34,7 +36,6 @@
      syntax-checking
      version-control
      surround
-     themes-megapack
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
@@ -193,6 +194,7 @@ layers configuration."
  '(ahs-idle-interval 0.25)
  '(ahs-idle-timer 0 t)
  '(ahs-inhibit-face-list nil)
+ '(magit-log-section-arguments (quote ("--decorate")))
  '(paradox-github-token t)
  '(ring-bell-function (quote ignore) t))
 (custom-set-faces
@@ -200,5 +202,6 @@ layers configuration."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(default ((t (:foreground "#DCDCCC" :background "#3F3F3F"))))
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
