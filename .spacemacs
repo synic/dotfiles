@@ -183,7 +183,7 @@ before layers configuration."
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
-  (setq linum-format "%d ")
+  (setq linum-format " %d ")
   (global-linum-mode t) ; Show line numbers by default
   (setq fill-column 79)
   (auto-fill-mode t)
