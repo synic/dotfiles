@@ -175,6 +175,7 @@ before layers configuration."
 
   (add-hook 'python-mode-hook (lambda ()
     (fci-mode 1)
+    (auto-fill-mode)
     ))
   )
 
