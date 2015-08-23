@@ -81,13 +81,11 @@ before layers configuration."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(zenburn
-                         sanityinc-tomorrow-night
-                         spacemacs-dark
-                         solarized-light
+                         stekene-dark
                          solarized-dark
-                         spacemacs-light
-                         leuven
-                         monokai)
+                         subatomic
+                         wilson
+                         )
    ;; If non nil the cursor color matches the state color.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
@@ -183,9 +181,8 @@ before layers configuration."
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
-  (setq linum-format " %d ")
+  ;(setq linum-format " %d ")
   (global-linum-mode t) ; Show line numbers by default
-  (setq fill-column 79)
   (auto-fill-mode t)
   (setq indent-tabs-mode nil)
 
@@ -206,12 +203,12 @@ layers configuration."
  '(ahs-idle-timer 0 t)
  '(ahs-inhibit-face-list nil)
  '(magit-log-section-arguments (quote ("--decorate")))
+ '(paradox-github-token t)
  '(ring-bell-function (quote ignore) t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:foreground "#DCDCCC" :background "#3F3F3F"))))
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
