@@ -65,6 +65,10 @@ before layers configuration."
     '(setq neo-hidden-regexp-list '("^\\." "\\.pyc$" "~$" "^#.*#$" "\\.elc$"))
     )
 
+  (add-hook 'python-mode-hook (lambda ()
+    (fci-mode 1)
+  ))
+
   (setq-default
    ;; Either `vim' or `emacs'. Evil is always enabled but if the variable
    ;; is `emacs' then the `holy-mode' is enabled at startup.
