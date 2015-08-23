@@ -1,7 +1,6 @@
 ;; -*- mode: emacs-lisp -*-
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
-
 (defun dotspacemacs/layers ()
   "Configuration Layers declaration."
   (setq-default
@@ -18,7 +17,8 @@
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      auto-completion
-     better-defaults
+     xkcd
+     evernote
      emacs-lisp
      git
      javascript
@@ -61,14 +61,6 @@ This function is called at the very startup of Spacemacs initialization
 before layers configuration."
   ;; This setq-default sexp is an exhaustive list of all the supported
   ;; spacemacs settings.
-  (eval-after-load "neotree"
-    '(setq neo-hidden-regexp-list '("^\\." "\\.pyc$" "~$" "^#.*#$" "\\.elc$"))
-    )
-
-  (add-hook 'python-mode-hook (lambda ()
-    (fci-mode 1)
-  ))
-
   (setq-default
    ;; Either `vim' or `emacs'. Evil is always enabled but if the variable
    ;; is `emacs' then the `holy-mode' is enabled at startup.
@@ -101,7 +93,7 @@ before layers configuration."
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
-                               :size 13
+                               :size 10
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -177,13 +169,24 @@ before layers configuration."
    dotspacemacs-default-package-repository nil
    )
   ;; User initialization goes here
+  (eval-after-load "neotree"
+    '(setq neo-hidden-regexp-list '("^\\." "\\.pyc$" "~$" "^#.*#$" "\\.elc$"))
+    )
+
+  (add-hook 'python-mode-hook (lambda ()
+    (fci-mode 1)
+    ))
   )
 
 (defun dotspacemacs/config ()
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
+  (setq linum-format "%d ")
   (global-linum-mode t) ; Show line numbers by default
+  (setq fill-column 79)
+  (auto-fill-mode t)
+  (setq indent-tabs-mode nil)
 
   ; delete trailing whitespace on save
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -202,7 +205,6 @@ layers configuration."
  '(ahs-idle-timer 0 t)
  '(ahs-inhibit-face-list nil)
  '(magit-log-section-arguments (quote ("--decorate")))
- '(paradox-github-token t)
  '(ring-bell-function (quote ignore) t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
