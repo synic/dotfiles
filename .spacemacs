@@ -171,10 +171,20 @@ before layers configuration."
     '(setq neo-hidden-regexp-list '("^\\." "\\.pyc$" "~$" "^#.*#$" "\\.elc$"))
     )
 
+  ;; (defadvice avy--done
+  ;;     (after avy--golden-ratio activate)
+  ;;   (run-at-time 0.1 nil #'golden-ratio))
+  (with-eval-after-load "golden-ratio"
+    (push 'evil-avy-goto-word-or-subword-1 golden-ratio-extra-commands))
+
+  ; python hooks
   (add-hook 'python-mode-hook (lambda ()
     (fci-mode 1)
     (auto-fill-mode)
     ))
+
+  (add-hook 'emacs-lisp-mode (lambda ()
+    (setq tab-width 2)))
   )
 
 (defun dotspacemacs/config ()
