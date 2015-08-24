@@ -24,9 +24,10 @@
      javascript
      css
      html
-     arduino-mode
+     arduino
      markdown
      python
+     ruby
      org
      osx
      python
@@ -174,8 +175,8 @@ before layers configuration."
   ;; (defadvice avy--done
   ;;     (after avy--golden-ratio activate)
   ;;   (run-at-time 0.1 nil #'golden-ratio))
-  (with-eval-after-load "golden-ratio"
-    (push 'evil-avy-goto-word-or-subword-1 golden-ratio-extra-commands))
+  ;; (with-eval-after-load "golden-ratio"
+  ;;   (push 'evil-avy-goto-word-or-subword-1 golden-ratio-extra-commands))
 
   ; python hooks
   (add-hook 'python-mode-hook (lambda ()
