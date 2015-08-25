@@ -21,6 +21,7 @@
      evernote
      emacs-lisp
      git
+     github
      javascript
      css
      html
@@ -38,6 +39,7 @@
      version-control
      surround
      clang-format
+     colors
      (c-c++ :variables
             c-c++-enable-clang-support t)
      (shell :variables
@@ -172,20 +174,6 @@ before layers configuration."
     '(setq neo-hidden-regexp-list '("^\\." "\\.pyc$" "~$" "^#.*#$" "\\.elc$"))
     )
 
-  ;; (defadvice avy--done
-  ;;     (after avy--golden-ratio activate)
-  ;;   (run-at-time 0.1 nil #'golden-ratio))
-  ;; (with-eval-after-load "golden-ratio"
-  ;;   (push 'evil-avy-goto-word-or-subword-1 golden-ratio-extra-commands))
-
-  ; python hooks
-  (add-hook 'python-mode-hook (lambda ()
-    (fci-mode 1)
-    (auto-fill-mode)
-    ))
-
-  (add-hook 'emacs-lisp-mode (lambda ()
-    (setq tab-width 2)))
   )
 
 (defun dotspacemacs/config ()
@@ -196,9 +184,23 @@ layers configuration."
   (global-linum-mode t) ; Show line numbers by default
   (auto-fill-mode t)
   (setq indent-tabs-mode nil)
-
+  (setq neo-show-hidden-files nil)
   ; delete trailing whitespace on save
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+  ; python hooks
+  (add-hook 'python-mode-hook (lambda ()
+                                (fci-mode 1)
+                                (auto-fill-mode)
+                                (setq fill-column 79)
+                                ))
+
+  ;; (defadvice avy--done
+  ;;     (after avy--golden-ratio activate)
+  ;;   (run-at-time 0.1 nil #'golden-ratio))
+  ;; (with-eval-after-load "golden-ratio"
+  ;;   (push 'evil-avy-goto-word-or-subword-1 golden-ratio-extra-commands))
+
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
