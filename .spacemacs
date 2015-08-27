@@ -36,6 +36,7 @@
      bookmark
      django
      syntax-checking
+     spell-checking
      version-control
      surround
      clang-format
@@ -194,6 +195,9 @@ layers configuration."
                                 (auto-fill-mode)
                                 (setq fill-column 79)
                                 ))
+
+  ; try and make C-[ work a little better
+  (setq evil-intercept-esc 'always)
 
   ;; (defadvice avy--done
   ;;     (after avy--golden-ratio activate)
