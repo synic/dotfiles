@@ -193,18 +193,7 @@ layers configuration."
   (add-hook 'python-mode-hook (lambda ()
                                 (fci-mode 1)
                                 (auto-fill-mode)
-                                (setq fill-column 79)
                                 ))
-
-  ; try and make C-[ work a little better
-  (setq evil-intercept-esc 'always)
-
-  ;; (defadvice avy--done
-  ;;     (after avy--golden-ratio activate)
-  ;;   (run-at-time 0.1 nil #'golden-ratio))
-  ;; (with-eval-after-load "golden-ratio"
-  ;;   (push 'evil-avy-goto-word-or-subword-1 golden-ratio-extra-commands))
-
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
