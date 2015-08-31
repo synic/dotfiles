@@ -28,11 +28,12 @@
      arduino
      markdown
      python
+     json
      ruby
      org
      osx
      python
-     ipython-notebook
+     ;ipython-notebook
      bookmark
      django
      syntax-checking
@@ -41,6 +42,7 @@
      surround
      clang-format
      colors
+     evil-snipe
      (c-c++ :variables
             c-c++-enable-clang-support t)
      (shell :variables
@@ -94,7 +96,7 @@ before layers configuration."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
+   dotspacemacs-default-font '("Hack"
                                :size 10
                                :weight normal
                                :width normal
@@ -171,10 +173,6 @@ before layers configuration."
    dotspacemacs-default-package-repository nil
    )
   ;; User initialization goes here
-  (eval-after-load "neotree"
-    '(setq neo-hidden-regexp-list '("^\\." "\\.pyc$" "~$" "^#.*#$" "\\.elc$"))
-    )
-
   )
 
 (defun dotspacemacs/config ()
@@ -194,6 +192,11 @@ layers configuration."
                                 (fci-mode 1)
                                 (auto-fill-mode)
                                 ))
+
+  (eval-after-load 'golden-ratio
+    '(add-to-list 'golden-ratio-exclude-buffer-regexp "*[hH]elm.*"))
+
+  (blink-cursor-mode t)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -209,6 +212,7 @@ layers configuration."
  '(ahs-idle-timer 0 t)
  '(ahs-inhibit-face-list nil)
  '(magit-log-section-arguments (quote ("--decorate")))
+ '(org-agenda-files nil)
  '(paradox-github-token t)
  '(ring-bell-function (quote ignore) t))
 (custom-set-faces
@@ -216,5 +220,6 @@ layers configuration."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(default ((t (:foreground "#DCDCCC" :background "#3F3F3F"))))
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
