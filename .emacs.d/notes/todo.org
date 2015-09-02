@@ -7,8 +7,12 @@
 
 ** This is an inner heading
 
-| First Name | Last Name | Department                           |      Phone | Email             | Pay |
-|------------+-----------+--------------------------------------+------------+-------------------+-----|
-| Adam       | Olsen     | Programmering department is the best | 8015508239 | arolsen@gmail.com | 100 |
-|------------+-----------+--------------------------------------+------------+-------------------+-----|
-|            |           |                                      |            |                   |     |
+| First Name | Last Name | Department                           | Email             |      Phone | Pay |
+|------------+-----------+--------------------------------------+-------------------+------------+-----|
+| Adam       | Olsen     | Programmering department is the best | arolsen@gmail.com | 8015508239 | 100 |
+| Jared      | Leto      | Guy                                  | jared@leto.com    | 8015397796 | 100 |
+| Fred       | Estare    | Bwent                                | bwent@bwent.com   | 8017568879 | 100 |
+| Another    | Guy       | This is a test                       | n/a               | 8011010101 | 100 |
+|------------+-----------+--------------------------------------+-------------------+------------+-----|
+|            |           |                                      | Total:            |            | 400 |
+#+TBLFM: @>$6=vsum(@I..@II)
