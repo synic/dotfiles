@@ -61,13 +61,17 @@
 (defun dotspacemacs/init ()
   "Initialization function.
 This function is called at the very startup of Spacemacs initialization
-before layers configuration."
+before layers configuration.
+You should not put any user code in there besides modifying the variable
+values."
   ;; This setq-default sexp is an exhaustive list of all the supported
   ;; spacemacs settings.
   (setq-default
-   ;; Either `vim' or `emacs'. Evil is always enabled but if the variable
-   ;; is `emacs' then the `holy-mode' is enabled at startup.
-   dotspacemacs-editing-style 'vim
+   ;; One of `vim', `emacs' or `hybrid'. Evil is always enabled but if the
+   ;; variable is `emacs' then the `holy-mode' is enabled at startup. `hybrid'
+   ;; uses emacs key bindings for vim's insert mode, but otherwise leaves evil
+   ;; unchanged.
+   dotspacemacs-editing-style 'hybrid
    ;; If non nil output loading progress in `*Messages*' buffer.
    dotspacemacs-verbose-loading nil
    ;; Specify the startup banner. Default value is `official', it displays
@@ -120,8 +124,11 @@ before layers configuration."
    ;; Default value is `cache'.
    dotspacemacs-auto-save-file-location 'cache
    ;; If non nil then `ido' replaces `helm' for some commands. For now only
-   ;; `find-files' (SPC f f) is replaced.
+   ;; `find-files' (SPC f f), `find-spacemacs-file' (SPC f e s), and
+   ;; `find-contrib-file' (SPC f e c) are replaced.
    dotspacemacs-use-ido nil
+   ;; If non nil, `helm' will try to miminimize the space it uses."
+   dotspacemacs-helm-resize nil
    ;; If non nil the paste micro-state is enabled. When enabled pressing `p`
    ;; several times cycle between the kill ring content.
    dotspacemacs-enable-paste-micro-state nil
@@ -158,8 +165,9 @@ before layers configuration."
    dotspacemacs-smooth-scrolling t
    ;; If non-nil smartparens-strict-mode will be enabled in programming modes.
    dotspacemacs-smartparens-strict-mode nil
-   ;; Select a scope to highlight delimiters. Possible value is `all',
-   ;; `current' or `nil'. Default is `all'
+   ;; Select a scope to highlight delimiters. Possible values are `any',
+   ;; `current', `all' or `nil'. Default is `all' (highlight any scope and
+   ;; emphasis the current one).
    dotspacemacs-highlight-delimiters 'all
    ;; If non nil advises quit functions to keep server open when quitting.
    dotspacemacs-persistent-server nil
@@ -170,12 +178,16 @@ before layers configuration."
    ;; specified with an installed package.
    ;; Not used for now.
    dotspacemacs-default-package-repository nil
-   )
-  ;; User initialization goes here
+   ))
+
+(defun dotspacemacs/user-init ()
+  "Initialization function for user code.
+It is called immediately after `dotspacemacs/init'.  You are free to put any
+user code."
   )
 
 (defun dotspacemacs/user-config ()
-  "Configuration function.
+  "Configuration function for user code.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
   ;(setq linum-format " %d ")
@@ -196,6 +208,11 @@ layers configuration."
     '(add-to-list 'golden-ratio-exclude-buffer-regexp "*[hH]elm.*"))
 
   (blink-cursor-mode t)
+
+  ;; define text-object for entire buffer
+  (evil-define-text-object evil-inner-buffer (count &optional beg end type)
+    (evil-select-paren "\\`" "\\'" beg end type count nil))
+  (define-key evil-inner-text-objects-map "g" 'evil-inner-buffer)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
