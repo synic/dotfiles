@@ -27,7 +27,6 @@
      html
      markdown
      python
-     themes-megapack
      ruby
      org
      osx
@@ -50,7 +49,10 @@
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages then consider to create a layer, you can also put the
    ;; configuration in `dotspacemacs/config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(ujelly-theme
+                                      toxi-theme
+                                      hc-zenburn-theme
+                                      underwater-theme)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -80,7 +82,7 @@ values."
    ;; directory. A string value must be a path to an image format supported
    ;; by your Emacs build.
    ;; If the value is nil then no banner is displayed.
-   dotspacemacs-startup-banner 'official
+   dotspacemacs-startup-banner 1
    ;; Show or don't show the changelog on startup
    dotspacemacs-always-show-changelog nil
    ;; List of items to show in the startup buffer. If nil it is disabled.
@@ -89,7 +91,10 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(zenburn
+   dotspacemacs-themes '(hc-zenburn
+                         zenburn
+                         ujelly
+                         spacemacs-dark
                          stekene-dark
                          solarized-dark
                          subatomic
@@ -131,7 +136,7 @@ values."
    dotspacemacs-helm-resize nil
    ;; If non nil the paste micro-state is enabled. When enabled pressing `p`
    ;; several times cycle between the kill ring content.
-   dotspacemacs-enable-paste-micro-state nil
+   dotspacemacs-enable-paste-micro-state t
    ;; Guide-key delay in seconds. The Guide-key is the popup buffer listing
    ;; the commands bound to the current keystrokes.
    dotspacemacs-guide-key-delay 0.4
@@ -203,9 +208,6 @@ layers configuration."
                                 (fci-mode 1)
                                 (auto-fill-mode)
                                 ))
-
-  (eval-after-load 'golden-ratio
-    '(add-to-list 'golden-ratio-exclude-buffer-regexp "*[hH]elm.*"))
 
   (blink-cursor-mode t)
 
