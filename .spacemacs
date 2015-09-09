@@ -92,7 +92,7 @@ values."
    ;; List of items to show in the startup buffer. If nil it is disabled.
    ;; Possible values are: `recents' `bookmarks' `projects'.
    ;; (default '(recents projects))
-   dotspacemacs-startup-lists '(recents projects)
+   dotspacemacs-startup-lists '(recents projects bookmarks)
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
@@ -228,11 +228,11 @@ user code."
   ; python hooks
   (add-hook 'python-mode-hook
     (lambda ()
-        (setq python-shell-interpreter "python")
+        (setq python-shell-interpreter "/Users/synic/.virtualenvs/eventboard/bin/python")
         (fci-mode t)
         (auto-fill-mode t)
         (setq anaconda-mode-server-script
-              "/usr/local/lib/python2.7/site-packages/anaconda_mode.py")))
+              "/Users/synic/.virtualenvs/eventboard.io/lib/python2.7/site-packages/anaconda_mode.py")))
 
   (blink-cursor-mode t)
 )
