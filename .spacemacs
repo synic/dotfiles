@@ -24,6 +24,7 @@ values."
      evernote
      emacs-lisp
      git
+     yaml
      github
      javascript
      dash
@@ -42,6 +43,8 @@ values."
      colors
      evil-snipe
      lua
+     (ranger :variables
+             ranger-show-preview nil)
      (perspectives :variables
                    perspective-enable-persp-projectile t)
      (c-c++ :variables
@@ -54,11 +57,13 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages then consider to create a layer, you can also put the
    ;; configuration in `dotspacemacs/config'.
-   dotspacemacs-additional-packages '(itail
+   dotspacemacs-additional-packages '(
+                                      itail
                                       ujelly-theme
                                       toxi-theme
                                       hc-zenburn-theme
-                                      underwater-theme)
+                                      underwater-theme
+                                      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -96,10 +101,11 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(hc-zenburn
+   dotspacemacs-themes '(
+                         spacemacs-dark
+                         hc-zenburn
                          ujelly
                          zenburn
-                         spacemacs-dark
                          stekene-dark
                          solarized-dark
                          subatomic
@@ -228,11 +234,11 @@ user code."
   ; python hooks
   (add-hook 'python-mode-hook
     (lambda ()
-        (setq python-shell-interpreter "/Users/synic/.virtualenvs/eventboard/bin/python")
-        (fci-mode t)
-        (auto-fill-mode t)
+        (setq python-shell-interpreter "python")
         (setq anaconda-mode-server-script
-              "/Users/synic/.virtualenvs/eventboard.io/lib/python2.7/site-packages/anaconda_mode.py")))
+              "/usr/local/lib/python2.7/site-packages/anaconda_mode.py")
+        (fci-mode t)
+        (auto-fill-mode t)))
 
   (blink-cursor-mode t)
 )
