@@ -27,6 +27,7 @@ values."
      yaml
      github
      javascript
+     csharp
      dash
      html
      markdown
@@ -103,8 +104,8 @@ values."
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
                          spacemacs-dark
-                         hc-zenburn
                          ujelly
+                         hc-zenburn
                          zenburn
                          stekene-dark
                          solarized-dark
@@ -241,6 +242,33 @@ user code."
         (auto-fill-mode t)))
 
   (blink-cursor-mode t)
+
+  (setq neo-theme 'nerd) ; 'classic, 'nerd, 'ascii, 'arrow
+
+  ; vc-integration apparently makes neotree very slow, so disable it for now.
+  (setq neo-vc-integration nil) ; '(face char))
+
+  ;; Patch to fix vc integration
+  (defun neo-vc-for-node (node)
+    (let* ((backend (vc-backend node))
+           (vc-state (when backend (vc-state node backend))))
+      ;; (message "%s %s %s" node backend vc-state)
+      (cons (cdr (assoc vc-state neo-vc-state-char-alist))
+            (cl-case vc-state
+              (up-to-date       neo-vc-up-to-date-face)
+              (edited           neo-vc-edited-face)
+              (needs-update     neo-vc-needs-update-face)
+              (needs-merge      neo-vc-needs-merge-face)
+              (unlocked-changes neo-vc-unlocked-changes-face)
+              (added            neo-vc-added-face)
+              (removed          neo-vc-removed-face)
+              (conflict         neo-vc-conflict-face)
+              (missing          neo-vc-missing-face)
+              (ignored          neo-vc-ignored-face)
+              (unregistered     neo-vc-unregistered-face)
+              (user             neo-vc-user-face)
+              (t                neo-vc-default-face)))))
+
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
