@@ -68,6 +68,7 @@ values."
                                       toxi-theme
                                       hc-zenburn-theme
                                       underwater-theme
+                                      zenburn-theme
                                       )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -107,9 +108,9 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
+                         hc-zenburn
                          spacemacs-dark
                          ujelly
-                         hc-zenburn
                          zenburn
                          stekene-dark
                          solarized-dark
@@ -228,15 +229,14 @@ user code."
 It is called immediately after `dotspacemacs/init'.  You are free to put any
 user code."
 
-  ;(setq linum-format " %d ")
   (global-linum-mode t) ; Show line numbers by default
   (auto-fill-mode t)
   (setq indent-tabs-mode nil)
   (setq neo-show-hidden-files nil)
-  ; delete trailing whitespace on save
+  ;; delete trailing whitespace on save
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-  ; python hooks
+  ;; python hooks
   (add-hook 'python-mode-hook
     (lambda ()
         (setq python-shell-interpreter "python")
@@ -249,7 +249,7 @@ user code."
 
   (setq neo-theme 'nerd) ; 'classic, 'nerd, 'ascii, 'arrow
 
-  ; vc-integration apparently makes neotree very slow, so disable it for now.
+  ;; vc-integration apparently makes neotree very slow, so disable it for now.
   (setq neo-vc-integration nil) ; '(face char))
 
   ;; Patch to fix vc integration
@@ -272,6 +272,10 @@ user code."
               (unregistered     neo-vc-unregistered-face)
               (user             neo-vc-user-face)
               (t                neo-vc-default-face)))))
+
+  ;; ao-zenburn theme
+  (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+  (load-theme 'ao-zenburn t)
 
 )
 
