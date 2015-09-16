@@ -49,7 +49,8 @@ values."
      evil-snipe
      lua
      (ranger :variables
-             ranger-show-preview nil)
+             ranger-show-dotfiles nil
+             ranger-preview-file nil)
      (perspectives :variables
                    perspective-enable-persp-projectile t)
      (c-c++ :variables
@@ -99,7 +100,7 @@ values."
    ;; directory. A string value must be a path to an image format supported
    ;; by your Emacs build.
    ;; If the value is nil then no banner is displayed. (default 'official)
-   dotspacemacs-startup-banner 'official
+   dotspacemacs-startup-banner 1
    ;; List of items to show in the startup buffer. If nil it is disabled.
    ;; Possible values are: `recents' `bookmarks' `projects'.
    ;; (default '(recents projects))
@@ -122,7 +123,7 @@ values."
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("Hack"
-                               :size 10
+                               :size 9
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -277,6 +278,12 @@ layers configuration. You are free to put any user code."
   (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
   (load-theme 'ao-zenburn t)
 
+  ;; tell ranger not to show dotfiles initially
+  (setq ranger-show-dotfiles nil)
+  (eval-after-load "ranger"
+    '(progn
+       (setq ranger-show-dotfiles nil)
+    ))
 )
 
 ;; Do not write anything past this comment. This is where Emacs will

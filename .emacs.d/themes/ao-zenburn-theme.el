@@ -978,7 +978,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(ansi-color-names-vector [,ao-zenburn-bg ,ao-zenburn-red ,ao-zenburn-green ,ao-zenburn-yellow
                                           ,ao-zenburn-blue ,ao-zenburn-magenta ,ao-zenburn-cyan ,ao-zenburn-fg])
 ;;;;; fill-column-indicator
-   `(fci-rule-color ,ao-zenburn-bg-05)
+   `(fci-rule-color ,ao-zenburn-bg+3)
 ;;;;; vc-annotate
    `(vc-annotate-color-map
      '(( 20. . ,ao-zenburn-red-1)
