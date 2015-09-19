@@ -7,7 +7,7 @@
 ;; -- Wilbur
 
 ;; Original Author: Mark Tran <mark.tran@gmail.com>
-;; URL: http://github.com/marktran/color-theme-jbeans
+;; URL: http://github.com/marktran/color-theme-ujelly
 ;; Package-Version: 20150807.2136
 ;; Version: 1.1.14
 
@@ -126,21 +126,6 @@
        `(magit-branch-local ((,class (:foreground ,jbeans-green-2))))
        `(magit-branch-remote ((,class (:foreground ,jbeans-green-2))))
        `(magit-section-heading ((,class (:foreground ,jbeans-yellow-0 :background ,jbeans-grey-2))))
-       `(magit-diff-added ((,class (:foreground ,jbeans-green-0))))
-       `(magit-diff-added-highlight ((,class (:foreground ,jbeans-green-0 :inherit (magit-section-highlight)))))
-       `(magit-diff-context ((,class (:foreground ,jbeans-fg))))
-       `(magit-diff-context-highlight ((,class (:foreground ,jbeans-fg :inherit (magit-section-highlight)))))
-       `(magit-diff-file-heading ((,class (:weight normal :foreground ,jbeans-fg :background ,jbeans-bg))))
-       `(magit-diff-file-heading-highlight ((,class (:weight normal :foreground ,jbeans-fg :background ,jbeans-grey-2))))
-       `(magit-diff-hunk-heading ((,class (:foreground ,jbeans-yellow-0 :background ,jbeans-grey-2))))
-       `(magit-diff-hunk-heading-highlight ((,class (:foreground ,jbeans-yellow-0 :background ,jbeans-grey-3))))
-       `(magit-diff-lines-heading ((,class (:foreground ,jbeans-fg :background ,jbeans-purple-1))))
-       `(magit-diff-removed ((,class (:foreground ,jbeans-red-0))))
-       `(magit-diff-removed-highlight ((,class (:foreground ,jbeans-red-0 :inherit (magit-section-highlight)))))
-       `(magit-diffstat-added ((,class (:foreground ,jbeans-green-0))))
-       `(magit-diffstat-removed ((,class (:foreground ,jbeans-red-0))))
-       `(magit-hash ((,class (:foreground ,jbeans-red-1))))
-       `(magit-section-highlight ((,class (:background ,jbeans-grey-2))))
        `(match ((,class (:background ,jbeans-red-1))))
        `(minibuffer-prompt ((,class (:foreground ,jbeans-fg))))
        `(mode-line ((,class (:foreground ,jbeans-fg :background nil))))
