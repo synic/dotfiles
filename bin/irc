@@ -1,3 +1,5 @@
 #!/bin/sh
-
+perl -E ' print "\e[?1005h\e[?1002h"'
 mosh --ssh "ssh -p 443" ircguy@shittybum.com -- tmux a
+
+#ssh -p443 ircguy@shittybum.com -t "tmux a"

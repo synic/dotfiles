@@ -611,6 +611,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(macrostep-macro-face
      ((t (:underline t))))
 ;;;;; magit
+   `(magit-blame-heading ((t (:background "dark slate gray" :foreground "gainsboro"))))
    `(magit-item-highlight ((t (:background ,ao-zenburn-bg+05))))
    `(magit-section-title ((t (:foreground ,ao-zenburn-yellow :weight bold))))
    `(magit-process-ok ((t (:foreground ,ao-zenburn-green :weight bold))))
@@ -618,6 +619,7 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(magit-branch ((t (:foreground ,ao-zenburn-blue :weight bold))))
    `(magit-log-author ((t (:foreground ,ao-zenburn-orange))))
    `(magit-log-sha1 ((t (:foreground, ao-zenburn-orange))))
+   `(default ((t (:foreground "#DCDCCC" :background "#313131"))))
 ;;;;; message-mode
    `(message-cited-text ((t (:inherit font-lock-comment-face))))
    `(message-header-name ((t (:foreground ,ao-zenburn-green+1))))

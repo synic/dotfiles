@@ -109,5 +109,5 @@ export DJANGO_SETTINGS_MODULE=statler3.settings
 export PATH=$PATH:~/bin:~/Projects/android-sdk-linux/tools:~/Projects/android-sdk-linux/platform-tools:/opt/java/bin
 export ANDROID_HOME=~/Projects/android-sdk-linux
 alias mplayer='mplayer -softvol -softvol-max 800'
-alias ls='ls --color'
 alias pacman="packer --noedit"
+alias ls='ls -G'
