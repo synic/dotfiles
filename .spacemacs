@@ -220,6 +220,9 @@ values."
    ))
 
 (defun what-face (pos)
+  "Describes the face at the current cursor position.
+Helps making themes, put your cursor at the point you want to know the face of, and
+M-x what-face."
   (interactive "d")
   (let ((face (or (get-char-property (point) 'read-face-name)
                   (get-char-property (point) 'face))))
@@ -303,6 +306,7 @@ layers configuration. You are free to put any user code."
  '(ahs-idle-interval 0.25)
  '(ahs-idle-timer 0 t)
  '(ahs-inhibit-face-list nil)
+ '(evil-escape-mode t)
  '(paradox-github-token t)
  '(ring-bell-function (quote ignore) t)
  '(safe-local-variable-values (quote ((engine . django)))))
@@ -312,6 +316,4 @@ layers configuration. You are free to put any user code."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Hack" :foundry "nil" :slant normal :weight normal :height 90 :width normal))))
- '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
- '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
  )
