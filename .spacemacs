@@ -269,8 +269,6 @@ layers configuration. You are free to put any user code."
               (up-to-date       neo-vc-up-to-date-face)
               (edited           neo-vc-edited-face)
               (needs-update     neo-vc-needs-update-face)
-              (needs-merge      neo-vc-needs-merge-face)
-              (unlocked-changes neo-vc-unlocked-changes-face)
               (added            neo-vc-added-face)
               (removed          neo-vc-removed-face)
               (conflict         neo-vc-conflict-face)
@@ -307,8 +305,7 @@ layers configuration. You are free to put any user code."
  '(ahs-inhibit-face-list nil)
  '(paradox-github-token t)
  '(ring-bell-function (quote ignore) t)
- '(safe-local-variable-values (quote ((engine . django))))
- ))
+ '(safe-local-variable-values (quote ((engine . django)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
