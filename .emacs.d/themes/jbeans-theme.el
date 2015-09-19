@@ -124,6 +124,7 @@
        `(linum ((,class (:slant italic :foreground ,jbeans-grey-4))))
        `(powerline-active2 ((t (:inherit mode-line :background "grey43"))))
        `(powerline-inactive2 ((t (:inherit font-lock-comment-face :background "grey25"))))
+       `(magit-blame-heading ((t (:background "#99ad6a" :foreground "black"))))
        `(magit-bisect-bad ((t (:foreground "IndianRed4"))))
        `(magit-bisect-good ((t (:foreground "DarkOliveGreen"))))
        `(magit-bisect-skip ((t (:foreground "DarkGoldenrod"))))
