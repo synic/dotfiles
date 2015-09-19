@@ -108,8 +108,8 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
-                         hc-zenburn
                          ujelly
+                         hc-zenburn
                          spacemacs-dark
                          ujelly
                          zenburn
@@ -280,7 +280,7 @@ layers configuration. You are free to put any user code."
               (user             neo-vc-user-face)
               (t                neo-vc-default-face)))))
 
-  ;; ao-zenburn theme
+  ;; custom themes
   (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 
   ;; web-mode engine autodetection tag
@@ -290,7 +290,7 @@ layers configuration. You are free to put any user code."
 
   ;; make ace-window use numbers instead of letters (the letters can be hard to read sometimes)
   ;(setq aw-keys '(?1 ?2 ?3 ?4 ?5 ?6 ?7 ?8 ?9))
-  (load-theme 'ao-zenburn t)
+  (load-theme 'jbeans t)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -307,11 +307,14 @@ layers configuration. You are free to put any user code."
  '(ahs-inhibit-face-list nil)
  '(paradox-github-token t)
  '(ring-bell-function (quote ignore) t)
- '(safe-local-variable-values (quote ((engine . django)))))
+ '(safe-local-variable-values (quote ((engine . django))))
+ ))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
-
-)
+ '(default ((t (:family "Hack" :foundry "nil" :slant normal :weight normal :height 90 :width normal))))
+ '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
+ )

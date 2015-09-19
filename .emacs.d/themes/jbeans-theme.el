@@ -113,7 +113,7 @@
        `(helm-source-header ((,class (:foreground ,jbeans-yellow-0 :background ,jbeans-grey-3))))
        `(helm-swoop-target-line-face ((,class (:foreground ,jbeans-fg :background ,jbeans-grey-4))))
        `(helm-swoop-target-word-face ((,class (:foreground ,jbeans-red-1))))
-       `(hl-line ((,class (:background ,jbeans-grey-4))))
+       `(hl-line ((,class (:background "#222222"))))
        `(isearch ((,class (:foreground ,jbeans-fg :background ,jbeans-red-1))))
        `(isearch-fail ((,class (:background ,jbeans-red-1))))
        `(ido-first-match ((,class (:foreground ,jbeans-yellow-0))))
