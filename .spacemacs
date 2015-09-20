@@ -319,4 +319,5 @@ layers configuration. You are free to put any user code."
  '(default ((t (:family "Hack" :foundry "nil" :slant normal :weight normal :height 90 :width normal))))
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
+
  )
