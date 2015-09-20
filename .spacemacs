@@ -292,7 +292,7 @@ layers configuration. You are free to put any user code."
 
   ;; make ace-window use numbers instead of letters (the letters can be hard to read sometimes)
   ;(setq aw-keys '(?1 ?2 ?3 ?4 ?5 ?6 ?7 ?8 ?9))
-  (load-theme 'jbeans t)
+  (load-theme 'ao-zenburn t)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -317,7 +317,4 @@ layers configuration. You are free to put any user code."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Hack" :foundry "nil" :slant normal :weight normal :height 90 :width normal))))
- '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
- '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
-
  )
