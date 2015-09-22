@@ -129,6 +129,10 @@ Also bind `class' to ((class color) (min-colors 89))."
    `(grep-hit-face ((t (:foreground ,ao-zenburn-blue))))
    `(grep-match-face ((t (:foreground ,ao-zenburn-orange :weight bold))))
    `(match ((t (:background ,ao-zenburn-bg-1 :foreground ,ao-zenburn-orange :weight bold))))
+;;;;; neotree
+   `(neo-file-link-face ((t (:background ,ao-zenburn-bg :foreground ,ao-zenburn-fg))))
+   `(neo-root-dir-face ((t (:foreground ,ao-zenburn-blue :weight bold))))
+   `(neo-dir-link-face ((t (:foreground ,ao-zenburn-green+1))))
 ;;;;; isearch
    `(isearch ((t (:foreground ,ao-zenburn-yellow-2 :weight bold :background ,ao-zenburn-bg+2))))
    `(isearch-fail ((t (:foreground ,ao-zenburn-fg :background ,ao-zenburn-red-4))))

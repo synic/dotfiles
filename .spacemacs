@@ -8,8 +8,8 @@ You should not put any user code in this function besides modifying the variable
 values."
   (setq-default
    ;; Base distribution to use. This is a layer contained in the directory
-   ;; `!distribution'. For now available distributions are `spacemacs-core'
-   ;; or `spacemacs'. (default 'spacemacs-core)
+   ;; `+distribution'. For now available distributions are `spacemacs-base'
+   ;; or `spacemacs'. (default 'spacemacs)
    dotspacemacs-distribution 'spacemacs
    ;; List of additional paths where to look for configuration layers.
    ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
@@ -109,17 +109,14 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
-                         ujelly
-                         hc-zenburn
+                         ao-zenburn
+                         jbeans
                          spacemacs-dark
-                         ujelly
-                         zenburn
-                         stekene-dark
+                         spacemacs-light
                          solarized-dark
-                         subatomic
-                         wilson
+                         solarized-light
                          )
-   ;; If non nil the cursor color matches the state color.
+   ;; if non nil the cursor color matches the state color.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
@@ -152,7 +149,7 @@ values."
    ;; If non nil then `ido' replaces `helm' for some commands. For now only
    ;; `find-files' (SPC f f), `find-spacemacs-file' (SPC f e s), and
    ;; `find-contrib-file' (SPC f e c) are replaced. (default nil)
-   dotspacemacs-use-ido t
+   dotspacemacs-use-ido nil
    ;; If non nil, `helm' will try to miminimize the space it uses. (default nil)
    dotspacemacs-helm-resize nil
    ;; if non nil, the helm header is hidden when there is only one source.
@@ -233,6 +230,8 @@ M-x what-face."
   "Initialization function for user code.
 It is called immediately after `dotspacemacs/init'.  You are free to put any
 user code."
+  ;; custom themes
+  (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
   )
 
 (defun dotspacemacs/user-config ()
@@ -240,7 +239,6 @@ user code."
  This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
 
-  (global-linum-mode t) ; Show line numbers by default
   (auto-fill-mode t)
   (setq indent-tabs-mode nil)
   (setq neo-show-hidden-files nil)
@@ -292,7 +290,6 @@ layers configuration. You are free to put any user code."
 
   ;; make ace-window use numbers instead of letters (the letters can be hard to read sometimes)
   ;(setq aw-keys '(?1 ?2 ?3 ?4 ?5 ?6 ?7 ?8 ?9))
-  (load-theme 'ao-zenburn t)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -310,11 +307,14 @@ layers configuration. You are free to put any user code."
  '(evil-escape-mode t)
  '(paradox-github-token t)
  '(ring-bell-function (quote ignore) t)
- '(safe-local-variable-values (quote ((engine . django)))))
+ '(safe-local-variable-values (quote ((engine . django))))
+ )
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Hack" :foundry "nil" :slant normal :weight normal :height 90 :width normal))))
+ '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
  )
