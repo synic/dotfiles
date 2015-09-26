@@ -49,8 +49,9 @@ values."
      lua
      colors
      (ranger :variables
-             ranger-show-dotfiles nil
-             ranger-preview-file nil)
+             ranger-show-dotfiles nil  ; disable showing dotfiles by default
+             ranger-preview-file nil   ; disable showing previews by default
+             )
      perspectives
      (c-c++ :variables
             c-c++-enable-clang-support t)
@@ -67,7 +68,6 @@ values."
                                       ujelly-theme
                                       subatomic256-theme
                                       toxi-theme
-                                      hc-zenburn-theme
                                       underwater-theme
                                       zenburn-theme
                                       )
@@ -109,7 +109,7 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
-                         ao-zenburn
+                         hc-zenburn
                          jbeans
                          spacemacs-dark
                          spacemacs-light
@@ -230,7 +230,8 @@ M-x what-face."
   "Initialization function for user code.
 It is called immediately after `dotspacemacs/init'.  You are free to put any
 user code."
-  ;; custom themes
+  ;; Add `~/.emacs.d/themes` to the theme load path, so that our custom themes
+  ;; are loadable by placing them in `dotspacemacs-themes`
   (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
   )
 
@@ -238,58 +239,46 @@ user code."
   "Configuration function for user code.
  This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
+  (setq
+   ;; Use soft indent
+   indent-tabs-mode nil
+   ;; Don't show hidden files in neotree by default
+   neo-show-hidden-files nil
+   ;; Use nerdtree style theme for neotree.  Possible values are
+   ;; 'classic, 'nerd, 'ascii, and 'arrow
+   neo-theme 'nerd
+   ;; Don't enable neotree vc-integration by default, as it is slow.
+   neo-vc-integration nil
+   ;; Enable web-mode engine detection
+   web-mode-enable-engine-detection t
+   ;; Set the default web-mode engine for .html files to "django"
+   web-mode-engines-alist '(("django" . "\\.html\\'"))
+   )
 
-  (auto-fill-mode t)
-  (setq indent-tabs-mode nil)
-  (setq neo-show-hidden-files nil)
-  ;; delete trailing whitespace on save
+  (add-hook 'hack-local-variables-hook
+            (lambda ()
+              (setq
+               ;; Don't use virtual line wrapping by default
+               truncate-lines t
+               )))
+
+  ;; Disable vi tilde in fringe by default
+  (global-vi-tilde-fringe-mode nil)
+
+  ;; Delete trailing whitespace on save
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
-  ;; python hooks
+  ;; Python hooks
   (add-hook 'python-mode-hook
-    (lambda ()
-        (setq python-shell-interpreter "python")
-        (setq anaconda-mode-server-script
-              "/usr/local/lib/python2.7/site-packages/anaconda_mode.py")
-        (fci-mode t)
-        (auto-fill-mode t)))
+            (lambda ()
+              ;; Enable fill column indicator
+              (fci-mode t)
+              ;; Enable automatic line wrapping at fill column
+              (auto-fill-mode t))
+            )
 
+  ;; Enable a blinking cursor
   (blink-cursor-mode t)
-
-  (setq neo-theme 'nerd) ; 'classic, 'nerd, 'ascii, 'arrow
-
-  ;; vc-integration apparently makes neotree very slow, so disable it for now.
-  (setq neo-vc-integration nil) ; '(face char))
-
-  ;; Patch to fix vc integration
-  (defun neo-vc-for-node (node)
-    (let* ((backend (vc-backend node))
-           (vc-state (when backend (vc-state node backend))))
-      ;; (message "%s %s %s" node backend vc-state)
-      (cons (cdr (assoc vc-state neo-vc-state-char-alist))
-            (cl-case vc-state
-              (up-to-date       neo-vc-up-to-date-face)
-              (edited           neo-vc-edited-face)
-              (needs-update     neo-vc-needs-update-face)
-              (added            neo-vc-added-face)
-              (removed          neo-vc-removed-face)
-              (conflict         neo-vc-conflict-face)
-              (missing          neo-vc-missing-face)
-              (ignored          neo-vc-ignored-face)
-              (unregistered     neo-vc-unregistered-face)
-              (user             neo-vc-user-face)
-              (t                neo-vc-default-face)))))
-
-  ;; custom themes
-  (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-
-  ;; web-mode engine autodetection tag
-  (setq web-mode-enable-engine-detection t)
-  (setq web-mode-engines-alist
-        '(("django"  .  "\\.html\\'")))
-
-  ;; make ace-window use numbers instead of letters (the letters can be hard to read sometimes)
-  ;(setq aw-keys '(?1 ?2 ?3 ?4 ?5 ?6 ?7 ?8 ?9))
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -307,8 +296,10 @@ layers configuration. You are free to put any user code."
  '(evil-escape-mode t)
  '(paradox-github-token t)
  '(ring-bell-function (quote ignore) t)
- '(safe-local-variable-values (quote ((engine . django))))
- )
+ '(safe-local-variable-values
+   (quote
+    ((python-shell-virtualenv-path . "/Users/synic/.virtualenvs/eventboard.io")
+     (engine . django)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
