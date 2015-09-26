@@ -279,6 +279,9 @@ layers configuration. You are free to put any user code."
 
   ;; Enable a blinking cursor
   (blink-cursor-mode t)
+
+  ;; Bind SPC g B to `magit-blame-quit'
+  (evil-leader/set-key "gB" 'magit-blame-quit)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
