@@ -1,0 +1,4 @@
+* Private Spacemacs Layers
+
+Put your private Spacemacs layers in here, and then link them to
+`~/.emacs/private`

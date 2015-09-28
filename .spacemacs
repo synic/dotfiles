@@ -23,6 +23,7 @@ values."
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
+     unscroll
      xkcd
      auto-completion
      evernote
@@ -163,7 +164,7 @@ values."
    dotspacemacs-enable-paste-micro-state nil
    ;; Which-key delay in seconds. The which-key buffer is the popup listing
    ;; the commands bound to the current keystroke sequence. (default 0.4)
-   dotspacemacs-which-key-delay 1
+   dotspacemacs-which-key-delay 0.4
    ;; Which-key frame position. Possible values are `right', `bottom' and
    ;; `right-then-bottom'. right-then-bottom tries to display the frame to the
    ;; right; if there is insufficient space it displays it at the bottom.
@@ -214,8 +215,7 @@ values."
    ;; The default package repository used if no explicit repository has been
    ;; specified with an installed package.
    ;; Not used for now. (default nil)
-   dotspacemacs-default-package-repository nil
-   ))
+   dotspacemacs-default-package-repository nil))
 
 (defun what-face (pos)
   "Describes the face at the current cursor position.
@@ -232,8 +232,7 @@ It is called immediately after `dotspacemacs/init'.  You are free to put any
 user code."
   ;; Add `~/.emacs.d/themes` to the theme load path, so that our custom themes
   ;; are loadable by placing them in `dotspacemacs-themes`
-  (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-  )
+  (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/"))
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
@@ -252,18 +251,16 @@ layers configuration. You are free to put any user code."
    ;; Enable web-mode engine detection
    web-mode-enable-engine-detection t
    ;; Set the default web-mode engine for .html files to "django"
-   web-mode-engines-alist '(("django" . "\\.html\\'"))
-   )
+   web-mode-engines-alist '(("django" . "\\.html\\'")))
 
   (add-hook 'hack-local-variables-hook
             (lambda ()
               (setq
                ;; Don't use virtual line wrapping by default
-               truncate-lines t
-               )))
+               truncate-lines t)))
 
-  ;; Disable vi tilde in fringe by default
-  (global-vi-tilde-fringe-mode nil)
+  ;; Disable vi tilde in the fringe by default
+  (global-vi-tilde-fringe-mode -1)
 
   ;; Delete trailing whitespace on save
   (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -274,15 +271,22 @@ layers configuration. You are free to put any user code."
               ;; Enable fill column indicator
               (fci-mode t)
               ;; Enable automatic line wrapping at fill column
-              (auto-fill-mode t))
-            )
+              (auto-fill-mode t)))
 
   ;; Enable a blinking cursor
   (blink-cursor-mode t)
 
   ;; Bind SPC g B to `magit-blame-quit'
   (evil-leader/set-key "gB" 'magit-blame-quit)
-)
+
+  ;; Bind SPC k ' to `ielm'
+  (evil-leader/set-key "k'" 'ielm)
+
+  ;; Turn on line numbers by default
+  (global-linum-mode t)
+
+  ;; Bind up user functions
+  (evil-leader/set-key "ow" `what-face))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
@@ -297,6 +301,9 @@ layers configuration. You are free to put any user code."
  '(ahs-idle-timer 0 t)
  '(ahs-inhibit-face-list nil)
  '(evil-escape-mode t)
+ '(nrepl-message-colors
+   (quote
+    ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
  '(paradox-github-token t)
  '(ring-bell-function (quote ignore) t)
  '(safe-local-variable-values
@@ -311,4 +318,4 @@ layers configuration. You are free to put any user code."
  '(default ((t (:family "Hack" :foundry "nil" :slant normal :weight normal :height 90 :width normal))))
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
- )
+)
