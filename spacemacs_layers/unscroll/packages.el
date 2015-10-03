@@ -26,7 +26,7 @@
 (defvar unscroll-window-start (make-marker)
   "Window start for next call to `unscroll'.")
 (defvar unscroll-hscroll nil
-  "Hscroll for next call to 'unscroll'.")
+  "Hscroll for next call to `unscroll'.")
 
 ;; Add the `unscrollable' property to the scroll functions
 (put 'scroll-up 'unscrollable t)
@@ -55,7 +55,7 @@
 (put 'mac-mwheel-scroll 'unscrollable t)
 
 (defun unscroll/maybe-remember ()
-  "Save window scroll position for 'unscroll'."
+  "Save window scroll position for `unscroll'."
   (if (not (get last-command 'unscrollable))
       (progn
         (set-marker unscroll-point (point))

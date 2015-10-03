@@ -1,1 +1,1 @@
-(evil-leader/set-key "oU" `unscroll/unscroll)
+(evil-leader/set-key "oS" `unscroll/unscroll)

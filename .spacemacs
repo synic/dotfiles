@@ -20,10 +20,11 @@ values."
    '(
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
-     ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
+     ;; Uncomment some layer names and  ress <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      unscroll
+     gtags
      xkcd
      auto-completion
      evernote
@@ -53,7 +54,7 @@ values."
              ranger-show-dotfiles nil  ; disable showing dotfiles by default
              ranger-preview-file nil   ; disable showing previews by default
              )
-     perspectives
+     eyebrowse
      (c-c++ :variables
             c-c++-enable-clang-support t)
      (shell :variables
@@ -226,6 +227,11 @@ M-x what-face."
                   (get-char-property (point) 'face))))
     (if face (message "Face: %s" face) (message "No face at %d" pos))))
 
+(defun my-expand-completion-table (orig-fun &rest args)
+  "Extract all symbols from COMPLETION-TABLE before calling projectile--tags."
+  (let ((completion-table (all-completions "" (car args))))
+    (funcall orig-fun completion-table)))
+
 (defun dotspacemacs/user-init ()
   "Initialization function for user code.
 It is called immediately after `dotspacemacs/init'.  You are free to put any
@@ -276,7 +282,8 @@ layers configuration. You are free to put any user code."
   ;; Enable a blinking cursor
   (blink-cursor-mode t)
 
-  ;; Bind SPC g B to `magit-blame-quit'
+  ;; Fix `magit-blame-quit'
+  (evil-define-key 'normal magit-blame-mode-map (kbd "q") 'magit-blame-quit)
   (evil-leader/set-key "gB" 'magit-blame-quit)
 
   ;; Bind SPC k ' to `ielm'
@@ -284,6 +291,9 @@ layers configuration. You are free to put any user code."
 
   ;; Turn on line numbers by default
   (global-linum-mode t)
+
+  ;; gtags
+  (advice-add 'projectile--tags :around #'my-expand-completion-table)
 
   ;; Bind up user functions
   (evil-leader/set-key "ow" `what-face))
@@ -309,6 +319,7 @@ layers configuration. You are free to put any user code."
  '(safe-local-variable-values
    (quote
     ((python-shell-virtualenv-path . "/Users/synic/.virtualenvs/eventboard.io")
+     (projectile-tags-command . "ctags --exclude=migrations --exclude=dumps --exclude=media --exclude=.git --exclude=.vagrant --exclude=\"*.js\" --exclude=\"*.css\" --exclude=\"*.html\" --exclude=\"*.scss\" -Re -f \"%s\" %s")
      (engine . django)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -317,5 +328,4 @@ layers configuration. You are free to put any user code."
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Hack" :foundry "nil" :slant normal :weight normal :height 90 :width normal))))
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
- '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
- )
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
