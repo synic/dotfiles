@@ -25,16 +25,12 @@ values."
      ;; ----------------------------------------------------------------
      unscroll
      gtags
-     xkcd
      auto-completion
-     evernote
      emacs-lisp
      git
      yaml
      github
      javascript
-     csharp
-     dash
      html
      markdown
      extra-langs
@@ -47,13 +43,8 @@ values."
      syntax-checking
      spell-checking
      version-control
-     evil-snipe
      lua
      colors
-     (ranger :variables
-             ranger-show-dotfiles nil  ; disable showing dotfiles by default
-             ranger-preview-file nil   ; disable showing previews by default
-             )
      eyebrowse
      (c-c++ :variables
             c-c++-enable-clang-support t)
@@ -67,6 +58,7 @@ values."
    ;; configuration in `dotspacemacs/config'.
    dotspacemacs-additional-packages '(
                                       itail
+                                      dired+
                                       ujelly-theme
                                       subatomic256-theme
                                       toxi-theme
@@ -218,6 +210,25 @@ values."
    ;; Not used for now. (default nil)
    dotspacemacs-default-package-repository nil))
 
+(defvar v-dired-omit t
+  "If dired-omit-mode enabled by default. Don't setq me.")
+
+(defun dired-omit-switch ()
+  "This function is a small enhancement for `dired-omit-mode', which will
+   \"remember\" omit state across Dired buffers."
+  (interactive)
+  (if (eq v-dired-omit t)
+      (setq v-dired-omit nil)
+    (setq v-dired-omit t))
+  (dired-omit-caller)
+  (when (equal major-mode 'dired-mode)
+    (revert-buffer)))
+
+(defun dired-omit-caller ()
+  (if v-dired-omit
+      (setq dired-omit-mode t)
+    (setq dired-omit-mode nil)))
+
 (defun what-face (pos)
   "Describes the face at the current cursor position.
 Helps making themes, put your cursor at the point you want to know the face of, and
@@ -286,6 +297,15 @@ layers configuration. You are free to put any user code."
   (evil-define-key 'normal magit-blame-mode-map (kbd "q") 'magit-blame-quit)
   (evil-leader/set-key "gB" 'magit-blame-quit)
 
+  ;; Dired
+  (require 'dired-x)
+  (setq-default dired-omit-files-p t)
+  (setq dired-omit-files (concat dired-omit-files "\\|^\\..+$\\|\\.pyc$"))
+  (add-hook 'dired-mode-hook 'dired-omit-caller)
+  (define-key evil-normal-state-map (kbd "-") 'projectile-dired)
+  (setq diredp-hide-details-initially-flag nil)
+  (evil-leader/set-key "od" 'dired-omit-switch)
+
   ;; Bind SPC k ' to `ielm'
   (evil-leader/set-key "k'" 'ielm)
 
@@ -296,7 +316,7 @@ layers configuration. You are free to put any user code."
   (advice-add 'projectile--tags :around #'my-expand-completion-table)
 
   ;; Bind up user functions
-  (evil-leader/set-key "ow" `what-face))
+  (evil-leader/set-key "ow" 'what-face))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
@@ -310,6 +330,7 @@ layers configuration. You are free to put any user code."
  '(ahs-idle-interval 0.25)
  '(ahs-idle-timer 0 t)
  '(ahs-inhibit-face-list nil)
+ '(diredp-hide-details-initially-flag nil)
  '(evil-escape-mode t)
  '(nrepl-message-colors
    (quote
@@ -318,7 +339,12 @@ layers configuration. You are free to put any user code."
  '(ring-bell-function (quote ignore) t)
  '(safe-local-variable-values
    (quote
-    ((python-shell-virtualenv-path . "/Users/synic/.virtualenvs/eventboard.io")
+    ((eval when
+           (require
+            (quote rainbow-mode)
+            nil t)
+           (rainbow-mode 1))
+     (python-shell-virtualenv-path . "/Users/synic/.virtualenvs/eventboard.io")
      (projectile-tags-command . "ctags --exclude=migrations --exclude=dumps --exclude=media --exclude=.git --exclude=.vagrant --exclude=\"*.js\" --exclude=\"*.css\" --exclude=\"*.html\" --exclude=\"*.scss\" -Re -f \"%s\" %s")
      (engine . django)))))
 (custom-set-faces
@@ -328,4 +354,8 @@ layers configuration. You are free to put any user code."
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Hack" :foundry "nil" :slant normal :weight normal :height 90 :width normal))))
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
- '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
+ '(diredp-date-time ((t (:foreground "#699590"))))
+ '(diredp-dir-name ((t (:background "#2C2C2C2C2C2C" :foreground "#9CC7FB"))))
+ '(diredp-exec-priv ((t (:foreground "#FDECBC"))))
+ '(diredp-write-priv ((t (:foreground "#DDCC9C")))))
