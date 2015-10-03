@@ -57,7 +57,6 @@ values."
    ;; packages then consider to create a layer, you can also put the
    ;; configuration in `dotspacemacs/config'.
    dotspacemacs-additional-packages '(
-                                      itail
                                       dired+
                                       ujelly-theme
                                       subatomic256-theme
@@ -298,13 +297,16 @@ layers configuration. You are free to put any user code."
   (evil-leader/set-key "gB" 'magit-blame-quit)
 
   ;; Dired
-  (require 'dired-x)
-  (setq-default dired-omit-files-p t)
+  (require 'dired-x) ; Enable dired-x
+  (require 'dired+)  ; Enable dired+
+  (setq-default dired-omit-files-p t)  ; Don't show hidden files by default
   (setq dired-omit-files (concat dired-omit-files "\\|^\\..+$\\|\\.pyc$"))
   (add-hook 'dired-mode-hook 'dired-omit-caller)
-  (define-key evil-normal-state-map (kbd "-") 'projectile-dired)
+  (define-key evil-normal-state-map (kbd "_") 'projectile-dired)
+  (define-key evil-normal-state-map (kbd "-") 'dired-jump)
   (setq diredp-hide-details-initially-flag nil)
-  (evil-leader/set-key "od" 'dired-omit-switch)
+  ;; Comma-i toggles showing hidden files
+  (evil-leader/set-key-for-mode 'dired-mode "mi" 'dired-omit-switch)
 
   ;; Bind SPC k ' to `ielm'
   (evil-leader/set-key "k'" 'ielm)
@@ -356,6 +358,6 @@ layers configuration. You are free to put any user code."
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
  '(diredp-date-time ((t (:foreground "#699590"))))
- '(diredp-dir-name ((t (:background "#2C2C2C2C2C2C" :foreground "#9CC7FB"))))
+ '(diredp-dir-name ((t (:foreground "#9CC7FB"))))
  '(diredp-exec-priv ((t (:foreground "#FDECBC"))))
  '(diredp-write-priv ((t (:foreground "#DDCC9C")))))
