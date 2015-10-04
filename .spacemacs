@@ -20,11 +20,10 @@ values."
    '(
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
-     ;; Uncomment some layer names and  ress <SPC f e R> (Vim style) or
+     ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      unscroll
-     gtags
      auto-completion
      emacs-lisp
      git
@@ -134,6 +133,8 @@ values."
    ;; By default the command key is `:' so ex-commands are executed like in Vim
    ;; with `:' and Emacs commands are executed with `<leader> :'.
    dotspacemacs-command-key ":"
+   ;; If non nil `Y' is remapped to `y$'. (default t)
+   dotspacemacs-remap-Y-to-y$ t
    ;; Location where to auto-save files. Possible values are `original' to
    ;; auto-save the file in-place, `cache' to auto-save the file to another
    ;; file stored in the cache directory and `nil' to disable auto-saving.
@@ -207,7 +208,8 @@ values."
    ;; The default package repository used if no explicit repository has been
    ;; specified with an installed package.
    ;; Not used for now. (default nil)
-   dotspacemacs-default-package-repository nil))
+   dotspacemacs-default-package-repository nil
+   ))
 
 (defvar ao/v-dired-omit t
   "If dired-omit-mode enabled by default. Don't setq me.")
@@ -227,6 +229,18 @@ values."
   (if ao/v-dired-omit
       (setq dired-omit-mode t)
     (setq dired-omit-mode nil)))
+
+(defun ao/dired-back-to-top()
+  "Move to the first file."
+  (interactive)
+  (beginning-of-buffer)
+  (dired-next-line 2))
+
+(defun ao/dired-jump-to-bottom()
+  "Move to last file."
+  (interactive)
+  (end-of-buffer)
+  (dired-next-line -1))
 
 (defun ao/what-face (pos)
   "Describes the face at the current cursor position.
@@ -311,8 +325,16 @@ layers configuration. You are free to put any user code."
   (define-key evil-normal-state-map (kbd "-") 'dired-jump)
   (setq diredp-hide-details-initially-flag nil)
   ;; Comma-i toggles showing hidden files
-  (evil-leader/set-key-for-mode 'dired-mode "mi" 'ao/dired-omit-switch)
   (advice-add 'spacemacs/find-dotfile :around 'ao/find-dotfile)
+  ;; Make `gg' and `G' do the correct thing
+  (eval-after-load "dired-mode"
+    (evilify dired-mode dired-mode-map
+             "f" 'helm-find-files
+             "h" 'diredp-up-directory-reuse-dir-buffer
+             "l" 'diredp-find-file-reuse-dir-buffer
+             "I" 'ao/dired-omit-switch
+             "gg" 'ao/dired-back-to-top
+             "G" 'ao/dired-jump-to-bottom))
 
   ;; Bind SPC k ' to `ielm'
   (evil-leader/set-key "k'" 'ielm)
@@ -320,7 +342,7 @@ layers configuration. You are free to put any user code."
   ;; Turn on line numbers by default
   (global-linum-mode t)
 
-  ;; gtags
+  ;; Tags
   (advice-add 'projectile--tags :around #'ao/expand-completion-table)
 
   ;; Bind up user functions
