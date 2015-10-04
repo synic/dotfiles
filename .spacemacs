@@ -209,35 +209,35 @@ values."
    ;; Not used for now. (default nil)
    dotspacemacs-default-package-repository nil))
 
-(defvar v-dired-omit t
+(defvar ao/v-dired-omit t
   "If dired-omit-mode enabled by default. Don't setq me.")
 
-(defun dired-omit-switch ()
+(defun ao/dired-omit-switch ()
   "This function is a small enhancement for `dired-omit-mode', which will
    \"remember\" omit state across Dired buffers."
   (interactive)
-  (if (eq v-dired-omit t)
-      (setq v-dired-omit nil)
-    (setq v-dired-omit t))
-  (dired-omit-caller)
+  (if (eq ao/v-dired-omit t)
+      (setq ao/v-dired-omit nil)
+    (setq ao/v-dired-omit t))
+  (ao/dired-omit-caller)
   (when (equal major-mode 'dired-mode)
     (revert-buffer)))
 
-(defun dired-omit-caller ()
-  (if v-dired-omit
+(defun ao/dired-omit-caller ()
+  (if ao/v-dired-omit
       (setq dired-omit-mode t)
     (setq dired-omit-mode nil)))
 
-(defun what-face (pos)
+(defun ao/what-face (pos)
   "Describes the face at the current cursor position.
 Helps making themes, put your cursor at the point you want to know the face of, and
-M-x what-face."
+M-x ao/what-face."
   (interactive "d")
   (let ((face (or (get-char-property (point) 'read-face-name)
                   (get-char-property (point) 'face))))
     (if face (message "Face: %s" face) (message "No face at %d" pos))))
 
-(defun my-expand-completion-table (orig-fun &rest args)
+(defun ao/expand-completion-table (orig-fun &rest args)
   "Extract all symbols from COMPLETION-TABLE before calling projectile--tags."
   (let ((completion-table (all-completions "" (car args))))
     (funcall orig-fun completion-table)))
@@ -249,6 +249,11 @@ user code."
   ;; Add `~/.emacs.d/themes` to the theme load path, so that our custom themes
   ;; are loadable by placing them in `dotspacemacs-themes`
   (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/"))
+
+(defun ao/find-dotfile (orig-fun &rest args)
+  "Always follow symlink when using `SPC f e d'."
+  (let ((vc-follow-symlinks t))
+    (apply orig-fun args)))
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
@@ -301,12 +306,13 @@ layers configuration. You are free to put any user code."
   (require 'dired+)  ; Enable dired+
   (setq-default dired-omit-files-p t)  ; Don't show hidden files by default
   (setq dired-omit-files (concat dired-omit-files "\\|^\\..+$\\|\\.pyc$"))
-  (add-hook 'dired-mode-hook 'dired-omit-caller)
+  (add-hook 'dired-mode-hook 'ao/dired-omit-caller)
   (define-key evil-normal-state-map (kbd "_") 'projectile-dired)
   (define-key evil-normal-state-map (kbd "-") 'dired-jump)
   (setq diredp-hide-details-initially-flag nil)
   ;; Comma-i toggles showing hidden files
-  (evil-leader/set-key-for-mode 'dired-mode "mi" 'dired-omit-switch)
+  (evil-leader/set-key-for-mode 'dired-mode "mi" 'ao/dired-omit-switch)
+  (advice-add 'spacemacs/find-dotfile :around 'ao/find-dotfile)
 
   ;; Bind SPC k ' to `ielm'
   (evil-leader/set-key "k'" 'ielm)
@@ -315,10 +321,10 @@ layers configuration. You are free to put any user code."
   (global-linum-mode t)
 
   ;; gtags
-  (advice-add 'projectile--tags :around #'my-expand-completion-table)
+  (advice-add 'projectile--tags :around #'ao/expand-completion-table)
 
   ;; Bind up user functions
-  (evil-leader/set-key "ow" 'what-face))
+  (evil-leader/set-key "ow" 'ao/what-face))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
