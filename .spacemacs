@@ -27,6 +27,8 @@ values."
      auto-completion
      emacs-lisp
      git
+     gtags
+     dash
      yaml
      github
      javascript
@@ -55,13 +57,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages then consider to create a layer, you can also put the
    ;; configuration in `dotspacemacs/config'.
-   dotspacemacs-additional-packages '(
-                                      dired+
-                                      ujelly-theme
-                                      subatomic256-theme
-                                      toxi-theme
-                                      underwater-theme
-                                      zenburn-theme
+   dotspacemacs-additional-packages '(dired+
                                       )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -101,12 +97,9 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
-                         hc-zenburn
                          jbeans
                          spacemacs-dark
                          spacemacs-light
-                         solarized-dark
-                         solarized-light
                          )
    ;; if non nil the cursor color matches the state color.
    dotspacemacs-colorize-cursor-according-to-state t
@@ -256,18 +249,22 @@ M-x ao/what-face."
   (let ((completion-table (all-completions "" (car args))))
     (funcall orig-fun completion-table)))
 
-(defun dotspacemacs/user-init ()
-  "Initialization function for user code.
-It is called immediately after `dotspacemacs/init'.  You are free to put any
-user code."
-  ;; Add `~/.emacs.d/themes` to the theme load path, so that our custom themes
-  ;; are loadable by placing them in `dotspacemacs-themes`
-  (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/"))
-
 (defun ao/find-dotfile (orig-fun &rest args)
   "Always follow symlink when using `SPC f e d'."
   (let ((vc-follow-symlinks t))
     (apply orig-fun args)))
+
+(defun dotspacemacs/user-init ()
+  "Initialization function for user code.
+It is called immediately after `dotspacemacs/init'.  You are free to put any
+user code."
+  ;; Add `~/.emacs.d/libs' to the load-path, so that our custom libraries can be
+  ;; found (specifically, `evil-vimish-fold' is not on melpa)
+  (add-to-list 'load-path (expand-file-name  "~/.emacs.d/libs/"))
+
+  ;; Add `~/.emacs.d/themes' to the theme load path, so that our custom themes
+  ;; are loadable by placing them in `dotspacemacs-themes`
+  (add-to-list 'custom-theme-load-path (expand-file-name "~/.emacs.d/themes/")))
 
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
@@ -308,11 +305,18 @@ layers configuration. You are free to put any user code."
               ;; Enable automatic line wrapping at fill column
               (auto-fill-mode t)))
 
+  ;; YAML hooks
+  (add-hook 'yaml-mode-hook
+            (lambda ()
+                (fci-mode t)
+                (auto-fill-mode t)
+                (setq fill-column 80
+                      tab-width 2)))
+
   ;; Enable a blinking cursor
   (blink-cursor-mode t)
 
   ;; Fix `magit-blame-quit'
-  (evil-define-key 'normal magit-blame-mode-map (kbd "q") 'magit-blame-quit)
   (evil-leader/set-key "gB" 'magit-blame-quit)
 
   ;; Dired
@@ -324,7 +328,6 @@ layers configuration. You are free to put any user code."
   (define-key evil-normal-state-map (kbd "_") 'projectile-dired)
   (define-key evil-normal-state-map (kbd "-") 'dired-jump)
   (setq diredp-hide-details-initially-flag nil)
-  ;; Comma-i toggles showing hidden files
   (advice-add 'spacemacs/find-dotfile :around 'ao/find-dotfile)
   ;; Make `gg' and `G' do the correct thing
   (eval-after-load "dired-mode"
@@ -344,6 +347,15 @@ layers configuration. You are free to put any user code."
 
   ;; Tags
   (advice-add 'projectile--tags :around #'ao/expand-completion-table)
+  (spacemacs/helm-gtags-define-keys-for-mode 'python-mode)
+
+  ;; Gtags redefines `SPC m g g', and I like anaconda's find better, so restore it.
+  (evil-leader/set-key "mgg" 'anaconda-mode-find-definitions)
+  ;; But, the old behavior might still be useful.  Bind it to `SPC m g o'
+  (evil-leader/set-key "mgo" 'helm-gtags-dwim)
+
+  ;; Set fill-column-indicator color
+  (setq fci-rule-color "#363636")
 
   ;; Bind up user functions
   (evil-leader/set-key "ow" 'ao/what-face))
@@ -375,6 +387,7 @@ layers configuration. You are free to put any user code."
             nil t)
            (rainbow-mode 1))
      (python-shell-virtualenv-path . "/Users/synic/.virtualenvs/eventboard.io")
+     (projectile-tags-command . "ctags --exclude=periphlib --exclude=build -Re -f \"%s\" %s")
      (projectile-tags-command . "ctags --exclude=migrations --exclude=dumps --exclude=media --exclude=.git --exclude=.vagrant --exclude=\"*.js\" --exclude=\"*.css\" --exclude=\"*.html\" --exclude=\"*.scss\" -Re -f \"%s\" %s")
      (engine . django)))))
 (custom-set-faces
@@ -385,7 +398,4 @@ layers configuration. You are free to put any user code."
  '(default ((t (:family "Hack" :foundry "nil" :slant normal :weight normal :height 90 :width normal))))
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
- '(diredp-date-time ((t (:foreground "#699590"))))
- '(diredp-dir-name ((t (:foreground "#9CC7FB"))))
- '(diredp-exec-priv ((t (:foreground "#FDECBC"))))
- '(diredp-write-priv ((t (:foreground "#DDCC9C")))))
+)
