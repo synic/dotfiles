@@ -1,4 +1,4 @@
-;; -*- mode: emacs-lisp -*-
+
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
@@ -24,6 +24,7 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      unscroll
+     visual-marks
      auto-completion
      emacs-lisp
      git
@@ -331,13 +332,16 @@ layers configuration. You are free to put any user code."
   (advice-add 'spacemacs/find-dotfile :around 'ao/find-dotfile)
   ;; Make `gg' and `G' do the correct thing
   (eval-after-load "dired-mode"
-    (evilify dired-mode dired-mode-map
-             "f" 'helm-find-files
-             "h" 'diredp-up-directory-reuse-dir-buffer
-             "l" 'diredp-find-file-reuse-dir-buffer
-             "I" 'ao/dired-omit-switch
-             "gg" 'ao/dired-back-to-top
-             "G" 'ao/dired-jump-to-bottom))
+    (progn
+      (define-key dired-mode-map [mouse-1] 'diredp-find-file-reuse-dir-buffer)
+      (define-key dired-mode-map [mouse-2] 'dired-find-alternate-file)
+      (evilify dired-mode dired-mode-map
+               "f" 'helm-find-files
+               "h" 'diredp-up-directory-reuse-dir-buffer
+               "l" 'diredp-find-file-reuse-dir-buffer
+               "I" 'ao/dired-omit-switch
+               "gg" 'ao/dired-back-to-top
+               "G" 'ao/dired-jump-to-bottom)))
 
   ;; Bind SPC k ' to `ielm'
   (evil-leader/set-key "k'" 'ielm)
@@ -355,7 +359,19 @@ layers configuration. You are free to put any user code."
   (evil-leader/set-key "mgo" 'helm-gtags-dwim)
 
   ;; Set fill-column-indicator color
-  (setq fci-rule-color "#363636")
+  (setq fci-rule-color "#151515")
+
+  ;; `SPC w O' - close all the windows wherein you are not currently focused
+  ;; Same as "close other tabs" in chrome
+  (evil-leader/set-key "wO" 'delete-other-windows)
+
+  ;; Transparency by default
+  (set-frame-parameter (selected-frame) 'alpha
+                       (list dotspacemacs-active-transparency
+                             dotspacemacs-inactive-transparency))
+
+  ;; Show marks like ^, [, ] in visual-mark-mode
+  (setq evil-visual-mark-exclude-marks '())
 
   ;; Bind up user functions
   (evil-leader/set-key "ow" 'ao/what-face))

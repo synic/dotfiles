@@ -1,0 +1,69 @@
+* Slide 1 - Why VIM?
+
+I will start with my experience with Vim.  I used to use vim only at the
+command line for editing configuration files and such.  I did this for
+around 6 years.  I knew that people used it for programming, I just hadn't
+made it there quite yet.
+
+For me, the roadblocks were:
+
+1. What is the point of modal editing?  In what ways is it better than
+   the traditional word processor approach to editing?
+2. How can this ugly, single windowed, command line editor even come close
+   to the speed of editing in an editor like jedit (which I was using at the
+   time), which has things like a project manager, so I can easily get to files
+   I have open?
+3. It's complicated!
+
+* What is the point of modal editing?
+
+The point is to be able to edit faster.
+
+1. For a start, it's ALL about the keyboard.  Modal editing allows you to
+   quickly navigate and manipulate code, all with one or two (or i
+   (actually, there are wonky key combinations like that, however, most of the
+   time you'll hang around your home row)
+2. What do you think you do more often?  Typing/inserting text into a document,
+   or manipulating text that's already been typed? Sure, there are times when
+   you start from scratch in a document, but far more often you are doing one of
+   the following: editing text that already exist, moving blocks of text from
+   one place to another, deleting lines, changing arguments, etc, etc. The real
+   way to use vim is to mostly stay in normal mode, and only entering insert
+   mode for short bursts.
+
+/How the heck can you argue that you're always near the home row when you have
+to press escape all the time?/
+
+Actually, in vim, there are several other built
+in key combinations that do the same thing. ctrl+c is one, ctrl+[ is another.
+Aside from that, you can configure the escape key to be any key combination, or
+any sequence two or more letters. For instance, I have mine currently mapped to
+*fd*. It is a combination of keys that you don't use very often, but if you do,
+it usually won't be an issue. In order for it to register as an escape sequence,
+it has to be typed in very quick succession.
+
+* How can it be faster than a traditional editor?
+
+VIM is very extensible, and like a lot of applications, it IS very bare bones out
+out of the box.  A lot of the good functionality is implemented in plugins.
+For most things you need to do, VIM often has a plugin that does it for you.  A
+lot of them might be foreign, but often it's because the author has focused on
+speed with the keyboard, instead of a mouse [SHOW Ctrl+P or Helm].
+
+1. So what about projects?  [DEMONSTRATE NerdTree, mention Ctrl+P again and talk
+   about how it finds new projects].
+2. What about my tabs?  [DEMONSTRATE: BufExplorer]
+
+* It's complicated!
+
+Yes, the learning curve is high.  It's an entirely different way of thinking
+about editing code.
+
+/So, how do you do it?/
+
+1. Use VIM mode in another editor.
+2. Use your arrow keys, etc, if you need to.
+3. Do what I did, uninstall your other editor, and just go for it.
+
+*It' took me about 1 week to not feel like an idiot when going cold turkey from
+ jedit.*
