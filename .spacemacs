@@ -24,9 +24,9 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      unscroll
-     visual-marks
      auto-completion
      emacs-lisp
+     evil-snipe
      git
      gtags
      dash
