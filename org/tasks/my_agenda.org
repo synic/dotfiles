@@ -1,0 +1,7 @@
+* Things to research:
+1. Book event on my own calendar or the room calendar?
+2. Availability for rooms should take the fact that
+   room can be a participant into account.
+3. Sending invites, should they come from the external
+   calendaring system, or should they come from us in an
+   email?

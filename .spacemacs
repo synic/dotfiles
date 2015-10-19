@@ -25,8 +25,8 @@ values."
      ;; ----------------------------------------------------------------
      unscroll
      auto-completion
+     xkcd
      emacs-lisp
-     evil-snipe
      git
      gtags
      dash
@@ -59,6 +59,7 @@ values."
    ;; packages then consider to create a layer, you can also put the
    ;; configuration in `dotspacemacs/config'.
    dotspacemacs-additional-packages '(dired+
+                                      evil-visual-mark-mode
                                       )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -272,6 +273,11 @@ user code."
  This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
   (setq
+   ;; Don't hide details in dired by default
+   diredp-hide-details-initially-flag nil
+   ;; Set the fill column indicator color (can't be done in a theme for
+   ;; some reason)
+   fci-rule-color "#151515"
    ;; Use soft indent
    indent-tabs-mode nil
    ;; Don't show hidden files in neotree by default
@@ -281,10 +287,14 @@ layers configuration. You are free to put any user code."
    neo-theme 'nerd
    ;; Don't enable neotree vc-integration by default, as it is slow.
    neo-vc-integration nil
+   ;; Projectile ignored suffices
+   projectile-globally-ignored-file-suffixes '(".pyc" ".rst")
    ;; Enable web-mode engine detection
    web-mode-enable-engine-detection t
    ;; Set the default web-mode engine for .html files to "django"
    web-mode-engines-alist '(("django" . "\\.html\\'")))
+
+  (setq-default evil-escape-key-sequence "jk")
 
   (add-hook 'hack-local-variables-hook
             (lambda ()
@@ -348,6 +358,12 @@ layers configuration. You are free to put any user code."
   ;; Turn on line numbers by default
   (global-linum-mode t)
 
+  ;; Bind `SPC t M' to evil-visual-mark-mode
+  (require 'evil-visual-mark-mode)
+  (evil-leader/set-key "tM" 'evil-visual-mark-mode)
+  ;; Show marks like ^, [, ] in visual-mark-mode
+  (setq evil-visual-mark-exclude-marks '())
+
   ;; Tags
   (advice-add 'projectile--tags :around #'ao/expand-completion-table)
   (spacemacs/helm-gtags-define-keys-for-mode 'python-mode)
@@ -357,10 +373,7 @@ layers configuration. You are free to put any user code."
   ;; But, the old behavior might still be useful.  Bind it to `SPC m g o'
   (evil-leader/set-key "mgo" 'helm-gtags-dwim)
 
-  ;; Set fill-column-indicator color
-  (setq fci-rule-color "#151515")
-
-  ;; `SPC w O' - close all the windows wherein you are not currently focused
+  ;; `SPC w O' - close all the win
   ;; Same as "close other tabs" in chrome
   (evil-leader/set-key "wO" 'delete-other-windows)
 
@@ -368,9 +381,6 @@ layers configuration. You are free to put any user code."
   (set-frame-parameter (selected-frame) 'alpha
                        (list dotspacemacs-active-transparency
                              dotspacemacs-inactive-transparency))
-
-  ;; Show marks like ^, [, ] in visual-mark-mode
-  (setq evil-visual-mark-exclude-marks '())
 
   ;; Bind up user functions
   (evil-leader/set-key "ow" 'ao/what-face))

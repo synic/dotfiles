@@ -37,7 +37,7 @@ source $ZSH/oh-my-zsh.sh
 # aliases!
 alias ll="ls -AF"
 alias cp="rsync -avh --progress"
-alias vi="vim"
+alias vi="emacsclient -nw"
 alias ack-grep="ag"
 alias ls='gls --color'
 
