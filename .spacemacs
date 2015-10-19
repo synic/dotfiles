@@ -332,16 +332,15 @@ layers configuration. You are free to put any user code."
   (advice-add 'spacemacs/find-dotfile :around 'ao/find-dotfile)
   ;; Make `gg' and `G' do the correct thing
   (eval-after-load "dired-mode"
-    (progn
-      (define-key dired-mode-map [mouse-1] 'diredp-find-file-reuse-dir-buffer)
-      (define-key dired-mode-map [mouse-2] 'dired-find-alternate-file)
-      (evilify dired-mode dired-mode-map
-               "f" 'helm-find-files
-               "h" 'diredp-up-directory-reuse-dir-buffer
-               "l" 'diredp-find-file-reuse-dir-buffer
-               "I" 'ao/dired-omit-switch
-               "gg" 'ao/dired-back-to-top
-               "G" 'ao/dired-jump-to-bottom)))
+    (evilify dired-mode dired-mode-map
+             [mouse-1] 'diredp-find-file-reuse-dir-buffer
+             [mouse-2] 'dired-find-alternate-file
+             "f" 'helm-find-files
+             "h" 'diredp-up-directory-reuse-dir-buffer
+             "l" 'diredp-find-file-reuse-dir-buffer
+             "I" 'ao/dired-omit-switch
+             "gg" 'ao/dired-back-to-top
+             "G" 'ao/dired-jump-to-bottom))
 
   ;; Bind SPC k ' to `ielm'
   (evil-leader/set-key "k'" 'ielm)
