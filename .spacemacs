@@ -48,6 +48,7 @@ values."
      lua
      colors
      eyebrowse
+     vimscript
      (c-c++ :variables
             c-c++-enable-clang-support t)
      (shell :variables
@@ -256,6 +257,11 @@ M-x ao/what-face."
   (let ((vc-follow-symlinks t))
     (apply orig-fun args)))
 
+(defun ao/show-file-name ()
+  "Show the full path of the current buffer."
+  (interactive)
+  (message (buffer-file-name)))
+
 (defun dotspacemacs/user-init ()
   "Initialization function for user code.
 It is called immediately after `dotspacemacs/init'.  You are free to put any
@@ -277,7 +283,7 @@ layers configuration. You are free to put any user code."
    diredp-hide-details-initially-flag nil
    ;; Set the fill column indicator color (can't be done in a theme for
    ;; some reason)
-   fci-rule-color "#151515"
+   fci-rule-color "#252525"
    ;; Use soft indent
    indent-tabs-mode nil
    ;; Don't show hidden files in neotree by default
@@ -294,7 +300,7 @@ layers configuration. You are free to put any user code."
    ;; Set the default web-mode engine for .html files to "django"
    web-mode-engines-alist '(("django" . "\\.html\\'")))
 
-  (setq-default evil-escape-key-sequence "jk")
+  (setq-default evil-escape-key-sequence "fd")
 
   (add-hook 'hack-local-variables-hook
             (lambda ()
@@ -383,7 +389,9 @@ layers configuration. You are free to put any user code."
                              dotspacemacs-inactive-transparency))
 
   ;; Bind up user functions
-  (evil-leader/set-key "ow" 'ao/what-face))
+  (evil-leader/set-key "ow" 'ao/what-face)
+  (evil-leader/set-key "ob" 'ao/show-file-name)
+  )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
