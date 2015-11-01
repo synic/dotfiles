@@ -319,6 +319,8 @@ layers configuration. You are free to put any user code."
             (lambda ()
               ;; Enable fill column indicator
               (fci-mode t)
+              ;; Turn on line numbering
+              (linum-mode t)
               ;; Enable automatic line wrapping at fill column
               (auto-fill-mode t)))
 
@@ -327,8 +329,23 @@ layers configuration. You are free to put any user code."
             (lambda ()
                 (fci-mode t)
                 (auto-fill-mode t)
+                (linum-mode t)
                 (setq fill-column 80
                       tab-width 2)))
+
+  ;; Elisp
+  (add-hook 'emacs-lisp-mode-hook
+            (lambda ()
+              (auto-fill-mode t)
+              (fci-mode t)
+              (linum-mode t)
+              (setq fill-column 80
+                    tab-width 2)))
+
+  ;; Shell-script
+  (add-hook 'shell-script-mode-hook
+            (lambda ()
+              (linum-mode t)))
 
   ;; Enable a blinking cursor
   (blink-cursor-mode t)
@@ -360,9 +377,6 @@ layers configuration. You are free to put any user code."
 
   ;; Bind SPC k ' to `ielm'
   (evil-leader/set-key "k'" 'ielm)
-
-  ;; Turn on line numbers by default
-  (global-linum-mode t)
 
   ;; Bind `SPC t M' to evil-visual-mark-mode
   (require 'evil-visual-mark-mode)
@@ -430,5 +444,4 @@ layers configuration. You are free to put any user code."
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Hack" :foundry "nil" :slant normal :weight normal :height 90 :width normal))))
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
- '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil))))
-)
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
