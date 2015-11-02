@@ -368,12 +368,12 @@ layers configuration. You are free to put any user code."
     (evilify dired-mode dired-mode-map
              [mouse-1] 'diredp-find-file-reuse-dir-buffer
              [mouse-2] 'dired-find-alternate-file
-             "f" 'helm-find-files
-             "h" 'diredp-up-directory-reuse-dir-buffer
-             "l" 'diredp-find-file-reuse-dir-buffer
-             "I" 'ao/dired-omit-switch
+             "f"  'helm-find-files
+             "h"  'diredp-up-directory-reuse-dir-buffer
+             "l"  'diredp-find-file-reuse-dir-buffer
+             "I"  'ao/dired-omit-switch
              "gg" 'ao/dired-back-to-top
-             "G" 'ao/dired-jump-to-bottom))
+             "G"  'ao/dired-jump-to-bottom))
 
   ;; Bind SPC k ' to `ielm'
   (evil-leader/set-key "k'" 'ielm)
