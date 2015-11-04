@@ -372,6 +372,7 @@ layers configuration. You are free to put any user code."
              "h"  'diredp-up-directory-reuse-dir-buffer
              "l"  'diredp-find-file-reuse-dir-buffer
              "I"  'ao/dired-omit-switch
+             "c"  'helm-find-files
              "gg" 'ao/dired-back-to-top
              "G"  'ao/dired-jump-to-bottom))
 
