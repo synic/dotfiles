@@ -42,7 +42,7 @@ values."
      version-control
      lua
      colors
-     eyebrowse
+     perspectives
      vimscript
      (c-c++ :variables
             c-c++-enable-clang-support t)
@@ -449,6 +449,7 @@ layers configuration. You are free to put any user code."
   ;; Bind up user functions
   (evil-leader/set-key "ow" 'ao/what-face)
   (evil-leader/set-key "ob" 'ao/show-file-name)
+  (evil-leader/set-key "oa" 'avy-goto-char-2)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
