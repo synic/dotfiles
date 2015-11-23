@@ -40,12 +40,12 @@ esac
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
+  # We have color support; assume it's compliant with Ecma-48
+  # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+  # a case would tend to support setf rather than setaf.)
+  color_prompt=yes
     else
-	color_prompt=
+  color_prompt=
     fi
 fi
 
@@ -106,7 +106,6 @@ source ~/.git-completion.sh
 export PS1='\[\e[1;33m\][\u@\h \W$(__git_ps1 " (%s)")]\$\[\e[0m\] '
 export PYTHONPATH=~/Projects/statler3:~/Projects/statler3/apps
 export DJANGO_SETTINGS_MODULE=statler3.settings
-export PATH=$PATH:~/bin:~/Projects/android-sdk-linux/tools:~/Projects/android-sdk-linux/platform-tools:/opt/java/bin
 export ANDROID_HOME=~/Projects/android-sdk-linux
 alias mplayer='mplayer -softvol -softvol-max 800'
 alias pacman="packer --noedit"
