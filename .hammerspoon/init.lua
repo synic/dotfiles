@@ -2,7 +2,7 @@
 -- Set up
 -----------------------------------------------
 
-local hyper = {"shift", "cmd", "alt", "ctrl"}
+local hyper = {"cmd", "alt", "ctrl"}
 local dock_margin = 50
 local increase_step = 10
 local decrease_step = 10
@@ -301,4 +301,8 @@ end)
 
 hs.hotkey.bind(hyper, 'h', function()
     hs.window.focusedWindow():focusWindowWest()
+end)
+
+hs.hotkey.bind({"cmd", "control"}, 'l', function()
+    hs.caffeinate.systemSleep()
 end)
