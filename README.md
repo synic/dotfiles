@@ -3,7 +3,7 @@ synic's dotfiles
 
 To install, type the following:
 
-```python
+```bash
 $ git clone https://github.com/synic/dotfiles ~/.dotfiles
 $ lndir ~/.dotfiles ~
 ```

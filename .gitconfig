@@ -1,0 +1,15 @@
+[core]
+	editor = vim
+[user]
+	name = Adam Olsen
+	email = arolsen@gmail.com
+[rerere]
+    enabled = 1
+    autoupdate = 1
+[github]
+	user = synic
+	oauth-token = 9894016c982d24a9d9a6c3a74ca1ef82a2f0db4d
+
+[alias]
+    tree = log --graph --decorate --pretty=oneline --abbrev-commit
+    oneline = log --pretty=oneline --abbrev-commit

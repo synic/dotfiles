@@ -1,0 +1,2 @@
+export $TERMINAL=urxvt
+export GIT_SSH=$HOME/bin/ssh-ident

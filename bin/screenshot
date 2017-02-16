@@ -1,18 +1,40 @@
 #!/usr/bin/env python
 
+import hashlib
+import httplib
 import os
 import os.path
-import uuid
-import urlparse
+import sys
+import time
+import traceback
 
-fn = "/tmp/%s.jpg" % str(uuid.uuid4())
+
+fn = "/tmp/%s.jpg" % hashlib.md5(str(time.time())).hexdigest()[:8]
 sn = os.path.basename(fn)
-os.system("import %s" % fn)
-os.system("notify-send \"Uploading %s\" ..." % sn)
-os.system("scp %s shittybum.com:~/vt/screenshots" % fn)
+os.system("maim -s %s" % fn)
+os.system("notify-send --expire-time 10 \"Uploading %s\" ..." % sn)
+os.system(
+    "BINARY_SSH=scp setsid $HOME/bin/ssh-ident %s "
+    "shittybum.com:~/vt/screenshots" % fn)
 
 url = "http://synicworld.com/media/screenshots/%s" % sn
 
-os.system("echo -n \"%s\" | xclip -selection primary" % url)
 
-os.system("notify-send 'Copied to clipboard.'")
+class NotFound(Exception):
+    pass
+
+
+try:
+    conn = httplib.HTTPConnection('synicworld.com')
+    conn.request('HEAD', '/media/screenshots/%s' % sn)
+    response = conn.getresponse()
+    if response.status != 200:
+        raise NotFound()
+except (StandardError, NotFound):
+    traceback.print_exc()
+    os.system("notify-send --expire-time 2000 'Error uploading file!'")
+    sys.exit(1)
+
+os.system("echo -n \"%s\" | xclip -selection clipboard" % url)
+
+os.system("notify-send --expire-time 2000 'Copied to clipboard.'")

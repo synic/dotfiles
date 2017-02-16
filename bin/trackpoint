@@ -1,0 +1,42 @@
+#!/bin/sh
+#
+#Change /dev/input/event13 to your trackstick event
+    cat /dev/input/event6 > /tmp/mousemove &
+#initialize counter to prevent garbage file from growing
+    i="0";
+    while true ; do 
+        i=$[$i+1];
+        #variables  
+        oldchecksum=${newchecksum};
+        newchecksum=`md5sum /tmp/mousemove | awk '{print $1}'`
+        #see if trackpad is already disabled
+        if [ "$trackpad" = "off" ]; then
+
+            #compare previous checksum to current if they're same trackstick is not moving
+            if [ "$oldchecksum" = "$newchecksum" ]; then
+                #make sure trackpad is enabled
+                xinput set-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 1;
+                trackpad="on";
+            fi
+
+        else
+
+            #compare previous checksum to current if they're different trackstick is moving
+            if [ "$oldchecksum" != "$newchecksum" ]; then
+                #disable trackpad
+                xinput set-prop "SynPS/2 Synaptics TouchPad" "Device Enabled" 0;
+                trackpad="off";
+            fi
+
+        fi
+
+        #check for count to keep poll file smaller
+        if [ "$i" = "300" ]; then
+            echo '' > /tmp/mousemove;
+            i="0";
+            newchecksum=`md5sum /tmp/mousemove | awk '{print $1}'`
+        fi
+            #sleep for 1 second so we don't eat up resources
+            #if the update speed is not fast enough for you a smaller number such as .75 may be better
+            sleep 1;
+    done

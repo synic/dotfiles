@@ -1,6 +1,0 @@
-#!/bin/sh
-
-export _JAVA_AWT_WM_NONPARENTING=1
-export AWT_TOOLKIT=MToolkit
-wmname LG3D
-arduino $@
