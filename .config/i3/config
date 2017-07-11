@@ -50,7 +50,13 @@ bindsym $mod+space exec dmenu_run
 bindsym $mod+Control+l exec ~/bin/lockscreen
 
 # hide window title and border
-bindsym $mod+u border none
+bindsym $motd+u border none
+
+# alt-tab functionality
+set $i3t_alt_tab ~/bin/i3t.py n
+set $i3t_alt_shift_tab ~/bin/i3t.py p
+bindsym Mod1+Tab exec $i3t_alt_tab
+bindsym Mod1+Shift+Tab exec $i3t_alt_shift_tab
 
 # change focus
 bindsym $mod+h focus left
