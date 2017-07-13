@@ -50,7 +50,13 @@ bindsym $mod+space exec dmenu_run
 bindsym $mod+Control+l exec ~/bin/lockscreen
 
 # hide window title and border
-bindsym $mod+u border none
+bindsym $motd+u border none
+
+# alt-tab functionality
+set $i3t_alt_tab ~/bin/i3t.py n
+set $i3t_alt_shift_tab ~/bin/i3t.py p
+bindsym Mod1+Tab exec $i3t_alt_tab
+bindsym Mod1+Shift+Tab exec $i3t_alt_shift_tab
 
 # change focus
 bindsym $mod+h focus left
@@ -186,6 +192,8 @@ for_window [class="URxvt" instance="top_placement"] border pixel 1
 for_window [class="URxvt" instance="bottom_placement"] border pixel 1
 
 for_window [class="Vivaldi-stable" instance="crx_gaedmjdfmmahhbjefcbgaolhhanlaolb"] floating enable
+for_window [class="Pavucontrol"] floating enable
+for_window [class="blueman-manager"] floating enable
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -205,6 +213,9 @@ exec nm-applet --sm-disable
 
 # bluetooth applet
 exec blueman-applet --sm-disable
+
+# sound control
+exec pasystray
 
 # lock screen after 15 minutes
 exec xset dpms 0 0 1200
