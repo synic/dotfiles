@@ -34,8 +34,17 @@ COMPLETION_WAITING_DOTS="true"
 # virtualenvwrapper setup
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Projects
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
-export VIRTUALENVWRAPPER_VIRTUALENV=~/.local/bin/
+
+if [[ `uname` == "Linux" ]]; then
+    export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
+    export VIRTUALENVWRAPPER_VIRTUALENV=~/.local/bin/
+    alias ls='ls --color'
+else
+    export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
+    export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin
+    alias ls='gls --color'
+fi
+
 export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
@@ -48,7 +57,6 @@ source $ZSH/oh-my-zsh.sh
 # aliases!
 alias ll="ls -AF"
 alias ack-grep="ag"
-alias ls='ls --color'
 alias o="octoeb"
 alias ducks="du -kcs * | sort -rn | head -11"
 alias vi=vim
