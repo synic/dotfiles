@@ -46,7 +46,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+space exec dmenu_run
 
 # lock screen
-bindsym $mod+Control+l exec ~/bin/lockscreen
+bindsym $mod+Control+l exec xscreensaver-command --lock
 
 # hide window title and border
 bindsym $motd+u border none
@@ -216,11 +216,6 @@ exec blueman-applet --sm-disable
 # sound control
 exec pasystray
 
-# lock screen after 15 minutes
-exec xset dpms 0 0 1200
-exec xset s 0 600
-exec xss-lock /home/synic/bin/lockscreen
-
 # disable trackpad when using trackpoint or keyboard
 exec /home/synic/bin/trackpoint
 exec syndaemon -i 2 -d
@@ -244,6 +239,9 @@ exec sleep 5 && irc_terminal
 
 # workspace 3
 exec vmware
+
+# start the screensaver
+exec xscreensaver
 
 # switch to workspace 1 by default (this puts it on workspace 1 even if the
 # laptop is not docked)
