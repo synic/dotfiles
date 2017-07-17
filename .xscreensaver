@@ -1,5 +1,5 @@
 # XScreenSaver Preferences File
-# Written by xscreensaver-demo 5.36 for synic on Sun Jul 16 16:32:44 2017.
+# Written by xscreensaver-demo 5.36 for synic on Mon Jul 17 20:33:28 2017.
 # https://www.jwz.org/xscreensaver/
 
 timeout:	0:10:00
@@ -17,7 +17,7 @@ demoCommand:	xscreensaver-demo
 prefsCommand:	xscreensaver-demo -prefs
 nice:		10
 memoryLimit:	0
-fade:		True
+fade:		False
 unfade:		False
 fadeSeconds:	0:00:03
 fadeTicks:	20
@@ -26,16 +26,16 @@ ignoreUninstalledPrograms:False
 font:		*-medium-r-*-140-*-m-*
 dpmsEnabled:	True
 dpmsQuickOff:	False
-dpmsStandby:	0:30:00
+dpmsStandby:	0:20:00
 dpmsSuspend:	0:30:00
 dpmsOff:	0:30:00
-grabDesktopImages:  False
+grabDesktopImages:  True
 grabVideoFrames:    False
 chooseRandomImages: False
 imageDirectory:	
 
 mode:		random
-selected:	231
+selected:	244
 
 textMode:	url
 textLiteral:	XScreenSaver
@@ -78,7 +78,7 @@ programs:								      \
 -				kaleidescope -root			    \n\
 - GL: 				moebius -root				    \n\
 -				moire -root				    \n\
-  GL: 				morph3d -root				    \n\
+- GL: 				morph3d -root				    \n\
 -				mountain -root				    \n\
 -				munch -root				    \n\
 -				penrose -root				    \n\
@@ -86,7 +86,7 @@ programs:								      \
 				rd-bomb -root				    \n\
 - GL: 				rubik -root				    \n\
 -				sierpinski -root			    \n\
-				slip -root				    \n\
+-				slip -root				    \n\
 - GL: 				sproingies -root			    \n\
 -				starfish -root				    \n\
 -				strange -root				    \n\
@@ -125,7 +125,8 @@ programs:								      \
 -				petri -root				    \n\
 -				phosphor -root				    \n\
 - GL: 				pulsar -root				    \n\
-				ripples -root				    \n\
+-				ripples -root -delay 45303 -duration 37	      \
+				  -stir -light 6			    \n\
 -				shadebobs -root				    \n\
 - GL: 				sierpinski3d -root			    \n\
 -				spotlight -root				    \n\
@@ -159,7 +160,7 @@ programs:								      \
 - GL: 				endgame -root				    \n\
 -				euler2d -root				    \n\
 -				fluidballs -root			    \n\
-  GL: 				flurry -root				    \n\
+- GL: 				flurry -root				    \n\
 - GL: 				glblur -root				    \n\
 - GL: 				glsnake -root				    \n\
 -				halftone -root				    \n\
@@ -249,7 +250,8 @@ programs:								      \
 - GL: 				kaleidocycle -root			    \n\
 - GL: 				quasicrystal -root			    \n\
 - GL: 				unknownpleasures -root			    \n\
-				binaryring -root			    \n\
+				binaryring -root -growth-delay 8333	      \
+				  -ring-radius 127 -particles-number 8920   \n\
 - GL: 				cityflow -root				    \n\
 - GL: 				geodesicgears -root			    \n\
 - GL: 				projectiveplane -root			    \n\
@@ -265,12 +267,12 @@ programs:								      \
 - GL: 				hexstrut -root				    \n\
   GL: 				hydrostat -root				    \n\
 - GL: 				raverhoop -root				    \n\
-  GL: 				splodesic -root				    \n\
+- GL: 				splodesic -root				    \n\
 - GL: 				unicrud -root				    \n\
 - GL: 		 "SpirographX" 	spirographx --root			    \n\
 - GL: 		"Hufo's Smoke" 	hufo_smoke --root			    \n\
 - GL: 				drempels --root				    \n\
-  GL: 		 "BusySpheres" 	busyspheres --root			    \n\
+- GrayScale: 	 "BusySpheres" 	busyspheres -r				    \n\
 - GL: 				fieldlines --root			    \n\
 - GL: 			"BioF" 	biof --root				    \n\
 - GL: 				flocks --root				    \n\
@@ -288,8 +290,9 @@ programs:								      \
 - GL: 				lattice --root				    \n\
 - GL: 				plasma --root				    \n\
 - GL: 	       "Hufo's Tunnel" 	hufo_tunnel --root			    \n\
-- GL: 				colorfire --root			    \n\
+  GL: 				colorfire -r -t 1			    \n\
 - GL: 		  "Pixel City" 	pixelcity --root			    \n\
+- GL: 				electricsheep --root 1			    \n\
 
 
 pointerPollTime:    0:00:05

@@ -17,6 +17,10 @@ xscreensaver.Dialog.bottomShadowColor:  #111111
 xscreensaver.Dialog.Button.foreground:  #666666
 xscreensaver.Dialog.Button.background:  #ffffff
 
+!change headings
+xscreensaver.passwd.login.label: Switch User
+xscreensaver.passwd.heading.label: Screen is Locked
+
 !username/password input box and date text colour
 xscreensaver.Dialog.text.foreground:    #666666
 xscreensaver.Dialog.text.background:    #ffffff
@@ -25,9 +29,9 @@ xscreensaver.Dialog.borderWidth:        1
 xscreensaver.Dialog.shadowThickness:    2
 
 !timeout bar (background is actually determined by Dialog.text.background)
-xscreensaver.passwd.thermometer.foreground:  #ff0000
+xscreensaver.passwd.thermometer.foreground:  #CB0013
 xscreensaver.passwd.thermometer.background:  #000000
-xscreensaver.passwd.thermometer.width:       8
+xscreensaver.passwd.thermometer.width:       6
 
 !datestamp format--see the strftime(3) manual page for details
 xfscreensaver.dateFormat:    %I:%M%P %a %b %d, %Y
