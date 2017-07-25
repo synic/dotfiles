@@ -49,7 +49,7 @@ bindsym $mod+space exec dmenu_run
 bindsym $mod+Control+l exec xscreensaver-command --lock
 
 # hide window title and border
-bindsym $motd+u border none
+bindsym $mod+u border none
 
 # alt-tab functionality
 set $i3t_alt_tab ~/bin/i3t.py n
