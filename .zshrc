@@ -1,19 +1,30 @@
 autoload -U +X bashcompinit && bashcompinit
 
-# load antigen
-source $HOME/.dotfiles/.zsh.d/antigen.zsh
+# load zplug
+export ZPLUG_HOME=$HOME/.dotfiles/zplug
+source $HOME/.dotfiles/zplug/init.zsh
 
-antigen use oh-my-zsh
+# installed plugins
+zplug "zsh-users/zsh-history-substring-search"
+zplug "plugins/git", from:oh-my-zsh
+zplug "plugins/virtualenvwrapper", from:oh-my-zsh
+zplug "plugins/pip", from:oh-my-zsh
+zplug "tonyseek/oh-my-zsh-virtualenv-prompt"
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+zplug "robbyrussell/oh-my-zsh", use:"lib/*.zsh", defer:2
+zplug "lukechilds/zsh-nvm"
 
-# antigen plugins
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle git
-antigen bundle lukechilds/zsh-nvm
-antigen bundle robbyrussell/oh-my-zsh plugins/virtualenvwrapper
-antigen bundle robbyrussell/oh-my-zsh plugins/pip
-antigen bundle tonyseek/oh-my-zsh-virtualenv-prompt
+# install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
 
-antigen apply
+# source plugins and add commands to $PATH
+zplug load
 
 # fix ls colors on OS X
 export LS_COLORS_BOLD='no=00:fi=00:di=;34:ln=01;95:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:*.wav=01;35:*.tex=01;33:*.sxw=01;33:*.sxc=01;33:*.lyx=01;33:*.pdf=0;35:*.ps=00;36:*.asm=1;33:*.S=0;33:*.s=0;33:*.h=0;31:*.c=0;35:*.cxx=0;35:*.cc=0;35:*.C=0;35:*.o=1;30:*.am=1;33:*.py=0;34:'

@@ -10,3 +10,6 @@
 [submodule ".oh-my-zsh"]
 	path = .oh-my-zsh
 	url = git@github.com:synic/oh-my-zsh
+[submodule "zplug"]
+	path = zplug
+	url = https://github.com/zplug/zplug
