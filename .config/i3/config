@@ -185,10 +185,10 @@ bindsym $mod+r mode "resize"
 for_window [class="URxvt" instance="IRC"] border none
 assign [class="URxvt" instance="IRC"] 2
 assign [class="Vmware"] 3
-assign [class="URxvt" instance="top_placement"] 1
-assign [class="URxvt" instance="bottom_placement"] 1
-for_window [class="URxvt" instance="top_placement"] border pixel 1
-for_window [class="URxvt" instance="bottom_placement"] border pixel 1
+assign [class="URxvt" instance="urxvtt"] 1
+assign [class="URxvt" instance="urxvtb"] 1
+for_window [class="URxvt" instance="urxvtt"] border pixel 1
+for_window [class="URxvt" instance="urxvtb"] border pixel 1
 
 for_window [class="Vivaldi-stable" instance="crx_gaedmjdfmmahhbjefcbgaolhhanlaolb"] floating enable
 for_window [class="Pavucontrol"] floating enable
@@ -233,8 +233,8 @@ exec xfsettingsd --replace
 # workspace 1
 exec sleep 5 && vivaldi
 exec sleep 5 && emacs
-exec urxvt -name top_placement
-exec urxvt -name bottom_placement
+exec urxvt -name urxvtt
+exec urxvt -name urxvtb
 
 # workspace 2
 exec sleep 5 && irc_terminal
