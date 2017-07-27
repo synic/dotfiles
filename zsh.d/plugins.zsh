@@ -15,6 +15,8 @@ antigen bundle lukechilds/zsh-nvm
 antigen bundle robbyrussell/oh-my-zsh plugins/virtualenvwrapper
 antigen bundle robbyrussell/oh-my-zsh plugins/pip
 antigen bundle tonyseek/oh-my-zsh-virtualenv-prompt
+antigen bundle supercrabtree/k
+antigen bundle zuxfoucault/colored-man-pages_mod
 
 antigen apply
 

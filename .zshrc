@@ -18,6 +18,7 @@ alias scp="BINARY_SSH=scp $HOME/bin/ssh-ident"
 alias apt-get="$HOME/bin/stop-using apt-get"
 alias o="octoeb"
 alias eb="cd ~/Projects/eventboard.io"
+alias edit_zshd="vim ~/.dotfiles/zsh.d"
 
 # customization options
 setopt no_auto_menu
