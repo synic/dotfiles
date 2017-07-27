@@ -1,3 +1,9 @@
+autoload -U +X bashcompinit && bashcompinit
+autoload -Uz compinit && compinit
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^x^e' edit-command-line
+
 # load zplug
 if [[ ! -f ~/.zplug/init.zsh ]]; then
   git clone https://github.com/b4b4r07/zplug ~/.zplug
@@ -22,7 +28,7 @@ zplug "zuxfoucault/colored-man-pages_mod", from:github
 
 # install plugins if there are plugins that have not been installed
 if ! zplug check; then
-    zplug install
+    zplug install && sleep 2 && clear
 fi
 
 # source plugins and add commands to $PATH
