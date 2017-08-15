@@ -1,6 +1,6 @@
 # aliases
 
-alias vi="$HOME/bin/stop-using vi"
+alias vi="vim"
 alias dc="docker-compose"
 alias sudo="sudo "
 alias ssh="BINARY_SSH=ssh $HOME/bin/ssh-ident"
@@ -12,6 +12,7 @@ alias edit_zshd="vim ~/.dotfiles/zsh.d"
 alias mc="vim ."
 
 lsprog='ls'
+# For OS X
 if [[ `uname` == 'Darwin' ]]; then
     lsprog='gls'
 fi
