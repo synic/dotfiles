@@ -103,6 +103,7 @@ bindsym $mod+Control+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+p focus parent
+bindsym $mod+Control+p exec "/home/synic/bin/selectit `cat ~/.mt`"
 
 # focus the child container
 bindsym $mod+c focus child
