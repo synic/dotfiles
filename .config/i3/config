@@ -103,7 +103,6 @@ bindsym $mod+Control+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+p focus parent
-bindsym $mod+Control+p exec "/home/synic/bin/selectit `cat ~/.mt`"
 
 # focus the child container
 bindsym $mod+c focus child
@@ -245,6 +244,9 @@ exec vmware
 
 # start the screensaver
 exec xscreensaver
+
+# start synergy
+exec --no-startup-id synergy
 
 # switch to workspace 1 by default (this puts it on workspace 1 even if the
 # laptop is not docked)
