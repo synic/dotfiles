@@ -246,6 +246,9 @@ exec vmware
 # start the screensaver
 exec xscreensaver
 
+# start synergy
+exec --no-startup-id synergy
+
 # switch to workspace 1 by default (this puts it on workspace 1 even if the
 # laptop is not docked)
 exec --no-startup-id i3-msg "workspace 1"
