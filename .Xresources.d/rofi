@@ -1,0 +1,24 @@
+! Enable the extended coloring options
+rofi.color-enabled: true
+!                  bg       border   separator
+rofi.color-window: #1e1e20, #274850, #274850
+!                  bg       fg       bg-alt   hl-bg    hl-fg
+rofi.color-normal: #1e1e20, #c5c8c6, #1e1e20, #333333, #cccccc
+rofi.color-active: #1e1e20, #c5c8c6, #1e1e20, #333333, #cccccc
+rofi.color-urgent: #1e1e20, #c5c8c6, #1e1e20, #333333, #cccccc
+
+rofi.separator-style: solid
+rofi.sidebar-mode: false
+rofi.lines: 10
+rofi.font: Hack 10
+rofi.bw: 1
+rofi.columns: 1
+rofi.padding: 5
+rofi.fixed-num-lines: true
+rofi.hide-scrollbar: true
+rofi.kb-remove-to-eol:               Control+D
+rofi.kb-accept-entry:                Return,KP_Enter
+rofi.kb-row-up:                      Up,Control+k,Shift+Tab,Shift+ISO_Left_Tab
+rofi.kb-row-down:                    Down,Control+j
+rofi.show-match: false
+rofi.terminal: urxvt
