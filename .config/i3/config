@@ -43,13 +43,13 @@ bindsym $mod+Return exec urxvt
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+space exec "rofi -combi-modi window,drun,run,ssh -show combi -modi combi"
+bindsym $mod+space exec 'rofi -combi-modi window,drun,run,ssh -show combi -modi combi'
 
 # lock screen
 bindsym $mod+Control+l exec xscreensaver-command --lock
 
 # system menu
-bindsym $mod+Control+p exec rofi-power "i3-msg exit"
+bindsym $mod+Control+p exec rofi-power 'i3-msg exit'
 
 # hide window title and border
 bindsym $mod+u border none
@@ -213,20 +213,20 @@ bar {
 ## STARTUP
 
 # network-manager applet
-exec nm-applet --sm-disable
+exec --no-startup-id nm-applet --sm-disable
 
 # bluetooth applet
-exec blueman-applet --sm-disable
+exec --no-startup-id blueman-applet --sm-disable
 
 # sound control
-exec pasystray
+exec --no-startup-id pasystray
 
 # disable trackpad when using trackpoint or keyboard
-exec /home/synic/bin/trackpoint
-exec syndaemon -i 2 -d
+exec --no-startup-id /home/synic/bin/trackpoint
+exec --no-startup-id syndaemon -i 2 -d
 
 # start urxvt daemon
-exec urxvtd -q -o -f
+exec --no-startup-id urxvtd -q -o -f
 
 # load layouts
 exec --no-startup-id "i3-msg 'workspace 1; append_layout ~/.i3/workspace-1.json'"
@@ -246,10 +246,10 @@ exec sleep 5 && irc_terminal
 exec vmware
 
 # start the screensaver
-exec xscreensaver
+exec --no-startup-id xscreensaver
 
 # start synergy
-exec --no-startup-id synergy
+exec --no-startup-id sleep 5 && synergy
 
 # switch to workspace 1 by default (this puts it on workspace 1 even if the
 # laptop is not docked)
