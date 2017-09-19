@@ -22,3 +22,4 @@ rofi.kb-row-up:                      Up,Control+k,Shift+Tab,Shift+ISO_Left_Tab
 rofi.kb-row-down:                    Down,Control+j
 rofi.show-match: false
 rofi.terminal: urxvt
+rofi.display-combi: search
