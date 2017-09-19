@@ -10,11 +10,14 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 ## SETTINGS
+
+# make the modifier keys easy to read and consistent
 set $mod Mod4
 set $alt Mod1
 set $control Control
 set $shift Shift
 set $return Return
+set $tab Tab
 
 # set font
 font pango:DejaVu Sans Mono 8
@@ -49,7 +52,7 @@ bindsym $mod+$return exec urxvt
 bindsym $mod+$shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+space exec "rofi -combi-modi window,drun,run,ssh -show combi -modi combi"
+bindsym $mod+space exec 'rofi -combi-modi window,drun,run,ssh -show combi -modi combi'
 
 # lock screen
 bindsym $mod+$control+l exec xscreensaver-command --lock
@@ -63,8 +66,8 @@ bindsym $mod+u border none
 # alt-tab functionality
 set $i3t_alt_tab ~/bin/i3t.py n
 set $i3t_alt_shift_tab ~/bin/i3t.py p
-bindsym $alt+Tab exec $i3t_alt_tab
-bindsym $alt+$shift+Tab exec $i3t_alt_shift_tab
+bindsym $alt+$tab exec $i3t_alt_tab
+bindsym $alt+$shift+$tab exec $i3t_alt_shift_tab
 
 # change focus
 bindsym $mod+h focus left
@@ -155,7 +158,7 @@ bindsym $mod+$control+u exec /home/synic/bin/undock
 
 # take a screenshot
 bindsym $mod+$control+s exec teiler
-bindsym $alt+$shift+4 exec /home/synic/bin/screenshot
+bindsym $alt+$shift+4 exec teiler --quick image area
 
 # reload the configuration file
 bindsym $mod+$shift+c reload
@@ -220,20 +223,20 @@ bar {
 ## STARTUP
 
 # network-manager applet
-exec nm-applet --sm-disable
+exec --no-startup-id nm-applet --sm-disable
 
 # bluetooth applet
-exec blueman-applet --sm-disable
+exec --no-startup-id blueman-applet --sm-disable
 
 # sound control
-exec pasystray
+exec --no-startup-id pasystray
 
 # disable trackpad when using trackpoint or keyboard
-exec /home/synic/bin/trackpoint
-exec syndaemon -i 2 -d
+exec --no-startup-id /home/synic/bin/trackpoint
+exec --no-startup-id syndaemon -i 2 -d
 
 # start urxvt daemon
-exec urxvtd -q -o -f
+exec --no-startup-id urxvtd -q -o -f
 
 # load layouts
 exec --no-startup-id "i3-msg 'workspace 1; append_layout ~/.i3/workspace-1.json'"
@@ -253,10 +256,10 @@ exec sleep 5 && irc_terminal
 exec vmware
 
 # start the screensaver
-exec xscreensaver
+exec --no-startup-id xscreensaver
 
 # start synergy
-exec --no-startup-id synergy
+exec --no-startup-id sleep 5 && synergy
 
 # switch to workspace 1 by default (this puts it on workspace 1 even if the
 # laptop is not docked)

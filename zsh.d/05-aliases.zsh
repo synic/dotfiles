@@ -12,9 +12,11 @@ alias edit_zshd="vim ~/.dotfiles/zsh.d"
 alias mc="vim ."
 
 lsprog='ls'
+
 # For OS X
 if [[ `uname` == 'Darwin' ]]; then
     lsprog='gls'
+    alias apt="brew"
 fi
 
 alias ls="$lsprog --color=auto --human-readable \
