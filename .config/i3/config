@@ -11,6 +11,10 @@
 
 ## SETTINGS
 set $mod Mod4
+set $alt Mod1
+set $control Control
+set $shift Shift
+set $return Return
 
 # set font
 font pango:DejaVu Sans Mono 8
@@ -28,7 +32,9 @@ floating_modifier $mod
 # assign workspaces to specific screens
 workspace 1 output DP-2-2
 workspace 3 output DP-2-2
+workspace 4 output DP-2-2
 workspace 2 output eDP-1
+workspace 5 output eDP-1
 
 ## COLORS
 
@@ -37,19 +43,19 @@ client.urgent #2f343a #641f1f #ffffff #641f1f #641f1f
 ## KEYBINDINGS
 
 # start a terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+$return exec urxvt
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+$shift+q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+space exec "rofi -combi-modi window,drun,run,ssh -show combi -modi combi"
 
 # lock screen
-bindsym $mod+Control+l exec xscreensaver-command --lock
+bindsym $mod+$control+l exec xscreensaver-command --lock
 
 # system menu
-bindsym $mod+Control+p exec rofi-power "i3-msg exit"
+bindsym $mod+$control+p exec rofi-power "i3-msg exit"
 
 # hide window title and border
 bindsym $mod+u border none
@@ -57,8 +63,8 @@ bindsym $mod+u border none
 # alt-tab functionality
 set $i3t_alt_tab ~/bin/i3t.py n
 set $i3t_alt_shift_tab ~/bin/i3t.py p
-bindsym Mod1+Tab exec $i3t_alt_tab
-bindsym Mod1+Shift+Tab exec $i3t_alt_shift_tab
+bindsym $alt+Tab exec $i3t_alt_tab
+bindsym $alt+$shift+Tab exec $i3t_alt_shift_tab
 
 # change focus
 bindsym $mod+h focus left
@@ -73,22 +79,22 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+bindsym $mod+$shift+h move left
+bindsym $mod+$shift+j move down
+bindsym $mod+$shift+k move up
+bindsym $mod+$shift+l move right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+$shift+Left move left
+bindsym $mod+$shift+Down move down
+bindsym $mod+$shift+Up move up
+bindsym $mod+$shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+Control+h split h
+bindsym $mod+$control+h split h
 
 # split in vertical orientation
-bindsym $mod+Control+v split v
+bindsym $mod+$control+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -99,10 +105,10 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+$shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+Control+space focus mode_toggle
+bindsym $mod+$control+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+p focus parent
@@ -123,16 +129,16 @@ bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+$shift+1 move container to workspace 1
+bindsym $mod+$shift+2 move container to workspace 2
+bindsym $mod+$shift+3 move container to workspace 3
+bindsym $mod+$shift+4 move container to workspace 4
+bindsym $mod+$shift+5 move container to workspace 5
+bindsym $mod+$shift+6 move container to workspace 6
+bindsym $mod+$shift+7 move container to workspace 7
+bindsym $mod+$shift+8 move container to workspace 8
+bindsym $mod+$shift+9 move container to workspace 9
+bindsym $mod+$shift+0 move container to workspace 10
 
 # media keys
 bindsym XF86AudioLowerVolume    exec $psst pactl set-sink-volume @DEFAULT_SINK@ -5% && pactl set-sink-mute @DEFAULT_SINK@ 0 $update
@@ -144,19 +150,19 @@ bindsym XF86MonBrightnessDown   exec xbacklight -dec 3
 bindsym XF86MonBrightnessUp     exec xbacklight -inc 3
 
 # docking/undocking
-bindsym $mod+Control+d exec /home/synic/bin/dock
-bindsym $mod+Control+u exec /home/synic/bin/undock
+bindsym $mod+$control+d exec /home/synic/bin/dock
+bindsym $mod+$control+u exec /home/synic/bin/undock
 
 # take a screenshot
-bindsym $mod+Control+s exec teiler
-bindsym Mod1+Shift+4 exec teiler --quick image area
+bindsym $mod+$control+s exec teiler
+bindsym $alt+$shift+4 exec /home/synic/bin/screenshot
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym $mod+$shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+bindsym $mod+$shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec i3-msg exit
+bindsym $mod+$shift+e exec i3-msg exit
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -178,7 +184,7 @@ mode "resize" {
     bindsym Right resize grow width 2 px or 2 ppt
 
     # back to normal: Enter or Escape
-    bindsym Return mode "default"
+    bindsym $return mode "default"
     bindsym Escape mode "default"
 }
 
@@ -190,6 +196,7 @@ assign [class="URxvt" instance="IRC"] 2
 assign [class="Vmware"] 3
 assign [class="URxvt" instance="urxvtt"] 1
 assign [class="URxvt" instance="urxvtb"] 1
+assign [class="Synergy" instance="synergy"] 4
 for_window [class="URxvt" instance="urxvtt"] border pixel 1
 for_window [class="URxvt" instance="urxvtb"] border pixel 1
 
