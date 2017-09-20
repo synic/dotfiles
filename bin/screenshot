@@ -17,7 +17,7 @@ os.system(
     "BINARY_SSH=scp setsid $HOME/bin/ssh-ident %s "
     "shittybum.com:~/vt/screenshots" % fn)
 
-url = "http://synicworld.com/media/screenshots/%s" % sn
+url = "http://synic.world/s/%s" % sn
 
 
 class NotFound(Exception):
@@ -37,4 +37,4 @@ except (StandardError, NotFound):
 
 os.system("echo -n \"%s\" | xclip -selection clipboard" % url)
 
-os.system("notify-send --expire-time 2000 'Copied to clipboard.'")
+os.system("notify-send --expire-time 2000 'Copied to Clipboard' '{}'".format(url))
