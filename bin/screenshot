@@ -37,4 +37,4 @@ except (StandardError, NotFound):
 
 os.system("echo -n \"%s\" | xclip -selection clipboard" % url)
 
-os.system("notify-send --expire-time 2000 'Copied to clipboard.'")
+os.system("notify-send --expire-time 2000 'Copied to Clipboard' '{}'".format(url))
