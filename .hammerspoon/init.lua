@@ -310,3 +310,7 @@ end)
 hs.hotkey.bind({"cmd", "control"}, 's', function()
     hs.caffeinate.systemSleep()
 end)
+
+hs.hotkey.bind({"alt", "shift"}, '4', function() 
+    hs.execute("/Users/adam.olsen/bin/osx_screenshot")
+end)
