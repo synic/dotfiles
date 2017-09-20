@@ -13,3 +13,5 @@
 [alias]
     tree = log --graph --decorate --pretty=oneline --abbrev-commit
     oneline = log --pretty=oneline --abbrev-commit
+[magit]
+	hideCampaign = true

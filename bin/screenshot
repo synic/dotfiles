@@ -9,7 +9,7 @@ import time
 import traceback
 
 
-fn = "/tmp/%s.jpg" % hashlib.md5(str(time.time())).hexdigest()[:8]
+fn = "/tmp/%s.jpg" % hashlib.md5(str(time.time())).hexdigest()[:7]
 sn = os.path.basename(fn)
 os.system("maim -s %s" % fn)
 os.system("notify-send --expire-time 10 \"Uploading %s\" ..." % sn)
@@ -17,7 +17,7 @@ os.system(
     "BINARY_SSH=scp setsid $HOME/bin/ssh-ident %s "
     "shittybum.com:~/vt/screenshots" % fn)
 
-url = "http://synicworld.com/media/screenshots/%s" % sn
+url = "http://synic.world/s/%s" % sn
 
 
 class NotFound(Exception):
