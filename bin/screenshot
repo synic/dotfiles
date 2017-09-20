@@ -9,15 +9,15 @@ import time
 import traceback
 
 
-fn = "/tmp/%s.jpg" % hashlib.md5(str(time.time())).hexdigest()[:8]
+fn = '/tmp/{}.png'.format(hashlib.md5(str(time.time())).hexdigest()[:8])
 sn = os.path.basename(fn)
-os.system("maim -s %s" % fn)
-os.system("notify-send --expire-time 10 \"Uploading %s\" ..." % sn)
+os.system('maim -s {}'.format(fn))
+os.system('notify-send --expire-time 10 "Uploading {}" ...'.format(sn))
 os.system(
-    "BINARY_SSH=scp setsid $HOME/bin/ssh-ident %s "
-    "shittybum.com:~/vt/screenshots" % fn)
+    'BINARY_SSH=scp setsid $HOME/bin/ssh-ident {} '
+    'shittybum.com:~/vt/screenshots'.format(fn))
 
-url = "http://synic.world/s/%s" % sn
+url = 'http://synic.world/s/{}'.format(sn)
 
 
 class NotFound(Exception):
@@ -35,6 +35,7 @@ except (StandardError, NotFound):
     os.system("notify-send --expire-time 2000 'Error uploading file!'")
     sys.exit(1)
 
-os.system("echo -n \"%s\" | xclip -selection clipboard" % url)
+os.system('echo -n "{}" | xclip -selection clipboard'.format(url))
 
-os.system("notify-send --expire-time 2000 'Copied to Clipboard' '{}'".format(url))
+os.system("notify-send --expire-time 2000 "
+          "'Copied to Clipboard' '{}'".format(url))
