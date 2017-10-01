@@ -11,11 +11,9 @@ import traceback
 
 fn = '/tmp/{}.png'.format(hashlib.md5(str(time.time())).hexdigest()[:8])
 sn = os.path.basename(fn)
-os.system("screencapture -s {}".format(fn))
-cmd = (
-    'scp -i ~/.ssh/id_rsa_sbss {} '
-    'shittybum.com:/home/synic/vt/screenshots/'.format(fn))
-os.system(cmd)
+os.system('screencapture -s {}'.format(fn))
+os.system('scp -i ~/.ssh/id_rsa_sbss {} '
+          'shittybum.com:/home/synic/vt/screenshots/'.format(fn))
 
 url = 'http://synic.world/s/{}'.format(sn)
 

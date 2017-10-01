@@ -161,6 +161,9 @@ bindsym $mod+$control+u exec /home/synic/bin/undock
 bindsym $mod+$control+s exec teiler
 bindsym $alt+$shift+4 exec /home/synic/bin/screenshot
 
+# overseer
+bindsym $mod+$control+m exec /home/synic/Projects/overseer/overseer
+
 # reload the configuration file
 bindsym $mod+$shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)

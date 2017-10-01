@@ -16,3 +16,7 @@ done
 # gotta have a fortune!
 fortune -a
 echo
+
+# tabtab source for electron-forge package
+# uninstall by removing these lines or running `tabtab uninstall electron-forge`
+[[ -f /home/synic/.nvm/versions/node/v6.5.0/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /home/synic/.nvm/versions/node/v6.5.0/lib/node_modules/electron-forge/node_modules/tabtab/.completions/electron-forge.zsh
