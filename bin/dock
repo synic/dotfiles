@@ -2,4 +2,4 @@
 
 /home/synic/bin/autorandr -l docked
 
-feh --bg-scale /usr/share/wallpapers/beach.jpg
+feh --bg-scale ~/.dotfiles/wallpapers/beach.jpg

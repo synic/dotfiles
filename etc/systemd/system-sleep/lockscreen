@@ -1,0 +1,5 @@
+#!/bin/sh
+
+if [ $1 = pre ] && [ $2 = suspend ]
+    then DISPLAY=:0.0 su -c '/usr/bin/xscreensaver-command --lock' synic
+fi

@@ -24,7 +24,7 @@ set $space space
 font pango:DejaVu Sans Mono 8
 
 # set wallpaper
-exec --no-startup-id feh --bg-scale /usr/share/wallpapers/beach.jpg
+exec --no-startup-id feh --bg-scale ~/.dotfiles/wallpapers/beach.jpg
 
 # appearance settings
 hide_edge_borders smart

@@ -4,28 +4,30 @@ import os
 import urllib
 
 PACKAGES = """
-python-pip
-python-dev
-vim-gnome
-emacs
-docker
-rofi
-feh
-mosh
-maim
 arandr
+curl
+docker
+emacs
 exuberant-ctags
 git
-rxvt-unicode-256color
-thunar
-xclip
-imagemagick
-curl
-xutils-dev
-i3lock
-zsh
-i3
 htop
+i3
+i3lock
+imagemagick
+feh
+maim
+mosh
+net-tools
+rofi
+rxvt-unicode-256color
+silversearcher-ag
+thunar
+python-pip
+python-dev
+xutils-dev
+vim-gnome
+xclip
+zsh
 """
 
 FILES = (
@@ -34,7 +36,7 @@ FILES = (
 )
 
 os.system('apt update')
-os.system('apt install {}'.format(PACKAGES.replace("\n", " ")))
+os.system('apt install {}'.format(PACKAGES.replace('\n', ' ')))
 
 for remote, local in FILES:
     data = urllib.urlopen(remote).read()
