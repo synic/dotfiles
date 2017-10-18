@@ -7,6 +7,7 @@ PACKAGES = """
 arandr
 curl
 docker
+dunst
 emacs
 exuberant-ctags
 git
@@ -37,7 +38,10 @@ FILES = (
 )
 
 os.system('apt update')
-os.system('apt install {}'.format(PACKAGES.replace('\n', ' ')))
+os.system('apt install -y {}'.format(PACKAGES.replace('\n', ' ')))
+
+# remove notify-osd so dunst can take over
+os.system('apt remove dunst -y')
 
 for remote, local in FILES:
     data = urllib.urlopen(remote).read()
@@ -50,3 +54,4 @@ os.system('pip install virtualenv virtualenvwrapper mtg')
 os.system('chsh -s /usr/bin/zsh synic')
 os.system('lndir ~/.dotfiles ~')
 os.system('xrdb -merge ~/.Xresources')
+os.system('chown -R synic:synic /home/synic')
