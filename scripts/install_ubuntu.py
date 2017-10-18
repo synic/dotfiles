@@ -18,6 +18,7 @@ feh
 maim
 mosh
 net-tools
+pasystray
 rofi
 rxvt-unicode-256color
 silversearcher-ag
