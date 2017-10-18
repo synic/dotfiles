@@ -245,13 +245,13 @@ exec --no-startup-id "i3-msg 'workspace 1; append_layout ~/.i3/workspace-1.json'
 exec xfsettingsd --replace
 
 # workspace 1
-exec sleep 5 && vivaldi
-exec sleep 5 && emacs
+exec ~/bin/waitfornetwork vivaldi
+exec ~/bin/waitfornetwork emacs
 exec urxvt -name urxvtt
 exec urxvt -name urxvtb
 
 # workspace 2
-exec sleep 5 && irc_terminal
+exec ~/bin/waitfornetwork irc_terminal
 
 # workspace 3
 exec vmware
@@ -260,7 +260,7 @@ exec vmware
 exec --no-startup-id xscreensaver
 
 # start synergy
-exec --no-startup-id sleep 5 && synergy
+exec --no-startup-id ~/bin/waitfornetwork synergy
 
 # start overseer
 exec --no-startup-id sleep 2 && /home/synic/Projects/overseer/out/overseer-linux-x64/overseer
