@@ -233,7 +233,7 @@ exec --no-startup-id blueman-applet --sm-disable
 exec --no-startup-id pasystray
 
 # disable trackpad when using trackpoint or keyboard
-exec --no-startup-id /home/synic/bin/trackpoint
+exec --no-startup-id ~/bin/trackpoint
 exec --no-startup-id syndaemon -i 2 -d
 
 # start urxvt daemon
