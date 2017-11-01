@@ -41,7 +41,7 @@ os.system('apt update')
 os.system('apt install -y {}'.format(PACKAGES.replace('\n', ' ')))
 
 # remove notify-osd so dunst can take over
-os.system('apt remove dunst -y')
+os.system('apt remove notify-osd -y')
 
 for remote, local in FILES:
     data = urllib.urlopen(remote).read()

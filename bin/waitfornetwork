@@ -5,4 +5,5 @@ while ! ping -c 1 -W 1 synic.world; do
     sleep .5
 done
 
-`$@`
+echo $@
+exec $@

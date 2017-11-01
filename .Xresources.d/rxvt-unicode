@@ -43,10 +43,12 @@ URxvt*color15 : #EEEEEEEEECEC
 
 URxvt*foreground: white
 URxvt*background: black
-URxvt*tabbed.tabbar-fg: 2
-URxvt*tabbed.tabbar-bg: 0
-URxvt*tabbed.tab-fg: 3
-URxvt*tabbed.tab-bg: 0
+URxvt*tabbed.tabbar-fg: 230
+URxvt*tabbed.tabbar-bg: 235
+URxvt*tabbed.tab-fg: 064
+URxvt*tabbed.tab-bg: 235
+URxvt*tabbed.title-fg: 064
+URxvt*tabbed.title-bg: 235
 URxvt*tabbed.autohide: true
 URxvt*scrollTtyOutput: false
 URxvt*scrollWithBuffer: true
