@@ -33,10 +33,10 @@ new_window pixel 1
 ## COLORS
 
 #                       border  backgr. text    indicator child_border
-client.focused          #526532 #526532 #ffffff #a4cb64
-client.focused_inactive #aea79f #aea79f #3c3b37 #aea79f
-client.unfocused        #3c3b37 #3c3b37 #aea79f #3c3b37
-client.urgent           #FF0000 #FF0000 #ffffff #FF0000
+client.focused          #799b9b #799b9b #282828 #282828
+client.focused_inactive #1d2021 #1d2021 #928374 #282828
+client.unfocused        #32302f #32302f #928374 #282828
+client.urgent           #cc241d #cc241d #ebdbb2 #282828
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -220,15 +220,15 @@ bar {
   status_command i3status
   font pango:Droid Sans 8, FontAwesome 8
   colors {
-    separator #ffffff
-    background #3c3b37
-    statusline #ffffff
+    separator #928374
+    background #282828
+    statusline #ebdbb2
 
-    #                   border  backgr. text
-    focused_workspace   #526532 #526532 #ffffff
-    active_workspace    #aea79f #aea79f #3c3b37
-    inactive_workspace  #3c3b37 #3c3b37 #aea79f
-    urgent_workspace    #FF0000 #FF0000 #ffffff
+    #                   border  bckgr.  text
+    focused_workspace   #799b9b #799b9b #282828
+    active_workspace    #1d2021 #1d2021 #928374
+    inactive_workspace  #32302f #32302f #928374
+    urgent_workspace    #cc241d #cc241d #ebdbb2
   }
 }
 
@@ -282,3 +282,4 @@ exec --no-startup-id i3-msg "workspace 1"
 
 # fix screen resolution
 exec --no-startup-id ~/bin/waitfornetwork ~/bin/autodock
+
