@@ -45,7 +45,7 @@ URxvt*foreground: white
 URxvt*background: black
 URxvt*tabbed.tabbar-fg: 064
 URxvt*tabbed.tabbar-bg: 235
-URxvt*tabbed.tab-fg: 024
+URxvt*tabbed.tab-fg: 038
 URxvt*tabbed.tab-bg: 235
 URxvt*tabbed.title-fg: 064
 URxvt*tabbed.title-bg: 235

@@ -33,7 +33,7 @@ new_window pixel 1
 ## COLORS
 
 #                       border  backgr. text    indicator child_border
-client.focused          #799b9b #799b9b #282828 #282828
+client.focused          #9d9d05 #9d9d05 #000000 #282828   #777777
 client.focused_inactive #1d2021 #1d2021 #928374 #282828
 client.unfocused        #32302f #32302f #928374 #282828
 client.urgent           #32302f #32302f #928374 #282828
@@ -225,7 +225,7 @@ bar {
     statusline #ebdbb2
 
     #                   border  bckgr.  text
-    focused_workspace   #799b9b #799b9b #282828
+    focused_workspace   #9d9d05 #9d9d05 #282828
     active_workspace    #1d2021 #1d2021 #928374
     inactive_workspace  #32302f #32302f #928374
     urgent_workspace    #32302f #32302f #928374
