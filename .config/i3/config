@@ -33,7 +33,7 @@ new_window pixel 1
 ## COLORS
 
 #                       border  backgr. text    indicator child_border
-client.focused          #9d9d05 #9d9d05 #000000 #282828   #777777
+client.focused          #b78521 #b78521 #000000 #282828   #777777
 client.focused_inactive #1d2021 #1d2021 #928374 #282828
 client.unfocused        #32302f #32302f #928374 #282828
 client.urgent           #32302f #32302f #928374 #282828
@@ -225,7 +225,7 @@ bar {
     statusline #ebdbb2
 
     #                   border  bckgr.  text
-    focused_workspace   #9d9d05 #9d9d05 #282828
+    focused_workspace   #b78521 #b78521 #282828
     active_workspace    #1d2021 #1d2021 #928374
     inactive_workspace  #32302f #32302f #928374
     urgent_workspace    #32302f #32302f #928374
@@ -279,7 +279,3 @@ exec --no-startup-id sleep 2 && /home/synic/Projects/overseer/out/Overseer-linux
 # switch to workspace 1 by default (this puts it on workspace 1 even if the
 # laptop is not docked)
 exec --no-startup-id i3-msg "workspace 1"
-
-# fix screen resolution
-exec --no-startup-id ~/bin/waitfornetwork ~/bin/autodock
-

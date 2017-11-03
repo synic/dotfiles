@@ -42,10 +42,10 @@ URxvt*color7  : #D3D3D7D7CFCF
 URxvt*color15 : #EEEEEEEEECEC
 
 URxvt*foreground: white
-URxvt*background: black
+URxvt*background: #151515
 URxvt*tabbed.tabbar-fg: 064
 URxvt*tabbed.tabbar-bg: 235
-URxvt*tabbed.tab-fg: 038
+URxvt*tabbed.tab-fg: 208
 URxvt*tabbed.tab-bg: 235
 URxvt*tabbed.title-fg: 064
 URxvt*tabbed.title-bg: 235
