@@ -1,5 +1,9 @@
-#!/bin/sh
+#!/bin/bash
 
-/home/synic/bin/autorandr -l docked
+if [[ $(xrandr | head -n1 | grep '2560') ]]; then
+    autorandr -l docked
+else
+    echo 'Already docked..'
+fi
 
-feh --bg-scale ~/.dotfiles/wallpapers/beach.jpg
+feh --bg-scale ~/.dotfiles/wallpapers/wallpaper.jpg

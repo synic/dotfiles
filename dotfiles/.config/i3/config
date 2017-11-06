@@ -21,19 +21,26 @@ set $tab Tab
 set $space space
 
 # set font
-font pango:Droid Sans 8
+font pango:Droid Sans 7
 
 # set wallpaper
-exec --no-startup-id feh --bg-scale ~/.dotfiles/wallpapers/beach.jpg
+exec --no-startup-id feh --bg-scale ~/.dotfiles/wallpapers/wallpaper.jpg
 
 # appearance settings
 hide_edge_borders smart
 new_window pixel 1
 
-# colors                border  backgr. text    indicator child_border
-client.placeholder      #333333 #181818 #888888 #000000   #222222
+# few apps that need to start before everything else
+exec --no-startup-id nm-applet --sm-disable
+exec --no-startup-id xfsettingsd --replace
 
-client.background       #ffffff
+## COLORS
+
+#                       border  backgr. text    indicator child_border
+client.focused          #b78521 #b78521 #000000 #282828   #777777
+client.focused_inactive #1d2021 #1d2021 #928374 #282828
+client.unfocused        #32302f #32302f #928374 #282828
+client.urgent           #32302f #32302f #928374 #282828
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -44,8 +51,6 @@ workspace 3 output DP2-2
 workspace 4 output DP2-2
 workspace 2 output eDP1
 workspace 5 output eDP1
-
-## COLORS
 
 ## KEYBINDINGS
 
@@ -217,22 +222,21 @@ for_window [class="Thunar"] floating enable
 # finds out, if available)
 bar {
   status_command i3status
-    font pango:Droid Sans 8, FontAwesome 8
+  font pango:Droid Sans 8, FontAwesome 8
   colors {
-    separator #928374
-    background #282828
-    statusline #ebdbb2
-    focused_workspace #689d6a #689d6a #282828
-    active_workspace #1d2021 #1d2021 #928374
-    inactive_workspace #32302f #32302f #928374
-    urgent_workspace #cc241d #cc241d #ebdbb2
+    separator           #928374
+    background          #282828
+    statusline          #ebdbb2
+
+    #                   border  bckgr.  text
+    focused_workspace   #b78521 #b78521 #282828
+    active_workspace    #1d2021 #1d2021 #928374
+    inactive_workspace  #32302f #32302f #928374
+    urgent_workspace    #32302f #32302f #928374
   }
 }
 
 ## STARTUP
-
-# network-manager applet
-exec --no-startup-id nm-applet --sm-disable
 
 # bluetooth applet
 exec --no-startup-id blueman-applet --sm-disable
@@ -250,8 +254,6 @@ exec --no-startup-id urxvtd -q -o -f
 # load layouts
 exec --no-startup-id "i3-msg 'workspace 1; append_layout ~/.i3/workspace-1.json'"
 
-exec xfsettingsd --replace
-
 # workspace 1
 exec ~/bin/waitfornetwork vivaldi
 exec ~/bin/waitfornetwork emacs
@@ -262,26 +264,17 @@ exec urxvt -name urxvtb
 exec ~/bin/waitfornetwork irc_terminal
 
 # workspace 3
-exec vmware
+exec ~/bin/waitfornetwork vmware
 
 # start the screensaver
 exec --no-startup-id xscreensaver
 
 # start synergy
-exec --no-startup-id ~/bin/waitfornetwork synergy
+exec --no-startup-id sleep 2 && ~/bin/waitfornetwork synergy
 
 # start overseer
-exec --no-startup-id sleep 2 && /home/synic/Projects/overseer/out/Overseer-linux-x64/Overseer
+exec --no-startup-id sleep 2 && ~/bin/waitfornetwork /home/synic/Projects/overseer/out/Overseer-linux-x64/Overseer
 
 # switch to workspace 1 by default (this puts it on workspace 1 even if the
 # laptop is not docked)
-exec --no-startup-id i3-msg "workspace 1"
-
-# fix screen resolution
-exec --no-startup-id ~/bin/waitfornetwork ~/bin/autodock
-
-
-client.focused #689d6a #689d6a #282828 #282828
-client.focused_inactive #1d2021 #1d2021 #928374 #282828
-client.unfocused #32302f #32302f #928374 #282828
-client.urgent #cc241d #cc241d #ebdbb2 #282828
+exec --no-startup-id ~/bin/waitfornetwork i3-msg "workspace 1"

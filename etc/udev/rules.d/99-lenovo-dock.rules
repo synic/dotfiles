@@ -1,2 +1,2 @@
-SUBSYSTEM=="usb", ACTION=="add", ENV{ID_VENDOR_ID}=="17ef", ENV{ID_MODEL_ID}=="100f", RUN+="/home/synic/bin/dock_hook.sh 1"
-SUBSYSTEM=="usb", ACTION=="remove", ENV{ID_VENDOR_ID}=="17ef", ENV{ID_MODEL_ID}=="100f", RUN+="/home/synic/bin/dock_hook.sh 0"
+SUBSYSTEM=="usb", ACTION=="add", ENV{ID_VENDOR_ID}=="17ef", ENV{ID_MODEL_ID}=="100f", RUN+="/home/synic/bin/autodock"
+SUBSYSTEM=="usb", ACTION=="remove", ENV{ID_VENDOR_ID}=="17ef", ENV{ID_MODEL_ID}=="100f", RUN+="/home/synic/bin/autodock"

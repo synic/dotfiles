@@ -13,7 +13,7 @@ URxvt*urlLauncher: /usr/bin/chromium
 URxvt*matcher.button: 3
 URxvt*matcher.pattern.1: \\b(mailto|http|https|ftp|file):[/]*[\\w-]\\.[\\w./?&@#-]*[\\w/-]
 URxvt*matcher.pattern.2: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]
-URxvt*cutchars: `()'*<>[]{|}"
+URxvt*cutchars: "()*,<>[]{}|''\""
 URxvt*font: xft:Ubuntu Mono derivative Powerline:pixelsize=12:antialias=true
 URxvt*boldFont: xft:Ubuntu Mono derivative Powerline:bold:pixelsize=12:antialias=true
 ! grey
