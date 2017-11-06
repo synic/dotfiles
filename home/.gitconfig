@@ -1,0 +1,5 @@
+[user]
+	name = Adam Olsen
+	email = arolsen@gmail.com
+[magit]
+	hideCampaign = true

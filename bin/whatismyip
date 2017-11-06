@@ -1,6 +1,0 @@
-#!/usr/bin/env python
-
-import urllib
-
-data = urllib.urlopen("http://myip.dnsomatic.com").read()
-print data

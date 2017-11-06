@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cd ~/.mtgo/drive_c/users/synic/Desktop
+WINEPREFIX=~/.mtgo WINEDEBUG=-all \
+    wine start Magic\ The\ Gathering\ Online\ .appref-ms

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+urxvt -fn "xft:hack:size=12" -fb "xft:hack:bold:size=12" -name "IRC" -e "/home/synic/bin/irc" &
+
+i3-msg 'workspace 2'

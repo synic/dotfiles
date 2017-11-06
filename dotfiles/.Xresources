@@ -1,4 +1,0 @@
-#include ".dotfiles/xresources.d/rxvt-unicode"
-#include ".dotfiles/xresources.d/xscreensaver"
-#include ".dotfiles/xresources.d/rofi"
-#include ".dotfiles/xresources.d/i3"

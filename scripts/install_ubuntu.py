@@ -66,6 +66,6 @@ for remote, local in REPOS:
 
 os.system('pip install virtualenv virtualenvwrapper mtg')
 os.system('chsh -s /usr/bin/zsh synic')
-os.system('lndir ~/.dotfiles/dotfiles ~')
+os.system('lndir ~/.dotfiles/home ~')
 os.system('xrdb -merge ~/.Xresources')
 os.system('chown -R synic:synic /home/synic')
