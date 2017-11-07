@@ -37,7 +37,7 @@ exec --no-startup-id xfsettingsd --replace
 ## COLORS
 
 #                       border  backgr. text    indicator child_border
-client.focused          #b78521 #b78521 #000000 #282828   #777777
+client.focused          #6f8d8d #6f8d8d #000000 #282828   #777777
 client.focused_inactive #1d2021 #1d2021 #928374 #282828
 client.unfocused        #32302f #32302f #928374 #282828
 client.urgent           #32302f #32302f #928374 #282828
@@ -229,7 +229,7 @@ bar {
     statusline          #ebdbb2
 
     #                   border  bckgr.  text
-    focused_workspace   #b78521 #b78521 #282828
+    focused_workspace   #6f8d8d #6f8d8d #282828
     active_workspace    #1d2021 #1d2021 #928374
     inactive_workspace  #32302f #32302f #928374
     urgent_workspace    #32302f #32302f #928374

@@ -55,3 +55,7 @@ URxvt*scrollWithBuffer: true
 URxvt*scrollTtyKeypress: true
 URxvt*letterSpace: 0
 URxvt*cursorColor: #DCDCCC
+
+! opacity
+URxvt*transparent: true
+URxvt*shading: 10
