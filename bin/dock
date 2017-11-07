@@ -1,9 +1,0 @@
-#!/bin/bash
-
-if [[ $(xrandr | head -n1 | grep '2560') ]]; then
-    autorandr -l docked
-else
-    echo 'Already docked..'
-fi
-
-feh --bg-scale ~/.dotfiles/wallpapers/wallpaper.jpg

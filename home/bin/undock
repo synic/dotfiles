@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [[ $(xrandr | grep '4480 x 1440') ]]; then
+    autorandr -l mobile
+else
+    echo 'Already undocked..'
+fi
+
+feh --bg-scale ~/.dotfiles/wallpapers/wallpaper.jpg

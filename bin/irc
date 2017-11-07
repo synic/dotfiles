@@ -1,6 +1,0 @@
-#!/bin/sh
-
-export PATH=$PATH:/usr/local/bin
-perl -E ' print "\e[?1005h\e[?1002h"'
-BINARY_SSH=ssh
-mosh --ssh "/usr/bin/ssh -i ~/.ssh/id_rsa_irc -p 443" ircguy@shittybum.com -- tmux a -d

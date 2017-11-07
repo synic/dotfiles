@@ -1,8 +1,0 @@
-#!/bin/sh
-
-dlite stop
-sudo launchctl unload /Library/LaunchDaemons/local.dlite.plist
-sleep 2
-sudo launchctl load /Library/LaunchDaemons/local.dlite.plist
-sleep 2
-dlite start
