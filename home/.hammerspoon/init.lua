@@ -304,7 +304,7 @@ hs.hotkey.bind(hyper, 'h', function()
 end)
 
 hs.hotkey.bind({"cmd", "control"}, 'l', function()
-    hs.execute("/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine")
+    hs.execute("/System/Library/CoreServices/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine")
 end)
 
 hs.hotkey.bind({"cmd", "control"}, 's', function()
