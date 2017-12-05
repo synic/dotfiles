@@ -52,6 +52,10 @@ workspace 4 output DP2-2
 workspace 2 output eDP1
 workspace 5 output eDP1
 
+## SETTINGS
+
+mouse_warping none
+
 ## KEYBINDINGS
 
 # start a terminal
@@ -213,6 +217,7 @@ for_window [class="URxvt" instance="urxvtt"] border pixel 1
 for_window [class="URxvt" instance="urxvtb"] border pixel 1
 
 for_window [class="Vivaldi-stable" instance="crx_gaedmjdfmmahhbjefcbgaolhhanlaolb"] floating enable
+for_window [class="Google-chrome" instance="crx_gaedmjdfmmahhbjefcbgaolhhanlaolb"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Blueman-manager"] floating enable
 for_window [class="Xscreensaver-demo"] floating enable
@@ -273,7 +278,7 @@ exec --no-startup-id xscreensaver
 exec --no-startup-id sleep 2 && ~/bin/waitfornetwork synergy
 
 # start overseer
-exec --no-startup-id sleep 2 && ~/bin/waitfornetwork /home/synic/Projects/overseer/out/Overseer-linux-x64/Overseer
+exec --no-startup-id sleep 2 && ~/bin/waitfornetwork ~/Projects/overseer/electron-out/overseer-linux-x64/overseer
 
 # switch to workspace 1 by default (this puts it on workspace 1 even if the
 # laptop is not docked)
