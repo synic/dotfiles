@@ -278,7 +278,7 @@ exec --no-startup-id xscreensaver
 exec --no-startup-id sleep 2 && ~/bin/waitfornetwork synergy
 
 # start overseer
-exec --no-startup-id sleep 2 && ~/bin/waitfornetwork ~/Projects/overseer/electron-out/overseer-linux-x64/overseer
+exec --no-startup-id sleep 2 && ~/bin/waitfornetwork ~/Projects/overseer/build/overseer-linux-x64/overseer
 
 # switch to workspace 1 by default (this puts it on workspace 1 even if the
 # laptop is not docked)
