@@ -3,7 +3,7 @@
 -----------------------------------------------
 
 local hyper = {"cmd", "alt", "ctrl"}
-local dock_margin = 50
+local dock_margin = 25
 local increase_step = 10
 local decrease_step = 10
 
@@ -38,6 +38,40 @@ hs.hotkey.bind(hyper, "g", function()
     f.y = max.y
     f.w = max.w / 2
     f.h = max.h - dock_margin
+    win:setFrame(f)
+end)
+
+-----------------------------------------------
+-- hyper w for top half of screen
+-----------------------------------------------
+
+hs.hotkey.bind(hyper, "w", function()
+    local win = hs.window.focusedWindow()
+    local f = win:frame()
+    local screen = win:screen()
+    local max = screen:frame()
+
+    f.x = max.x
+    f.y = max.y
+    f.w = max.w
+    f.h = (max.h / 2)
+    win:setFrame(f)
+end)
+
+-----------------------------------------------
+-- hyper x for bottom half of screen
+-----------------------------------------------
+
+hs.hotkey.bind(hyper, "x", function()
+    local win = hs.window.focusedWindow()
+    local f = win:frame()
+    local screen = win:screen()
+    local max = screen:frame()
+
+    f.x = max.x
+    f.y = max.y + (max.h / 2)
+    f.w = max.w
+    f.h = (max.h / 2) - dock_margin
     win:setFrame(f)
 end)
 
@@ -228,7 +262,6 @@ hs.hotkey.bind(hyper, "n", function()
     win:setFrame(f)
 end)
 
-
 -----------------------------------------------
 -- hyper 0 for right top 1/3 of the screen
 -----------------------------------------------
@@ -245,7 +278,6 @@ hs.hotkey.bind(hyper, "0", function()
     f.h = (max.h - dock_margin) / 2
     win:setFrame(f)
 end)
-
 
 -----------------------------------------------
 -- hyper m for right bottom 1/3 of the screen
@@ -264,7 +296,6 @@ hs.hotkey.bind(hyper, "m", function()
     win:setFrame(f)
 end)
 
-
 -----------------------------------------------
 -- Reload config on write
 -----------------------------------------------
@@ -276,7 +307,7 @@ hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reload_config):start()
 hs.alert.show("Config loaded")
 
 -----------------------------------------------
--- Hyper i to show window hints
+-- Hyper q to show window hints
 -----------------------------------------------
 
 hs.hotkey.bind(hyper, "q", function()
@@ -303,14 +334,21 @@ hs.hotkey.bind(hyper, 'h', function()
     hs.window.focusedWindow():focusWindowWest()
 end)
 
+-----------------------------------------------
+-- Start certain programs with a key combo
+-----------------------------------------------
 hs.hotkey.bind({"cmd", "control"}, 'l', function()
     hs.execute("/System/Library/CoreServices/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine")
+end)
+
+hs.hotkey.bind({"cmd", "control"}, 't', function()
+    hs.application.launchOrFocus("iTerm")
 end)
 
 hs.hotkey.bind({"cmd", "control"}, 's', function()
     hs.caffeinate.systemSleep()
 end)
 
-hs.hotkey.bind({"alt", "shift"}, '4', function() 
+hs.hotkey.bind({"alt", "shift"}, '4', function()
     hs.execute("/Users/adam.olsen/bin/osx_screenshot")
 end)

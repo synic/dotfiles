@@ -30,7 +30,7 @@ def display_notification(title, message):
 
 
 try:
-    conn = httplib.HTTPConnection('synicworld.com')
+    conn = httplib.HTTPConnection('synic.world')
     conn.request('HEAD', '/media/screenshots/%s' % sn)
     response = conn.getresponse()
     if response.status != 200:

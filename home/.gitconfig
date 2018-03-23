@@ -1,6 +1,64 @@
 [user]
 	name = Adam Olsen
 	email = arolsen@gmail.com
-	signkey = 0B00D030CA0EB4CD
+    signkey = 0B00D030CA0EB4CD
 [magit]
 	hideCampaign = true
+[push]
+    default = simple
+[alias]
+    # common operations
+    cp = cherry-pick
+    ci = commit
+    co = checkout
+    br = branch
+    uncommit = reset --soft HEAD~1
+
+    # sort branches by last update
+    b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
+
+    # log as a graph
+    graph = log --graph --oneline --decorate --all
+    lq = !git --no-pager log --oneline --decorate --all -20
+
+    # one-line log
+    l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+    # one-line log with list of files changed
+    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+
+    # set the upstream
+    sup = "!f() { git branch --set-upstream-to=$1/`git symbolic-ref --short HEAD`; }; f"
+
+    # cleanup old branches
+    audit = "!git branch --merged | grep -v '\\*\\|master\\|develop\\|release-'"
+    clean-audit = "!git branch --merged | grep -v '\\*\\|master\\|develop\\|release-' | xargs -n 1 git branch -d"
+
+    # squash the currently staged files into the previous commit
+    # note that if you have already pushed the branch, you will probably
+    # need to push with `git push -f`
+    fixup = "!git commit --amend"
+
+    # Thin out older metadata within the repository, reduceses filesystem footprint
+    trim = !git reflog expire --expire=now --all && git gc --prune=now
+
+    # list git aliases
+    la = "!git config -l | grep alias | cut -c 7-"
+[diff]
+    # Use better, descriptive initials (c, i, w) instead of a/b.
+    mnemonicPrefix = true
+[rerere]
+    enabled = 1
+    autoupdate = 1
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+[commit]
+    template = ~/.gitmessage
+[rebase]
+	autosquash = true
+[diff]
+	compactionHeuristic = true
+[log]
+    # Use abbrev SHAs whenever possible/relevant instead of full 40 chars
+    abbrevCommit = true
