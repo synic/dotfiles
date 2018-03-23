@@ -2,7 +2,7 @@
 -- Set up
 -----------------------------------------------
 
-local hyper = {"cmd", "alt", "ctrl"}
+local hyper = {'cmd', 'alt', 'ctrl'}
 local dock_margin = 25
 local increase_step = 10
 local decrease_step = 10
@@ -11,7 +11,7 @@ local decrease_step = 10
 -- hyper d for left one half window
 -----------------------------------------------
 
-hs.hotkey.bind(hyper, "d", function()
+hs.hotkey.bind(hyper, 'd', function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -28,7 +28,7 @@ end)
 -- hyper g for right one half window
 -----------------------------------------------
 
-hs.hotkey.bind(hyper, "g", function()
+hs.hotkey.bind(hyper, 'g', function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -45,7 +45,7 @@ end)
 -- hyper w for top half of screen
 -----------------------------------------------
 
-hs.hotkey.bind(hyper, "w", function()
+hs.hotkey.bind(hyper, 'w', function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -62,7 +62,7 @@ end)
 -- hyper x for bottom half of screen
 -----------------------------------------------
 
-hs.hotkey.bind(hyper, "x", function()
+hs.hotkey.bind(hyper, 'x', function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -79,7 +79,7 @@ end)
 -- hyper f for fullscreen
 -----------------------------------------------
 
-hs.hotkey.bind(hyper, "f", function()
+hs.hotkey.bind(hyper, 'f', function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -96,7 +96,7 @@ end)
 -- hyper r for top left one quarter window
 -----------------------------------------------
 
-hs.hotkey.bind(hyper, "r", function()
+hs.hotkey.bind(hyper, 'r', function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -113,7 +113,7 @@ end)
 -- hyper t for top right one quarter window
 -----------------------------------------------
 
-hs.hotkey.bind(hyper, "t", function()
+hs.hotkey.bind(hyper, 't', function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -130,7 +130,7 @@ end)
 -- hyper v for bottom left one quarter window
 -----------------------------------------------
 
-hs.hotkey.bind(hyper, "v", function()
+hs.hotkey.bind(hyper, 'v', function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -147,7 +147,7 @@ end)
 -- hyper c for bottom right one quarter window
 -----------------------------------------------
 
-hs.hotkey.bind(hyper, "c", function()
+hs.hotkey.bind(hyper, 'c', function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -181,7 +181,7 @@ end)
 -- hyper p for right 2/3 of the screen
 -----------------------------------------------
 
-hs.hotkey.bind(hyper, "p", function()
+hs.hotkey.bind(hyper, 'p', function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -198,7 +198,7 @@ end)
 -- hyper o for left 2/3 of the screen
 -----------------------------------------------
 
-hs.hotkey.bind(hyper, "o", function()
+hs.hotkey.bind(hyper, 'o', function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -232,7 +232,7 @@ end)
 -- hyper 9 for left top 1/3 of the screen
 -----------------------------------------------
 
-hs.hotkey.bind(hyper, "9", function()
+hs.hotkey.bind(hyper, '9', function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -249,7 +249,7 @@ end)
 -- hyper n for left bottom 1/3 of the screen
 -----------------------------------------------
 
-hs.hotkey.bind(hyper, "n", function()
+hs.hotkey.bind(hyper, 'n', function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -266,7 +266,7 @@ end)
 -- hyper 0 for right top 1/3 of the screen
 -----------------------------------------------
 
-hs.hotkey.bind(hyper, "0", function()
+hs.hotkey.bind(hyper, '0', function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -283,7 +283,7 @@ end)
 -- hyper m for right bottom 1/3 of the screen
 -----------------------------------------------
 
-hs.hotkey.bind(hyper, "m", function()
+hs.hotkey.bind(hyper, 'm', function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -300,11 +300,16 @@ end)
 -- Reload config on write
 -----------------------------------------------
 
-function reload_config(files)
+hs.hotkey.bind(hyper, 'R', function()
     hs.reload()
-end
-hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reload_config):start()
-hs.alert.show("Config loaded")
+    hs.alert('Config loaded')
+end)
+
+
+hs.pathwatcher.new(
+  os.getenv('HOME') .. '/.dotfiles/home/.hammerspoon/',
+  hs.reload):start()
+hs.alert.show('Config loaded')
 
 -----------------------------------------------
 -- Hyper . to show window hints
@@ -337,18 +342,19 @@ end)
 -----------------------------------------------
 -- Start certain programs with a key combo
 -----------------------------------------------
-hs.hotkey.bind({"cmd", "control"}, 'l', function()
-    hs.execute("/System/Library/CoreServices/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine")
+hs.hotkey.bind({'cmd', 'control'}, 'l', function()
+    hs.execute('/System/Library/CoreServices/ScreenSaverEngine.app' ..
+               '/Contents/MacOS/ScreenSaverEngine')
 end)
 
-hs.hotkey.bind({"cmd", "control"}, 't', function()
-    hs.application.launchOrFocus("iTerm")
+hs.hotkey.bind({'cmd', 'control'}, 't', function()
+    hs.application.launchOrFocus('iTerm')
 end)
 
-hs.hotkey.bind({"cmd", "control"}, 's', function()
+hs.hotkey.bind({'cmd', 'control'}, 's', function()
     hs.caffeinate.systemSleep()
 end)
 
-hs.hotkey.bind({"alt", "shift"}, '4', function()
-    hs.execute("/Users/adam.olsen/bin/osx_screenshot")
+hs.hotkey.bind({'alt', 'shift'}, '4', function()
+    hs.execute('/Users/adam.olsen/bin/osx_screenshot')
 end)
