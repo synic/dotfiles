@@ -1,3 +1,6 @@
 [submodule "home/.tmux/plugins/tpm"]
 	path = home/.tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule "home/.config/awesome/revelation"]
+	path = home/.config/awesome/revelation
+	url = https://github.com/guotsuan/awesome-revelation.git
