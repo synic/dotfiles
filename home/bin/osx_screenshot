@@ -15,7 +15,7 @@ os.system('screencapture -s {}'.format(fn))
 os.system('scp -i ~/.ssh/id_rsa_sbss {} '
           'shittybum.com:/home/synic/vt/screenshots/'.format(fn))
 
-url = 'http://synic.world/s/{}'.format(sn)
+url = 'https://synic.world/s/{}'.format(sn)
 
 
 class NotFound(Exception):
@@ -30,7 +30,7 @@ def display_notification(title, message):
 
 
 try:
-    conn = httplib.HTTPConnection('synic.world')
+    conn = httplib.HTTPSConnection('synic.world')
     conn.request('HEAD', '/media/screenshots/%s' % sn)
     response = conn.getresponse()
     if response.status != 200:

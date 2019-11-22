@@ -62,3 +62,5 @@
 [log]
     # Use abbrev SHAs whenever possible/relevant instead of full 40 chars
     abbrevCommit = true
+[credential]
+	helper = osxkeychain

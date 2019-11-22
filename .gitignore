@@ -2,3 +2,4 @@ localconfig.lua
 .emacs.d/themes/hc-zenburn-theme.el
 cache/
 .DS_Store
+home/.tmux/plugins/
