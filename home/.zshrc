@@ -8,7 +8,7 @@
 #                              arolsen@gmail.com                              #
 #                                                                             #
 ###############################################################################
-
+#
 for script in `ls $HOME/.dotfiles/zsh.d/*.zsh`; do
     source $script
 done

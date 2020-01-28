@@ -356,5 +356,5 @@ hs.hotkey.bind({'cmd', 'control'}, 's', function()
 end)
 
 hs.hotkey.bind({'alt', 'shift'}, '4', function()
-    hs.execute('/Users/synic/bin/osx_screenshot')
+    hs.execute('/Users/aolsen/bin/osx_screenshot')
 end)
