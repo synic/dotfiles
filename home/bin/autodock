@@ -4,11 +4,11 @@ import os
 import subprocess
 
 data = subprocess.check_output('lsusb')
-docked = '17ef' in data
+docked = b'17ef' in data
 
 if docked:
-    print 'Docked.'
+    print('Docked.\n')
     os.system('/home/synic/bin/dock')
 else:
-    print 'Undocked.'
+    print('Undocked.\n')
     os.system('/home/synic/bin/undock')

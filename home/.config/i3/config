@@ -21,7 +21,7 @@ set $tab Tab
 set $space space
 
 # set font
-font pango:Droid Sans 7
+font pango:Noto Sans 7
 
 # set wallpaper
 exec --no-startup-id feh --bg-scale ~/.dotfiles/wallpapers/wallpaper.jpg
@@ -227,7 +227,7 @@ for_window [class="Thunar"] floating enable
 # finds out, if available)
 bar {
   status_command i3status
-  font pango:Droid Sans 8, FontAwesome 8
+  font pango:Noto Sans 8, FontAwesome 8
   colors {
     separator           #928374
     background          #282828
@@ -261,7 +261,7 @@ exec --no-startup-id "i3-msg 'workspace 1; append_layout ~/.i3/workspace-1.json'
 
 # workspace 1
 exec ~/bin/waitfornetwork vivaldi
-exec ~/bin/waitfornetwork emacs
+exec sleep 3 && ~/bin/waitfornetwork emacs
 exec urxvt -name urxvtt
 exec urxvt -name urxvtb
 

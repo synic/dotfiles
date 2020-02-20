@@ -3,5 +3,6 @@ localconfig.lua
 cache/
 .DS_Store
 home/.tmux/plugins/
+mine/
 
 zsh.d/*local*.zsh
