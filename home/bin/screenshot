@@ -15,8 +15,8 @@ sn = os.path.basename(fn)
 os.system('maim -s {}'.format(fn))
 os.system('notify-send --expire-time 10 "Uploading {}" ...'.format(sn))
 os.system(
-    'BINARY_SSH=scp setsid $HOME/bin/ssh-ident {} '
-    'shittybum.com:~/vt/screenshots'.format(fn))
+    'scp -i ~/.ssh/id_rsa_sbss {} '
+    'synic@shittybum.com:/home/synic/vt/screenshots'.format(fn))
 
 url = 'http://synic.world/s/{}'.format(sn)
 

@@ -262,7 +262,7 @@ exec --no-startup-id "i3-msg 'workspace 1; append_layout ~/.i3/workspace-1.json'
 exec --no-startup-id "i3-msg 'workspace 2; append_layout ~/.i3/workspace-2.json'"
 
 # workspace 1
-exec ~/bin/waitfornetwork vivaldi
+exec ~/bin/waitfornetwork firefox
 exec sleep 5 && ~/bin/waitfornetwork emacs
 exec urxvt -name urxvtt
 exec urxvt -name urxvtb
