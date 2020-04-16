@@ -1,6 +1,6 @@
 [user]
-	name = aolsen
-	email = adam.olsen@verizonmedia.com
+	name = Adam Olsen
+	email = arolsen@gmail.com
     signkey = 0B00D030CA0EB4CD
 [magit]
 	hideCampaign = true
@@ -43,6 +43,9 @@
 
     # list git aliases
     la = "!git config -l | grep alias | cut -c 7-"
+
+    # quick ammend
+    amend = "!git add -u && git commit --amend -a --no-edit"
 [diff]
     # Use better, descriptive initials (c, i, w) instead of a/b.
     mnemonicPrefix = true

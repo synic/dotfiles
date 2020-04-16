@@ -2,9 +2,17 @@
 
 import os
 import subprocess
+import time
 
 data = subprocess.check_output('lsusb')
 docked = b'17ef' in data
+
+user_id = subprocess.check_output(['id','-u',os.environ['USER']])
+user_id = int(user_id.decode('utf8'))
+
+os.environ['XAUTHORITY'] = '/run/user/{}/gdm/Xauthority'.format(user_id)
+
+time.sleep(.5)
 
 if docked:
     print('Docked.\n')

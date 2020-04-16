@@ -9,7 +9,7 @@ URxvt*keysym.Home: \033[1~
 URxvt*keysym.End: \033[4~
 URxvt*perl-lib: /usr/lib/urxvt/perl/
 URxvt*perl-ext-common: default,matcher,searchable-scrollback,tabbedex,clipboard
-URxvt*urlLauncher: /usr/bin/chromium
+URxvt*urlLauncher: /usr/bin/xdg-open
 URxvt*matcher.button: 3
 URxvt*matcher.pattern.1: \\b(mailto|http|https|ftp|file):[/]*[\\w-]\\.[\\w./?&@#-]*[\\w/-]
 URxvt*matcher.pattern.2: \\bwww\\.[\\w-]\\.[\\w./?&@#-]*[\\w/-]

@@ -10,6 +10,7 @@ alias o="octoeb"
 alias eb="cd ~/Projects/eventboard.io"
 alias edit_zshd="vim ~/.dotfiles/zsh.d"
 alias mc="vim ."
+alias da="django-admin"
 
 lsprog='ls'
 

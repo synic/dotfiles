@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import hashlib
-import httplib
+import http.client
 import os
 import os.path
 import sys
@@ -9,7 +9,8 @@ import time
 import traceback
 
 
-fn = '/tmp/{}.png'.format(hashlib.md5(str(time.time())).hexdigest()[:8])
+h = hashlib.md5(str(time.time()).encode('utf8')).hexdigest()[:8]
+fn = '/tmp/{}.png'.format(h)
 sn = os.path.basename(fn)
 os.system('maim -s {}'.format(fn))
 os.system('notify-send --expire-time 10 "Uploading {}" ...'.format(sn))
@@ -25,12 +26,12 @@ class NotFound(Exception):
 
 
 try:
-    conn = httplib.HTTPConnection('synicworld.com')
+    conn = http.client.HTTPSConnection('synic.world')
     conn.request('HEAD', '/media/screenshots/%s' % sn)
     response = conn.getresponse()
     if response.status != 200:
         raise NotFound()
-except (StandardError, NotFound):
+except Exception:
     traceback.print_exc()
     os.system("notify-send --expire-time 2000 'Error uploading file!'")
     sys.exit(1)

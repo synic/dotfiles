@@ -9,4 +9,5 @@ export PIP_VIRTUALENV_BASE=$WORKON_HOME
 export PIP_RESPECT_VIRTUALENV=true
 
 VENV_WRAPPER=/usr/share/virtualenvwrapper/virtualenvwrapper.sh
+export PYTHONBREAKPOINT=pdbpp.set_trace
 source $VENV_WRAPPER

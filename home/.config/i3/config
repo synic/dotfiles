@@ -162,12 +162,13 @@ bindsym XF86AudioRaiseVolume    exec $psst pactl set-sink-volume @DEFAULT_SINK@ 
 bindsym XF86AudioMute           exec $psst pactl set-sink-mute @DEFAULT_SINK@ toggle $update
 
 # brightness
-bindsym XF86MonBrightnessDown   exec xbacklight -dec 3
-bindsym XF86MonBrightnessUp     exec xbacklight -inc 3
+bindsym XF86MonBrightnessDown   exec /home/synic/bin/xbacklight -dec 3
+bindsym XF86MonBrightnessUp     exec /home/synic/bin/xbacklight -inc 3
 
 # docking/undocking
 bindsym $mod+$control+d exec /home/synic/bin/dock
 bindsym $mod+$control+u exec /home/synic/bin/undock
+bindsym XF86Display exec /home/synic/bin/autodock
 
 # take a screenshot
 bindsym $mod+$control+s exec teiler
@@ -258,15 +259,17 @@ exec --no-startup-id urxvtd -q -o -f
 
 # load layouts
 exec --no-startup-id "i3-msg 'workspace 1; append_layout ~/.i3/workspace-1.json'"
+exec --no-startup-id "i3-msg 'workspace 2; append_layout ~/.i3/workspace-2.json'"
 
 # workspace 1
 exec ~/bin/waitfornetwork vivaldi
-exec sleep 3 && ~/bin/waitfornetwork emacs
+exec sleep 5 && ~/bin/waitfornetwork emacs
 exec urxvt -name urxvtt
 exec urxvt -name urxvtb
 
 # workspace 2
 exec ~/bin/waitfornetwork irc_terminal
+exec ~/bin/waitfornetwork slack
 
 # workspace 3
 exec ~/bin/waitfornetwork vmware
@@ -283,3 +286,6 @@ exec --no-startup-id sleep 2 && ~/bin/waitfornetwork ~/Projects/overseer/build/o
 # switch to workspace 1 by default (this puts it on workspace 1 even if the
 # laptop is not docked)
 exec --no-startup-id ~/bin/waitfornetwork i3-msg "workspace 1"
+
+# layout monitors
+exec --no-startup-id ~/bin/waitfornetwork ~/bin/autodock
