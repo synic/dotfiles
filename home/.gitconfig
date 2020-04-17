@@ -67,3 +67,5 @@
     abbrevCommit = true
 [credential]
 	helper = osxkeychain
+[core]
+	pager = less -FX
