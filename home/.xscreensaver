@@ -1,5 +1,5 @@
 # XScreenSaver Preferences File
-# Written by xscreensaver-demo 5.36 for synic on Fri Jul 21 18:00:38 2017.
+# Written by xscreensaver-demo 5.42 for synic on Wed May 13 12:22:47 2020.
 # https://www.jwz.org/xscreensaver/
 
 timeout:	0:10:00
@@ -34,7 +34,7 @@ grabVideoFrames:    False
 chooseRandomImages: False
 imageDirectory:	
 
-mode:		one
+mode:		blank
 selected:	205
 
 textMode:	url
@@ -293,6 +293,16 @@ programs:								      \
   GL: 				colorfire -r -t 1			    \n\
 - GL: 		  "Pixel City" 	pixelcity --root			    \n\
 - GL: 				electricsheep --root 1			    \n\
+- GL: 				esper -root				    \n\
+- GL: 				vigilance -root				    \n\
+- GL: 				crumbler -root				    \n\
+				filmleader -root			    \n\
+				glitchpeg -root				    \n\
+- GL: 				handsy -root				    \n\
+- GL: 				maze3d -root				    \n\
+- GL: 				peepers -root				    \n\
+- GL: 				razzledazzle -root			    \n\
+				vfeedback -root				    \n\
 
 
 pointerPollTime:    0:00:05
