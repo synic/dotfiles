@@ -46,6 +46,7 @@
 
     # quick ammend
     amend = "!git add -u && git commit --amend -a --no-edit"
+	nb = branch-from-feature
 [diff]
     # Use better, descriptive initials (c, i, w) instead of a/b.
     mnemonicPrefix = true
@@ -69,3 +70,8 @@
 	helper = osxkeychain
 [core]
 	pager = less -FX
+[youtrack]
+	api-token = perm:YWRhbS5vbHNlbg==.NTgtMA==.IDhQpP6pbGDbgnBaNehIIeAa2baPiw
+    host = https://hitched.myjetbrains.com
+[hub]
+	protocol = ssh

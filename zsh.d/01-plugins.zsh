@@ -26,6 +26,7 @@ zplug "plugins/command-not-found", from:oh-my-zsh
 zplug "lukechilds/zsh-nvm", from:github
 zplug "supercrabtree/k", from:github
 zplug "zuxfoucault/colored-man-pages_mod", from:github
+zplug "mfaerevaag/wd", as:command, use:"wd.sh", hook-load:"wd() { . $ZPLUG_REPOS/mfaerevaag/wd/wd.sh }"
 
 # install plugins if there are plugins that have not been installed
 if ! zplug check; then
