@@ -1,0 +1,53 @@
+#!/usr/bin/env python
+
+import http.client
+import json
+import os
+import re
+import subprocess
+import sys
+
+issue_number = sys.argv[1].upper()
+
+
+def get_config(key):
+    value = subprocess.check_output(['git', 'config', key]).strip()
+    return value.decode('utf8')
+
+
+def slugify(text):
+    text = text.lower()
+    text = re.sub(r'[\W_]+', '-', text)
+    return text
+
+
+def get_branch_name(issue_number, summary):
+    branch = '{}-{}'.format(issue_number, slugify(summary))
+    branch = branch.replace('--', '-')
+    return branch[:60]
+
+
+token = get_config('youtrack.api-token')
+host = get_config('youtrack.host')
+
+client = http.client.HTTPSConnection(host)
+client.request(
+    'GET',
+    '/youtrack/api/issues/{}/?fields=summary'.format(issue_number),
+    headers={'Authorization': 'Bearer {}'.format(token)},
+)
+res = client.getresponse()
+data = json.loads(res.read().decode('utf8'))
+
+branch = get_branch_name(issue_number, data['summary'])
+
+os.system('git fetch -a')
+
+try:
+    subprocess.check_call(['git', 'show-branch', branch])
+    print('WARNING: branch already existed, checking it out now.')
+    os.system('git checkout {}'.format(branch))
+except subprocess.CalledProcessError:
+    os.system('git checkout -b {} origin/master'.format(branch))
+    os.system('git push -u origin {}'.format(branch))
+

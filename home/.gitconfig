@@ -46,7 +46,7 @@
 
     # quick ammend
     amend = "!git add -u && git commit --amend -a --no-edit"
-	nb = branch-from-feature
+	nb = new-branch-from-youtrack-issue
 [diff]
     # Use better, descriptive initials (c, i, w) instead of a/b.
     mnemonicPrefix = true
@@ -57,8 +57,6 @@
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
 	required = true
-[commit]
-    template = ~/.gitmessage
 [rebase]
 	autosquash = true
 [diff]
@@ -71,7 +69,6 @@
 [core]
 	pager = less -FX
 [youtrack]
-	api-token = perm:YWRhbS5vbHNlbg==.NTgtMA==.IDhQpP6pbGDbgnBaNehIIeAa2baPiw
-    host = https://hitched.myjetbrains.com
+    host = hitched.myjetbrains.com
 [hub]
 	protocol = ssh
