@@ -4,5 +4,5 @@ cache/
 .DS_Store
 home/.tmux/plugins/
 mine/
-
+gitcredentials
 zsh.d/*local*.zsh

@@ -6,6 +6,8 @@
 	hideCampaign = true
 [push]
     default = simple
+[include]
+    path = ~/.dotfiles/gitcredentials
 [alias]
     # common operations
     cp = cherry-pick
@@ -68,7 +70,5 @@
 	helper = osxkeychain
 [core]
 	pager = less -FX
-[youtrack]
-    host = hitched.myjetbrains.com
 [hub]
 	protocol = ssh
