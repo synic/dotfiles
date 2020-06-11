@@ -11,8 +11,11 @@ issue_number = sys.argv[1].upper()
 
 
 def get_config(key):
-    value = subprocess.check_output(['git', 'config', key]).strip()
-    return value.decode('utf8')
+    try:
+        value = subprocess.check_output(['git', 'config', key]).strip()
+        return value.decode('utf8')
+    except subprocess.CalledProcessError:
+        return None
 
 
 def slugify(text):
@@ -29,6 +32,10 @@ def get_branch_name(issue_number, summary):
 
 token = get_config('youtrack.api-token')
 host = get_config('youtrack.host')
+prefix = get_config('youtrack.issue-prefix')
+
+if prefix and not issue_number.startswith(prefix):
+    issue_number = prefix + issue_number
 
 client = http.client.HTTPSConnection(host)
 client.request(
@@ -44,7 +51,11 @@ branch = get_branch_name(issue_number, data['summary'])
 os.system('git fetch -a')
 
 try:
-    subprocess.check_call(['git', 'show-branch', branch])
+    subprocess.check_call(
+        ['git', 'show-branch', branch],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+    )
     print('WARNING: branch already existed, checking it out now.')
     os.system('git checkout {}'.format(branch))
 except subprocess.CalledProcessError:

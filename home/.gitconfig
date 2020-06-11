@@ -49,6 +49,7 @@
     # quick ammend
     amend = "!git add -u && git commit --amend -a --no-edit"
 	nb = new-branch-from-youtrack-issue
+	pb = checkout @{-2}
 [diff]
     # Use better, descriptive initials (c, i, w) instead of a/b.
     mnemonicPrefix = true
