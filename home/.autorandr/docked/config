@@ -1,6 +1,6 @@
 output eDP-1
 mode 1920x1080
-pos 2560x360
+pos 3440x360
 output DP-1
 off
 output HDMI-1
@@ -14,6 +14,6 @@ off
 output DP-2-2
 primary
 pos 0x0
-mode 2560x1440
+mode 3440x1440
 output DP-2-3
 off
