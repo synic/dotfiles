@@ -1,0 +1,9 @@
+#!/bin/sh
+
+xinput --set-prop 20 "Device Enabled" "0"
+if [ ! -f "$HOME/.wallpaper.png" ]; then
+    echo "Converting screensaver image..."
+    convert ~/.dotfiles/wallpapers/wallpaper.jpg ~/.wallpaper.png
+fi
+i3lock -c#000000 -i ~/.wallpaper.png -t -n
+xinput --set-prop 20 "Device Enabled" "1"

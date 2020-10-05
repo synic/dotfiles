@@ -68,7 +68,8 @@ bindsym $mod+$shift+q kill
 bindsym $mod+$space exec "rofi -combi-modi window,drun,run,ssh -show combi -modi combi"
 
 # lock screen
-bindsym $mod+$control+l exec xscreensaver-command --lock
+# bindsym $mod+$control+l exec xscreensaver-command --lock
+bindsym $mod+$control+l exec ~/bin/screensaver
 
 # system menu
 bindsym $mod+$control+p exec rofi-power "i3-msg exit"
@@ -275,7 +276,8 @@ exec ~/bin/waitfornetwork slack
 exec ~/bin/waitfornetwork vmware
 
 # start the screensaver
-exec --no-startup-id xscreensaver
+# exec --no-startup-id xscreensaver
+exec --no-startup-id ~/bin/start-xss
 
 # start synergy
 exec --no-startup-id sleep 2 && ~/bin/waitfornetwork synergy
