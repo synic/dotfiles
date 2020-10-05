@@ -69,7 +69,7 @@ bindsym $mod+$space exec "rofi -combi-modi window,drun,run,ssh -show combi -modi
 
 # lock screen
 # bindsym $mod+$control+l exec xscreensaver-command --lock
-bindsym $mod+$control+l exec ~/bin/screensaver
+bindsym $mod+$control+l exec xautolock -locknow
 
 # system menu
 bindsym $mod+$control+p exec rofi-power "i3-msg exit"
@@ -78,8 +78,8 @@ bindsym $mod+$control+p exec rofi-power "i3-msg exit"
 bindsym $mod+u border none
 
 # alt-tab functionality
-set $i3t_alt_tab ~/bin/i3t.py n
-set $i3t_alt_shift_tab ~/bin/i3t.py p
+set $i3t_alt_tab ~/bin/i3t n
+set $i3t_alt_shift_tab ~/bin/i3t p
 bindsym $alt+$tab exec $i3t_alt_tab
 bindsym $alt+$shift+$tab exec $i3t_alt_shift_tab
 
@@ -276,8 +276,7 @@ exec ~/bin/waitfornetwork slack
 exec ~/bin/waitfornetwork vmware
 
 # start the screensaver
-# exec --no-startup-id xscreensaver
-exec --no-startup-id ~/bin/start-xss
+exec --no-startup-id ~/bin/screensaver-daemon
 
 # start synergy
 exec --no-startup-id sleep 2 && ~/bin/waitfornetwork synergy

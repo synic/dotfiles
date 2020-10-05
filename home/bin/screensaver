@@ -1,9 +1,27 @@
 #!/bin/sh
 
-xinput --set-prop 20 "Device Enabled" "0"
+TIMEOUT=900
+MOUSE_ID=20
+SLEEP_PID=""
+
+revert() {
+    xinput --set-prop $MOUSE_ID "Device Enabled" "1"
+    xset s off -dpms
+
+    if [ ! -z "$SLEEP_PID" ]; then
+        pgrep -P $SLEEP_PID | xargs kill -9
+        kill -9 $SLEEP_PID
+    fi
+}
+
+xinput --set-prop $MOUSE_ID "Device Enabled" "0"
 if [ ! -f "$HOME/.wallpaper.png" ]; then
     echo "Converting screensaver image..."
     convert ~/.dotfiles/wallpapers/wallpaper.jpg ~/.wallpaper.png
 fi
-i3lock -c#000000 -i ~/.wallpaper.png -t -n
-xinput --set-prop 20 "Device Enabled" "1"
+trap revert HUP INT TERM
+xset +dpms dpms $TIMEOUT $TIMEOUT $TIMEOUT
+bash -c "sleep $TIMEOUT && xset dpms force off" &
+SLEEP_PID=$!
+i3lock -c#000000 -i ~/.wallpaper.png -t --nofork -e
+revert

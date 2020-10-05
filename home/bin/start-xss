@@ -1,5 +1,0 @@
-#!/bin/sh
-
-xset s 300
-xset dpms 0 1800 3600
-xss-lock -- ~/bin/screensaver

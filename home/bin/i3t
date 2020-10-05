@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-"""
-i3t.py -- list i3wm windows, get next window id, wrap/loop around
+
+"""i3t -- list i3wm windows, get next window id, wrap/loop around.
 
 Configuration (``.i3/config``)::
 
@@ -28,16 +28,15 @@ This code is licensed with CC-By-SA 3.0:
 
 import collections
 import json
-import subprocess
 import logging
+import subprocess
+
 logging.basicConfig()
 log = logging.getLogger()
 
 
 def command_output(cmd, shell=False):
-    """
-    Execute the given command and return the
-    output as a list of lines
+    """Execute the given command and return the output as a list of lines.
 
     Args:
         cmd (str or list): subprocess.Popen(cmd=cmd)
@@ -56,11 +55,12 @@ def command_output(cmd, shell=False):
 
 
 def output_to_dict(output_list):
-    """
+    """Convert output list to a dictionary.
+
     Args:
         output_list:
     Returns:
-        dict: tree_dict #TODO: ordered_pairs_hook
+        dict: tree_dict
     """
     output_string = ""
     for line in output_list:
@@ -69,7 +69,8 @@ def output_to_dict(output_list):
 
 
 def find_windows(tree_dict, window_list, i3barnameprefix='i3bar for output'):
-    """
+    """Find all windows in the workspace tree.
+
     Args:
         tree_dict: dict of i3 nodes
         window_list: window list to append to
@@ -88,15 +89,14 @@ def find_windows(tree_dict, window_list, i3barnameprefix='i3bar for output'):
 
 
 def get_i3_window_state():
-    """
-    determine a window id of the 'next' or TODO 'previous' window
+    """Determine a window id of the 'next'.
 
     Returns:
-        OrderedDict: {prev: \d, current: \d, next: \d}
+        OrderedDict: {prev: win, current: win, next: win}
     """
     cmd = ("i3-msg", "-t", "get_tree")
     output = subprocess.check_output(cmd)
-    tree = output_to_dict(output)
+    tree = output_to_dict(output.decode('utf8'))
     window_list = find_windows(tree, [])
 
     # find the current window
@@ -127,7 +127,8 @@ def get_i3_window_state():
 
 
 def i3_change_window(window_id):
-    """
+    """Switch to a window ID.
+
     Args:
         window_id (int): i3 window id to change window to
     Returns:
@@ -138,8 +139,7 @@ def i3_change_window(window_id):
 
 
 def main(argv=None):
-    """
-    i3t main method
+    """i3t main method.
 
     Kwargs:
         argv (list): arguments e.g. from ``sys.argv[1:]``
