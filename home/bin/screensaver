@@ -1,17 +1,22 @@
-#!/bin/sh
+#!/usr/bin/bash
 
-TIMEOUT=900
+MONITOR_SUSPEND_TIMEOUT=900
+SUSPEND_TIMEOUT=14400
 MOUSE_ID=20
-SLEEP_PID=""
+MONITOR_SUSPEND_PID=""
+SUSPEND_PID=""
 
 revert() {
     xinput --set-prop $MOUSE_ID "Device Enabled" "1"
     xset s off -dpms
 
-    if [ ! -z "$SLEEP_PID" ]; then
-        pgrep -P $SLEEP_PID | xargs kill -9
-        kill -9 $SLEEP_PID
-    fi
+    declare -a items=("$MONITOR_SUSPEND_PID" "$SUSPEND_PID")
+    for item in "${items[@]}"; do
+        if [ ! -z "$item" ]; then
+            pgrep -P $item && pgrep -P $item | xargs kill
+            kill $item
+        fi
+    done
 }
 
 xinput --set-prop $MOUSE_ID "Device Enabled" "0"
@@ -20,8 +25,13 @@ if [ ! -f "$HOME/.wallpaper.png" ]; then
     convert ~/.dotfiles/wallpapers/wallpaper.jpg ~/.wallpaper.png
 fi
 trap revert HUP INT TERM
-xset +dpms dpms $TIMEOUT $TIMEOUT $TIMEOUT
-bash -c "sleep $TIMEOUT && xset dpms force off" &
-SLEEP_PID=$!
+xset +dpms dpms 600 600 600
+
+bash -c "sleep $MONITOR_SUSPEND_TIMEOUT && xset dpms force off" &
+MONITOR_SUSPEND_PID=$!
+
+bash -c "sleep $SUSPEND_TIMEOUT && systemctl suspend" &
+SUSPEND_PID=$!
+
 i3lock -c#000000 -i ~/.wallpaper.png -t --nofork -e
 revert
