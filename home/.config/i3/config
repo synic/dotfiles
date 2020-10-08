@@ -69,7 +69,6 @@ bindsym $mod+$space exec "rofi -combi-modi window,drun,run -show combi -modi com
 bindsym $mod+d exec "rofi -show run -modi run"
 
 # lock screen
-# bindsym $mod+$control+l exec xscreensaver-command --lock
 bindsym $mod+$control+l exec xautolock -locknow
 
 # system menu
