@@ -25,7 +25,9 @@ if [ ! -f "$HOME/.wallpaper.png" ]; then
     convert ~/.dotfiles/wallpapers/wallpaper.jpg ~/.wallpaper.png
 fi
 trap revert HUP INT TERM
-xset +dpms dpms 600 600 600
+xset +dpms dpms $MONITOR_SUSPEND_TIMEOUT \
+    $MONITOR_SUSPEND_TIMEOUT \
+    $MONITOR_SUSPEND_TIMEOUT
 
 bash -c "sleep $MONITOR_SUSPEND_TIMEOUT && xset dpms force off" &
 MONITOR_SUSPEND_PID=$!
