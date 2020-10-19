@@ -1,5 +1,0 @@
-#!/bin/sh
-
-# yes, we need a way to flush the file on disconnect; i don't know one
-# yes, that's flush is not atomic (but good enough for me)
-ssh -p2222 ircguy@shittybum.com "tail -n 10 .irssi/fnotify ; : > .irssi/fnotify ; tail -f .irssi/fnotify " | sed -u 's/[<@&]//g' | while read heading message;  do  notify-send -i gtk-dialog-info -t 10000 -- "${heading}" "${message}"; done 
