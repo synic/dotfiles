@@ -74,3 +74,5 @@
 	pager = less -FX
 [hub]
 	protocol = ssh
+[pull]
+	rebase = false
