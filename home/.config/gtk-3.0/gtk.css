@@ -46,3 +46,9 @@
 .scrollbar, .scale {
     border-width: 2 2;
 }
+
+@define-color VIM_BACKGROUND_COLOR #1d2021;
+
+window#vim-main-window {
+    background-color: @VIM_BACKGROUND_COLOR;
+}
