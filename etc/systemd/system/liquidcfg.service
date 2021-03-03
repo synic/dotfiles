@@ -1,0 +1,10 @@
+[Unit]
+Description=AIO startup service
+
+[Service]
+Type=oneshot
+ExecStart=openrgb -c FF0000
+ExecStart=/usr/bin/setcolors
+
+[Install]
+WantedBy=default.target

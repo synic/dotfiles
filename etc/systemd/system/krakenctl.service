@@ -1,0 +1,14 @@
+[Unit]
+Description=Yoda pump control
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/krakenctl
+Restart=always
+RestartSec=30
+StandardOutput=/var/log/kraken.stdout.log
+StandardError=/var/log/kraken.stderr.log
+SyslogIdentifier=KRAKENPUMP
+
+[Install]
+WantedBy=multi-user.target

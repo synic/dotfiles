@@ -1,0 +1,13 @@
+[Unit]
+Description=Initialize case LEDs
+After=suspend.target
+
+[Service]
+User=root
+Type=oneshot
+ExecStart=/usr/bin/setcolors
+TimeoutSec=0
+StandardOutput=syslog
+
+[Install]
+WantedBy=suspend.target

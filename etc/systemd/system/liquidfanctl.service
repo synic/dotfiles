@@ -1,0 +1,14 @@
+[Unit]
+Description=Yoda fan control
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/liquidfanctl
+Restart=always
+RestartSec=30
+StandardOutput=/var/log/liquidfanctl.stdout.log
+StandardError=/var/log/liquidfanctl.stderr.log
+SyslogIdentifier=LIQUID
+
+[Install]
+WantedBy=multi-user.target

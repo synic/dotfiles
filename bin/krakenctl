@@ -1,0 +1,3 @@
+#!/bin/sh
+
+yoda --match kraken control pump with '(50,20),(75,100)' on k10temp.tdie 

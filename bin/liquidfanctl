@@ -1,0 +1,4 @@
+#!/bin/sh
+
+yoda --match 'smart device' control fan1 with '(50,0),(60,20),(75,100)' on k10temp.tdie and fan2 with '(50,5),(60,20),(80,100)' on k10temp.tdie and fan3 with '(50,0),(60,20),(80,100)' on k10temp.tdie 
+
