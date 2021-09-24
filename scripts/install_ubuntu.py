@@ -1,11 +1,10 @@
 #!/usr/bin/python3
 
 import os
-import urllib
+import urllib.request
 
 PACKAGES = """
 arandr
-bower
 curl
 docker
 dunst
@@ -23,17 +22,14 @@ maim
 mplayer
 mosh
 net-tools
-nodejs-legacy
-npm
 pasystray
 rofi
 rxvt-unicode-256color
 silversearcher-ag
 thunar
-python-pip
 python-dev
 xutils-dev
-vim-gnome
+vim
 xclip
 zsh
 """
@@ -54,7 +50,7 @@ os.system('apt install -y {}'.format(PACKAGES.replace('\n', ' ')))
 os.system('apt remove notify-osd -y')
 
 for remote, local in REMOTE_FILES:
-    data = urllib.urlopen(remote).read()
+    data = urllib.request.urlopen(remote).read()
     h = open(local, 'w')
     h.write(data)
     h.close()
