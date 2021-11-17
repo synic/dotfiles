@@ -17,5 +17,3 @@ done
 fortune -a
 echo
 
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
