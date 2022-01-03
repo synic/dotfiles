@@ -41,5 +41,3 @@ source $HOME/.dotfiles/zsh.d/synic.zsh-theme
 
 test -e $HOME/.iterm2_shell_integrations.zsh && \
     source $HOME/.iterm_shell_integrations.zsh
-test -e $HOME/Projects/octoeb/completion.sh && \
-    source $HOME/Projects/octoeb/completion.sh
