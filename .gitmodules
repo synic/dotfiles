@@ -4,3 +4,6 @@
 [submodule "home/.config/awesome/revelation"]
 	path = home/.config/awesome/revelation
 	url = https://github.com/guotsuan/awesome-revelation.git
+[submodule "home/.i3/i3lock-multimonitor"]
+	path = home/.i3/i3lock-multimonitor
+	url = https://github.com/shikherverma/i3lock-multimonitor
