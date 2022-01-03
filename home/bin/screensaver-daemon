@@ -3,4 +3,5 @@
 xautolock -detectsleep \
     -time 10 -locker "~/bin/screensaver"
     -notify 30 \
+    -corners 0-00 \
     -notifier "notify-send -u critical -t 10000 -- 'Locking screen in 30 seconds...'" 
