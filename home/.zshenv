@@ -11,3 +11,4 @@ export PYTHONBREAKPOINT=ipdb.set_trace
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 VENV_WRAPPER=/usr/local/bin/virtualenvwrapper.sh
 source $VENV_WRAPPER
+. "$HOME/.cargo/env"
