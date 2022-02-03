@@ -2,3 +2,4 @@
 #include ".dotfiles/xresources.d/xscreensaver"
 #include ".dotfiles/xresources.d/rofi"
 #include ".dotfiles/xresources.d/i3"
+#include ".dotfiles/xresources.d/99-gruvbox-dark"
