@@ -32,8 +32,8 @@ xset +dpms dpms $MONITOR_SUSPEND_TIMEOUT \
 bash -c "sleep $MONITOR_SUSPEND_TIMEOUT && xset dpms force off" &
 MONITOR_SUSPEND_PID=$!
 
-bash -c "sleep $SUSPEND_TIMEOUT && systemctl suspend" &
-SUSPEND_PID=$!
+# bash -c "sleep $SUSPEND_TIMEOUT && systemctl suspend" &
+# SUSPEND_PID=$!
 
 ~/.i3/i3lock-multimonitor/lock -a --nofork
 # i3lock -c#000000 -i ~/.wallpaper.png -t --nofork -e
