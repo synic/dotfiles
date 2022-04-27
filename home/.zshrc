@@ -16,4 +16,4 @@ done
 # gotta have a fortune!
 fortune -a
 echo
-export PATH="$PATH:$HOME/.spicetify"
+
