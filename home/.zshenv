@@ -12,7 +12,6 @@ export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 VENV_WRAPPER=~/.local/bin/virtualenvwrapper.sh
 
 source $VENV_WRAPPER
-. "$HOME/.cargo/env"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

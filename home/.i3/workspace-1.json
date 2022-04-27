@@ -2,14 +2,14 @@
 {
     // tabbed split container with 2 children
     "border": "pixel",
-    "current_border_width": 1,
     "floating": "auto_off",
     "layout": "tabbed",
-    "percent": 0.74,
+    "marks": [],
+    "percent": 0.399031007751938,
     "type": "con",
     "nodes": [
         {
-            "border": "pixel",
+            "border": "none",
             "current_border_width": 1,
             "floating": "auto_off",
             "geometry": {
@@ -18,10 +18,85 @@
                "x": 0,
                "y": 0
             },
+            "marks": [],
+            "name": "i3: Layout saving in i3 - Vivaldi",
             "percent": 0.5,
             "swallows": [
                {
-               "class": "^Vivaldi-stable$"
+                "class": "^Vivaldi\\-stable$"
+               }
+            ],
+            "type": "con"
+        },
+        {
+            "border": "none",
+            "current_border_width": 1,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 1406,
+               "width": 1448,
+               "x": 1395,
+               "y": 16
+            },
+            "marks": [],
+            "name": "Telegram",
+            "percent": 0.5,
+            "swallows": [
+               {
+                "class": "^TelegramDesktop$"
+               }
+            ],
+            "type": "con"
+        }
+    ]
+}
+
+{
+    // tabbed split container with 4 children
+    "border": "pixel",
+    "current_border_width": 1,
+    "floating": "auto_off",
+    "layout": "tabbed",
+    "marks": [],
+    "percent": 0.427635658914729,
+    "type": "con",
+    "nodes": [
+        {
+            "border": "pixel",
+            "current_border_width": 1,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 1406,
+               "width": 1448,
+               "x": 1395,
+               "y": 16
+            },
+            "marks": [],
+            "name": "Slack | defiq-founders | Giddy",
+            "percent": 0.25,
+            "swallows": [
+               {
+                "class": "^Slack$"
+               }
+            ],
+            "type": "con"
+        },
+        {
+            "border": "pixel",
+            "current_border_width": 1,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 720,
+               "width": 1280,
+               "x": 1080,
+               "y": 360
+            },
+            "marks": [],
+            "name": "Discord",
+            "percent": 0.25,
+            "swallows": [
+               {
+                "class": "^discord$"
                }
             ],
             "type": "con"
@@ -36,10 +111,32 @@
                "x": 0,
                "y": 0
             },
-            "percent": 0.5,
+            "marks": [],
+            "name": "emacs@gweeb",
+            "percent": 0.25,
             "swallows": [
                {
-               "class": "^Emacs$"
+                "class": "^Emacs$"
+               }
+            ],
+            "type": "con"
+        },
+        {
+            "border": "none",
+            "current_border_width": 0,
+            "floating": "auto_off",
+            "geometry": {
+               "height": 456,
+               "width": 800,
+               "x": 0,
+               "y": 0
+            },
+            "marks": [],
+            "name": "irc",
+            "percent": 0.25,
+            "swallows": [
+               {
+                "instance": "^IRC$"
                }
             ],
             "type": "con"
@@ -52,12 +149,13 @@
     "border": "normal",
     "floating": "auto_off",
     "layout": "splitv",
-    "percent": 0.26,
+    "marks": [],
+    "percent": 0.173333333333333,
     "type": "con",
     "nodes": [
         {
             "border": "pixel",
-            "current_border_width": 2,
+            "current_border_width": 1,
             "floating": "auto_off",
             "geometry": {
                "height": 1422,
@@ -65,10 +163,11 @@
                "x": 1895,
                "y": 18
             },
+            "marks": [],
+            "name": "i3-save-tree --workspace 1 > ~/.dotfiles/home/.i3/workspace-1.json",
             "percent": 0.5,
             "swallows": [
                {
-                "class": "^URxvt$",
                 "instance": "^urxvtt$"
                }
             ],
@@ -76,7 +175,7 @@
         },
         {
             "border": "pixel",
-            "current_border_width": 2,
+            "current_border_width": 1,
             "floating": "auto_off",
             "geometry": {
                "height": 288,
@@ -84,10 +183,11 @@
                "x": 0,
                "y": 0
             },
+            "marks": [],
+            "name": "sudo rsync -av --progress * /mnt/",
             "percent": 0.5,
             "swallows": [
                {
-                "class": "^URxvt$",
                 "instance": "^urxvtb$"
                }
             ],

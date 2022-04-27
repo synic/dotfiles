@@ -35,6 +35,6 @@ MONITOR_SUSPEND_PID=$!
 # bash -c "sleep $SUSPEND_TIMEOUT && systemctl suspend" &
 # SUSPEND_PID=$!
 
-~/.i3/i3lock-multimonitor/lock -a --nofork
-# i3lock -c#000000 -i ~/.wallpaper.png -t --nofork -e
+#~/.i3/i3lock-multimonitor/lock -a --nofork
+i3lock -c#000000 -i ~/.wallpaper.png -t --nofork -e
 revert
