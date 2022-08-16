@@ -161,7 +161,7 @@ hs.hotkey.bind(hyper, 'c', function()
 end)
 
 -----------------------------------------------
--- hyper [ for left 1/3 of the screen
+-- hyper [ for left 1/4 of the screen
 -----------------------------------------------
 
 hs.hotkey.bind(hyper, "[", function()
@@ -172,13 +172,13 @@ hs.hotkey.bind(hyper, "[", function()
 
     f.x = max.x
     f.y = max.y
-    f.w = max.w / 3
+    f.w = max.w / 4
     f.h = max.h - dock_margin
     win:setFrame(f)
 end)
 
 -----------------------------------------------
--- hyper p for right 2/3 of the screen
+-- hyper p for right 3/4 of the screen
 -----------------------------------------------
 
 hs.hotkey.bind(hyper, 'p', function()
@@ -187,15 +187,15 @@ hs.hotkey.bind(hyper, 'p', function()
     local screen = win:screen()
     local max = screen:frame()
 
-    f.x = max.x + (max.w / 3)
+    f.x = max.x + (max.w / 4)
     f.y = max.y
-    f.w = (max.w / 3) * 2
+    f.w = (max.w / 4) * 3
     f.h = max.h - dock_margin
     win:setFrame(f)
 end)
 
 -----------------------------------------------
--- hyper o for left 2/3 of the screen
+-- hyper o for left 3/4 of the screen
 -----------------------------------------------
 
 hs.hotkey.bind(hyper, 'o', function()
@@ -206,13 +206,13 @@ hs.hotkey.bind(hyper, 'o', function()
 
     f.x = max.x
     f.y = max.y
-    f.w = (max.w / 3) * 2
+    f.w = (max.w / 4) * 3
     f.h = max.h - dock_margin
     win:setFrame(f)
 end)
 
 -----------------------------------------------
--- hyper ] for right 1/3 of the screen
+-- hyper ] for right 1/4 of the screen
 -----------------------------------------------
 
 hs.hotkey.bind(hyper, "]", function()
@@ -221,15 +221,15 @@ hs.hotkey.bind(hyper, "]", function()
     local screen = win:screen()
     local max = screen:frame()
 
-    f.x = max.x + (max.w / 3) * 2
+    f.x = max.x + (max.w / 4) * 3
     f.y = max.y
-    f.w = (max.w / 3)
+    f.w = (max.w / 4)
     f.h = max.h - dock_margin
     win:setFrame(f)
 end)
 
 -----------------------------------------------
--- hyper 9 for left top 1/3 of the screen
+-- hyper 9 for left top 1/4 of the screen
 -----------------------------------------------
 
 hs.hotkey.bind(hyper, '9', function()
@@ -240,7 +240,7 @@ hs.hotkey.bind(hyper, '9', function()
 
     f.x = max.x
     f.y = max.y
-    f.w = (max.w / 3)
+    f.w = (max.w / 4)
     f.h = (max.h - dock_margin) / 2
     win:setFrame(f)
 end)
@@ -257,13 +257,13 @@ hs.hotkey.bind(hyper, 'n', function()
 
     f.x = max.x
     f.y = max.y + (max.h - dock_margin) / 2
-    f.w = (max.w / 3)
+    f.w = (max.w / 4)
     f.h = (max.h - dock_margin) / 2
     win:setFrame(f)
 end)
 
 -----------------------------------------------
--- hyper 0 for right top 1/3 of the screen
+-- hyper 0 for right top 1/4 of the screen
 -----------------------------------------------
 
 hs.hotkey.bind(hyper, '0', function()
@@ -272,15 +272,15 @@ hs.hotkey.bind(hyper, '0', function()
     local screen = win:screen()
     local max = screen:frame()
 
-    f.x = max.x + (max.w / 3) * 2
+    f.x = max.x + (max.w / 4) * 3
     f.y = max.y
-    f.w = (max.w / 3)
+    f.w = (max.w / 4)
     f.h = (max.h - dock_margin) / 2
     win:setFrame(f)
 end)
 
 -----------------------------------------------
--- hyper m for right bottom 1/3 of the screen
+-- hyper m for right bottom 1/4 of the screen
 -----------------------------------------------
 
 hs.hotkey.bind(hyper, 'm', function()
@@ -289,9 +289,9 @@ hs.hotkey.bind(hyper, 'm', function()
     local screen = win:screen()
     local max = screen:frame()
 
-    f.x = max.x + (max.w / 3) * 2
+    f.x = max.x + (max.w / 4) * 3
     f.y = max.y + (max.h - dock_margin) / 2
-    f.w = (max.w / 3)
+    f.w = (max.w / 4)
     f.h = (max.h - dock_margin) / 2
     win:setFrame(f)
 end)

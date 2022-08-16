@@ -14,6 +14,6 @@ for script in `ls $HOME/.dotfiles/zsh.d/*.zsh`; do
 done
 
 # gotta have a fortune!
-fortune -a
+fortune
 echo
 
