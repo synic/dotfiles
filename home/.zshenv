@@ -7,6 +7,7 @@ PATHS=(
   "${HOME}/.yarn/bin"
   "${HOME}/.config/yarn/global/node_modules/.bin"
   "${HOME}/.pub-cache/bin"
+  "${HOME}/.fig/bin"
 )
 
 JOINED_PATHS=${"${PATHS[*]}"// /:}
@@ -28,6 +29,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 export DENO_INSTALL="/home/synic/.deno"
 
+export PATH=~/fvm/default/bin:$PATH
 eval $(/opt/homebrew/bin/brew shellenv)
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+. "$HOME/.cargo/env"

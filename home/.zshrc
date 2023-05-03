@@ -18,3 +18,5 @@ done
 # gotta have a fortune!
 fortune
 echo
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
