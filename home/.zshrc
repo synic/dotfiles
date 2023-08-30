@@ -10,7 +10,7 @@
 ###############################################################################
 
 for script in `ls $HOME/.dotfiles/zsh.d/*.zsh`; do
-    source $script
+  source $script
 done
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -2,6 +2,7 @@
 	name = Adam Olsen
 	email = arolsen@gmail.com
     signkey = 0B00D030CA0EB4CD
+	signingkey = ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCcJIsUKnh93w6lAfd0SzoTFuemL4b8JrPkx/UycQCTWOQ3nLO1JfsmE/pAT8rVJ8Wtsp+80jE5CmMU5M0ARwRXu/b2J7fi9xe0pQcJoE5SNBOFGUCKiDrHQtiv2rMVUAwbHaHcZQV1OgnzhZRmB5wcxVkv18u9t5ZT54QO2tD55i2/ojp198ZOVxDCZ7dMktxWGtTY2mYm3s58CVULM7KASvhsgekrTF//Ej2Fvwi6ad+mIO5MSF5KENQrE8nLnqmGaGqp7HCdtehJ/kwmus9fzOEii3dSu2LT1gOdOpag3fyZ8K9Er1UjmXONvMczhKQrOw7YfWr0DxA+WNiUFL52xbRSQL0l8LMbvbLTeS1JCCF6TFVcYPO7iWknVxJFF6tjA8SE+MZP7mgZzyhDZZPpsBWdOfrYKIC+u8Lz3uuFxt0+xImZgs6lF0xy4UC4V2BTXskObQJbj/13hhGqOjtzZP2vUlsViW8gJpfBPfZJTCBBbd8yDe8k7O0RPvIn67U=
 [magit]
 	hideCampaign = true
 [push]
@@ -80,3 +81,9 @@
 	defaultBranch = main
 [branch]
 	sort = -committerdate
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[commit]
+	gpgsign = true

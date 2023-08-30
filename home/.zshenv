@@ -3,11 +3,13 @@ PATHS=(
   "${HOME}/bin"
   "${HOME}/.local/bin"
   "/usr/local/bin"
+  "${HOME}/Library/Python/3.9/bin"
   "${HOME}/.deno/bin"
   "${HOME}/.yarn/bin"
   "${HOME}/.config/yarn/global/node_modules/.bin"
   "${HOME}/.pub-cache/bin"
   "${HOME}/.fig/bin"
+  "/opt/homebrew/opt/libpq/bin"
 )
 
 JOINED_PATHS=${"${PATHS[*]}"// /:}
@@ -33,4 +35,3 @@ export PATH=~/fvm/default/bin:$PATH
 eval $(/opt/homebrew/bin/brew shellenv)
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-. "$HOME/.cargo/env"

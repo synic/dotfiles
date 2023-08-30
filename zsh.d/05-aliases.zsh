@@ -1,10 +1,6 @@
-# aliases
-
 alias vi="$HOME/bin/stop-using"
 alias dc="docker-compose"
 alias sudo="sudo "
-alias ssh="BINARY_SSH=ssh $HOME/bin/ssh-ident"
-alias scp="BINARY_SSH=scp $HOME/bin/ssh-ident"
 alias apt-get="$HOME/bin/stop-using"
 alias o="octoeb"
 alias eb="cd ~/Projects/eventboard.io"
@@ -19,8 +15,14 @@ lsprog='ls'
 
 # For OS X
 if [[ `uname` == 'Darwin' ]]; then
-    lsprog='gls'
-    alias apt="brew"
+  lsprog='gls'
+  alias apt="brew"
+fi
+
+# For Linux
+if [[ `uname` == 'Linux' ]]; then
+  alias ssh="BINARY_SSH=ssh $HOME/bin/ssh-ident"
+  alias scp="BINARY_SSH=scp $HOME/bin/ssh-ident"
 fi
 
 alias ls="$lsprog --color=auto --human-readable \
