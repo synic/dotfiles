@@ -1,7 +1,3 @@
------------------------------------------------
--- Set up
------------------------------------------------
-
 local hyper = { "cmd", "alt", "ctrl" }
 local dock_margin = 25
 
@@ -342,7 +338,8 @@ hs.hotkey.bind({ "cmd", "control" }, "l", function()
 		hs.spotify.pause()
 	end
 
-	hs.execute("/System/Library/CoreServices/ScreenSaverEngine.app" .. "/Contents/MacOS/ScreenSaverEngine")
+	-- hs.execute("/System/Library/CoreServices/ScreenSaverEngine.app" .. "/Contents/MacOS/ScreenSaverEngine")
+	hs.eventtap.keyStroke({ "control", "cmd" }, "q")
 end)
 
 hs.hotkey.bind({ "cmd", "control" }, "t", function()
@@ -361,5 +358,5 @@ end)
 -- Mission Control
 -----------------------------------------------
 hs.hotkey.bind(hyper, "i", function()
-	hs.eventtap.keyStroke({ "ctl" }, "up")
+	hs.eventtap.keyStroke({ "control" }, "up")
 end)

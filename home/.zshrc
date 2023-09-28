@@ -20,3 +20,10 @@ fortune
 echo
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# bun completions
+[ -s "/Users/synic/.bun/_bun" ] && source "/Users/synic/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
