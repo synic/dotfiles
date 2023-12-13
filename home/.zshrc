@@ -15,11 +15,14 @@ done
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# gotta have a fortune!
-fortune
-echo
+# gotta have a fortune (but not in warp terminal because it looks like crap)!
+if [[ -v $WARP_SESSION_ID ]]; then
+  fortune
+  echo
+fi
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+test -e "${HOME}/.iterm2_shell_integration.zsh" && \
+  source "${HOME}/.iterm2_shell_integration.zsh"
 
 # bun completions
 [ -s "/Users/synic/.bun/_bun" ] && source "/Users/synic/.bun/_bun"
