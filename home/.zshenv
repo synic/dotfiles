@@ -35,6 +35,11 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 export DENO_INSTALL="/home/synic/.deno"
 
+# bun completions
+[ -s "/Users/synic/.bun/_bun" ] && source "/Users/synic/.bun/_bun"
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

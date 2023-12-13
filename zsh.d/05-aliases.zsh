@@ -8,7 +8,6 @@ alias edit_zshd="vim ~/.dotfiles/zsh.d"
 alias mc="vim ."
 alias da="django-admin"
 alias jq="jqjq"
-alias wd="wd.sh"
 alias vim="nvim"
 
 lsprog='ls'
