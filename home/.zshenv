@@ -40,12 +40,10 @@ export DENO_INSTALL="/home/synic/.deno"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-# FZF
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 # ITerm
 test -e "${HOME}/.iterm2_shell_integration.zsh" && \
   source "${HOME}/.iterm2_shell_integration.zsh"
 
 # Misc
 export EDITOR="nvim"
+export ZVM_VI_ESCAPE_BINDKEY=fd
