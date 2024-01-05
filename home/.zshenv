@@ -48,3 +48,4 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && \
 # Misc
 export EDITOR="nvim"
 export ZVM_VI_ESCAPE_BINDKEY=fd
+export ZVM_KEYTIMEOUT=0.2
