@@ -1,8 +1,8 @@
-autoload -U +X bashcompinit && bashcompinit
-autoload -Uz compinit && compinit
-autoload -U edit-command-line
-zle -N edit-command-line
-bindkey '^x^e' edit-command-line
+# autoload -U +X bashcompinit && bashcompinit
+# autoload -Uz compinit && compinit
+# autoload -U edit-command-line
+# zle -N edit-command-line
+# bindkey '^x^e' edit-command-line
 
 # load zplug
 if [[ ! -f ~/.zplug/init.zsh ]]; then
@@ -27,14 +27,17 @@ zplug "supercrabtree/k", from:github
 zplug "zuxfoucault/colored-man-pages_mod", from:github
 zplug "mfaerevaag/wd", as:command, use:"wd.sh", hook-load:"wd() { . $ZPLUG_REPOS/mfaerevaag/wd/wd.sh }"
 zplug "jeffreytse/zsh-vi-mode"
-
-# install plugins if there are plugins that have not been installed
-if ! zplug check; then
-    zplug install && sleep 2 && clear
-fi
+zplug "junegunn/fzf", use:"shell/*.zsh"
 
 # source plugins and add commands to $PATH
 zplug load
+
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
 
 # load my theme
 source $HOME/.dotfiles/zsh.d/synic.zsh-theme

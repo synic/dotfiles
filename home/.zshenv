@@ -7,6 +7,7 @@ PATHS=(
   "${HOME}/.config/yarn/global/node_modules/.bin"
   "${HOME}/.pub-cache/bin"
   "${HOME}/.fig/bin"
+  "${HOME}/go/bin"
   "/opt/homebrew/opt/libpq/bin"
 )
 
@@ -36,9 +37,9 @@ export NVM_DIR="$HOME/.nvm"
 export DENO_INSTALL="/home/synic/.deno"
 
 # bun completions
-[ -s "/Users/synic/.bun/_bun" ] && source "/Users/synic/.bun/_bun"
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+# [ -s "/Users/synic/.bun/_bun" ] && source "/Users/synic/.bun/_bun"
+# export BUN_INSTALL="$HOME/.bun"
+# export PATH="$BUN_INSTALL/bin:$PATH"
 
 # ITerm
 test -e "${HOME}/.iterm2_shell_integration.zsh" && \
