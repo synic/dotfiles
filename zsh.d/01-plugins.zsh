@@ -28,6 +28,7 @@ zplug "zuxfoucault/colored-man-pages_mod", from:github
 zplug "mfaerevaag/wd", as:command, use:"wd.sh", hook-load:"wd() { . $ZPLUG_REPOS/mfaerevaag/wd/wd.sh }"
 zplug "jeffreytse/zsh-vi-mode"
 zplug "junegunn/fzf", use:"shell/*.zsh"
+zplug "spaceship-prompt/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
 
 # source plugins and add commands to $PATH
 zplug load
@@ -38,9 +39,6 @@ if ! zplug check --verbose; then
         echo; zplug install
     fi
 fi
-
-# load my theme
-source $HOME/.dotfiles/zsh.d/synic.zsh-theme
 
 test -e $HOME/.iterm2_shell_integrations.zsh && \
     source $HOME/.iterm_shell_integrations.zsh
