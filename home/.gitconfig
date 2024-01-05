@@ -53,6 +53,7 @@
 	nb = new-branch-from-youtrack-issue
 	pb = checkout @{-2}
     progress = "!git commit -m 'work in progress'"
+    gch = "!git checkout \"$(git branch --all | fzf | tr -d '[:space:]')\""
 [diff]
     # Use better, descriptive initials (c, i, w) instead of a/b.
     mnemonicPrefix = true
