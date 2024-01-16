@@ -28,7 +28,7 @@ zplug "zuxfoucault/colored-man-pages_mod", from:github
 zplug "mfaerevaag/wd", as:command, use:"wd.sh", hook-load:"wd() { . $ZPLUG_REPOS/mfaerevaag/wd/wd.sh }"
 zplug "jeffreytse/zsh-vi-mode"
 zplug "junegunn/fzf", use:"shell/*.zsh"
-zplug "spaceship-prompt/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
+zplug "romkatv/powerlevel10k", as:theme, depth:1
 
 # source plugins and add commands to $PATH
 zplug load
