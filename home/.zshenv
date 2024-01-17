@@ -8,6 +8,7 @@ PATHS=(
   "${HOME}/.pub-cache/bin"
   "${HOME}/.fig/bin"
   "${HOME}/go/bin"
+  "${HOME}/.cargo/bin"
   "/opt/homebrew/opt/libpq/bin"
 )
 
@@ -49,3 +50,4 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && \
 export EDITOR="nvim"
 export ZVM_VI_ESCAPE_BINDKEY=fd
 export ZVM_KEYTIMEOUT=0.1
+. "$HOME/.cargo/env"
