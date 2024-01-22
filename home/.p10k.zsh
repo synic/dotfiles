@@ -144,6 +144,9 @@
   typeset -g POWERLEVEL9K_VCS_{COMMITS_AHEAD,COMMITS_BEHIND}_MAX_NUM=1
   # Remove space between '⇣' and '⇡' and all trailing spaces.
   typeset -g POWERLEVEL9K_VCS_CONTENT_EXPANSION='${${${P9K_CONTENT/⇣* :⇡/⇣⇡}// }//:/ }'
+  typeset -g POWERLEVEL9K_VCS_SHORTEN_MIN_LENGTH=34
+  typeset -g POWERLEVEL9K_VCS_SHORTEN_LENGTH=16
+  typeset -g POWERLEVEL9K_VCS_SHORTEN_STRATEGY=truncate_middle
 
   # Grey current time.
   typeset -g POWERLEVEL9K_TIME_FOREGROUND=$grey

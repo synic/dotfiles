@@ -24,5 +24,7 @@ if [[ `uname` == 'Linux' ]]; then
   alias scp="BINARY_SSH=scp $HOME/bin/ssh-ident"
 fi
 
+alias sqlite=sqlite3 # does anyone _ever_ use the old command?
+
 alias ls="$lsprog --color=auto --human-readable \
     --group-directories-first --classify"
