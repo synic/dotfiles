@@ -2,6 +2,7 @@ localconfig.lua
 .emacs.d/themes/hc-zenburn-theme.el
 cache/
 .DS_Store
+.mypy_cache/
 home/.tmux/plugins/
 mine/
 gitcredentials

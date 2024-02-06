@@ -9,6 +9,7 @@ PATHS=(
   "${HOME}/.fig/bin"
   "${HOME}/go/bin"
   "${HOME}/.cargo/bin"
+  "${HOME}/.bun/bin"
   "/opt/homebrew/opt/libpq/bin"
 )
 

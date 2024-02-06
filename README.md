@@ -32,9 +32,11 @@ It's organized like this:
 
 ### Installation:
 
-To install, type the following:
+To use, install GNU stow (`brew install stow` on MacOS), and then type
+the following:
 
 ```bash
 $ git clone https://github.com/synic/dotfiles ~/.dotfiles
-$ lndir ~/.dotfiles/home ~
+$ cd ~/.dotfiles
+$ stow .
 ```
