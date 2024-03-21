@@ -331,30 +331,6 @@ hs.hotkey.bind(hyper, "h", function()
 end)
 
 -----------------------------------------------
--- Start certain programs with a key combo
------------------------------------------------
-hs.hotkey.bind({ "cmd", "control" }, "l", function()
-	if hs.spotify.isRunning() then
-		hs.spotify.pause()
-	end
-
-	-- hs.execute("/System/Library/CoreServices/ScreenSaverEngine.app" .. "/Contents/MacOS/ScreenSaverEngine")
-	hs.eventtap.keyStroke({ "control", "cmd" }, "q")
-end)
-
-hs.hotkey.bind({ "cmd", "control" }, "t", function()
-	hs.application.launchOrFocus("iTerm")
-end)
-
-hs.hotkey.bind({ "cmd", "control" }, "s", function()
-	hs.caffeinate.systemSleep()
-end)
-
-hs.hotkey.bind({ "alt", "shift" }, "4", function()
-	hs.execute("/Users/aolsen/bin/osx_screenshot")
-end)
-
------------------------------------------------
 -- Mission Control
 -----------------------------------------------
 hs.hotkey.bind(hyper, "i", function()
