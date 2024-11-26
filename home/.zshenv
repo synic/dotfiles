@@ -1,4 +1,6 @@
 PATHS=(
+  "${HOME}/.gobrew/current/bin"
+  "${HOME}/.gobrew/bin"
   "/opt/homebrew/bin"
   "${HOME}/bin"
   "${HOME}/.local/bin"
@@ -12,7 +14,7 @@ PATHS=(
   "${HOME}/.bun/bin"
   "/opt/homebrew/opt/libpq/bin"
 )
-
+export GOROOT="$HOME/.gobrew/current/go"
 JOINED_PATHS=${"${PATHS[*]}"// /:}
 export PATH=$JOINED_PATHS:$PATH
 
@@ -38,17 +40,13 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 export DENO_INSTALL="/home/synic/.deno"
 
-# bun completions
-# [ -s "/Users/synic/.bun/_bun" ] && source "/Users/synic/.bun/_bun"
-# export BUN_INSTALL="$HOME/.bun"
-# export PATH="$BUN_INSTALL/bin:$PATH"
-
 # ITerm
 test -e "${HOME}/.iterm2_shell_integration.zsh" && \
   source "${HOME}/.iterm2_shell_integration.zsh"
 
 # Misc
 export EDITOR="nvim"
-export ZVM_VI_ESCAPE_BINDKEY=fd
-export ZVM_KEYTIMEOUT=0.1
+
+export JAVA_HOME=`/usr/libexec/java_home -v 17.0`
+
 . "$HOME/.cargo/env"

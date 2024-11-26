@@ -1,65 +1,67 @@
 [user]
 	name = Adam Olsen
 	email = arolsen@gmail.com
-    signkey = 0B00D030CA0EB4CD
+	signkey = 0B00D030CA0EB4CD
 	signingkey = ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCcJIsUKnh93w6lAfd0SzoTFuemL4b8JrPkx/UycQCTWOQ3nLO1JfsmE/pAT8rVJ8Wtsp+80jE5CmMU5M0ARwRXu/b2J7fi9xe0pQcJoE5SNBOFGUCKiDrHQtiv2rMVUAwbHaHcZQV1OgnzhZRmB5wcxVkv18u9t5ZT54QO2tD55i2/ojp198ZOVxDCZ7dMktxWGtTY2mYm3s58CVULM7KASvhsgekrTF//Ej2Fvwi6ad+mIO5MSF5KENQrE8nLnqmGaGqp7HCdtehJ/kwmus9fzOEii3dSu2LT1gOdOpag3fyZ8K9Er1UjmXONvMczhKQrOw7YfWr0DxA+WNiUFL52xbRSQL0l8LMbvbLTeS1JCCF6TFVcYPO7iWknVxJFF6tjA8SE+MZP7mgZzyhDZZPpsBWdOfrYKIC+u8Lz3uuFxt0+xImZgs6lF0xy4UC4V2BTXskObQJbj/13hhGqOjtzZP2vUlsViW8gJpfBPfZJTCBBbd8yDe8k7O0RPvIn67U=
 [magit]
 	hideCampaign = true
 [push]
-    default = simple
+	default = simple
 	autoSetupRemote = true
 [include]
-    path = ~/.dotfiles/gitcredentials
+	path = ~/.dotfiles/gitcredentials
 [alias]
-    # common operations
-    cp = cherry-pick
-    ci = commit
-    co = checkout
-    br = branch
-    uncommit = reset --soft HEAD~1
+	# common operations
+	cp = cherry-pick
+	ci = commit
+	co = checkout
+	br = branch
+	uncommit = reset --soft HEAD~1
 
-    # sort branches by last update
-    b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
+	# sort branches by last update
+	b = "!git checkout $(git branch --sort='-authordate' | fzf)"
 
-    # log as a graph
-    graph = log --graph --oneline --decorate --all
-    lq = !git --no-pager log --oneline --decorate --all -10
+	# log as a graph
+	graph = log --graph --oneline --decorate --all
+	lq = !git --no-pager log --oneline --decorate --all -10
 
-    # one-line log
-    l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
-    # one-line log with list of files changed
-    ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+	# one-line log
+	l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+	# one-line log with list of files changed
+	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
 
-    # set the upstream
-    sup = "!f() { git branch --set-upstream-to=$1/`git symbolic-ref --short HEAD`; }; f"
+	# set the upstream
+	sup = "!f() { git branch --set-upstream-to=$1/`git symbolic-ref --short HEAD`; }; f"
 
-    # cleanup old branches
-    audit = "!git branch --merged | grep -v '\\*\\|master\\|develop\\|release-'"
-    clean-audit = "!git branch --merged | grep -v '\\*\\|master\\|develop\\|release-' | xargs -n 1 git branch -d"
+	# cleanup old branches
+	audit = "!git branch --merged | grep -v '\\*\\|master\\|develop\\|release-'"
+	clean-audit = "!git branch --merged | grep -v '\\*\\|master\\|develop\\|release-' | xargs -n 1 git branch -d"
 
-    # squash the currently staged files into the previous commit
-    # note that if you have already pushed the branch, you will probably
-    # need to push with `git push -f`
-    fixup = "!git commit --amend"
+	# squash the currently staged files into the previous commit
+	# note that if you have already pushed the branch, you will probably
+	# need to push with `git push -f`
+	fixup = "!git commit --amend"
 
-    # Thin out older metadata within the repository, reduceses filesystem footprint
-    trim = !git reflog expire --expire=now --all && git gc --prune=now
+	# Thin out older metadata within the repository, reduceses filesystem footprint
+	trim = !git reflog expire --expire=now --all && git gc --prune=now
 
-    # list git aliases
-    la = "!git config -l | grep alias | cut -c 7-"
+	# list git aliases
+	la = "!git config -l | grep alias | cut -c 7-"
 
-    # quick ammend
-    amend = "!git add -u && git commit --amend -a --no-edit"
-	nb = new-branch-from-youtrack-issue
+	# quick ammend
+	amend = "!git add -u && git commit --amend -a --no-edit"
+
+	# previous commit
 	pb = checkout @{-2}
-    progress = "!git commit -m 'work in progress'"
-    gch = "!git checkout \"$(git branch --all | fzf | tr -d '[:space:]')\""
+
+	# save state
+	progress = "!git commit -m 'work in progress'"
 [diff]
-    # Use better, descriptive initials (c, i, w) instead of a/b.
-    mnemonicPrefix = true
+	# Use better, descriptive initials (c, i, w) instead of a/b.
+	mnemonicPrefix = true
 [rerere]
-    enabled = 1
-    autoupdate = 1
+	enabled = 1
+	autoupdate = 1
 [filter "lfs"]
 	clean = git-lfs clean %f
 	smudge = git-lfs smudge %f
@@ -69,12 +71,13 @@
 [diff]
 	compactionHeuristic = true
 [log]
-    # Use abbrev SHAs whenever possible/relevant instead of full 40 chars
-    abbrevCommit = true
+	# Use abbrev SHAs whenever possible/relevant instead of full 40 chars
+	abbrevCommit = true
 [credential]
 	helper = osxkeychain
 [core]
 	pager = less -FX
+	trustctime = false
 [hub]
 	protocol = ssh
 [pull]
@@ -89,3 +92,5 @@
 	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
 [commit]
 	gpgsign = true
+
+# vim:noet:sts=0 ts=4
