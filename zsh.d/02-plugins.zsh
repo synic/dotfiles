@@ -14,7 +14,7 @@ zplug "plugins/pip", from:oh-my-zsh
 zplug "tonyseek/oh-my-zsh-virtualenv-prompt", as:plugin, defer:3
 zplug "zsh-users/zsh-history-substring-search", from:github
 zplug "zsh-users/zsh-syntax-highlighting", from:github, defer:2
-zplug "plugins/docker-compose", from:oh-my-zsh, if:"which docker-compose"
+# zplug "plugins/docker-compose", from:oh-my-zsh, if:"which docker-compose"
 zplug "plugins/command-not-found", from:oh-my-zsh
 zplug "lukechilds/zsh-nvm", from:github
 zplug "supercrabtree/k", from:github

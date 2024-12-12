@@ -26,5 +26,11 @@ fi
 
 alias sqlite=sqlite3 # does anyone _ever_ use the old command?
 
+if (( $+commands[bat] )); then
+  alias cat="bat --theme=TwoDark"
+fi
+
+alias imgcat="wezterm imgcat"
+
 alias ls="$lsprog --color=auto --human-readable \
     --group-directories-first --classify"

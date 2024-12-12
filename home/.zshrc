@@ -3,16 +3,15 @@ for script in `ls $HOME/.dotfiles/zsh.d/*.zsh`; do
 done
 
 echo "\nWelcome, ${USER}@${HOST}!\n"
-fortune
-echo
+
+if command -v fortune >/dev/null 2>&1; then
+  fortune
+  echo
+fi
 
 # bun completions
 [ -s "/Users/synic/.bun/_bun" ] && source "/Users/synic/.bun/_bun"
 
-## [Completion]
-## Completion scripts setup. Remove the following line to uninstall
-[[ -f /Users/synic/.dart-cli-completion/zsh-config.zsh ]] && . /Users/synic/.dart-cli-completion/zsh-config.zsh || true
-## [/Completion]
-
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+if command -v kubectl >/dev/null 2>&1; then
+  source <(kubectl completion zsh)
+fi

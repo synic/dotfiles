@@ -1,4 +1,6 @@
 PATHS=(
+  "${HOME}/.asdf/shims"
+  "${HOME}/.pyenv/shims"
   "${HOME}/.gobrew/current/bin"
   "${HOME}/.gobrew/bin"
   "/opt/homebrew/bin"
@@ -9,12 +11,13 @@ PATHS=(
   "${HOME}/.config/yarn/global/node_modules/.bin"
   "${HOME}/.pub-cache/bin"
   "${HOME}/.fig/bin"
-  "${HOME}/go/bin"
+  "${HOME}/.go/bin"
   "${HOME}/.cargo/bin"
   "${HOME}/.bun/bin"
   "/opt/homebrew/opt/libpq/bin"
 )
 export GOROOT="$HOME/.gobrew/current/go"
+export GOPATH="$HOME/.go"
 JOINED_PATHS=${"${PATHS[*]}"// /:}
 export PATH=$JOINED_PATHS:$PATH
 
@@ -37,7 +40,9 @@ export DOCKER_MACHINE_NAME=default
 
 # Node setup
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+alias nvm="unalias nvm; [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"; nvm $@"
 export DENO_INSTALL="/home/synic/.deno"
 
 # ITerm
@@ -47,6 +52,14 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && \
 # Misc
 export EDITOR="nvim"
 
-export JAVA_HOME=`/usr/libexec/java_home -v 17.0`
+# secrets
+test -e "${HOME}/.zsh_secrets" && \
+  source "${HOME}/.zsh_secrets"
 
-. "$HOME/.cargo/env"
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/synic/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/synic/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/synic/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/synic/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+[ -f /opt/homebrew/opt/asdf/libexec/asdf.sh ] && . /opt/homebrew/opt/asdf/libexec/asdf.sh

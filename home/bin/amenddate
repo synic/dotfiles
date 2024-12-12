@@ -1,0 +1,39 @@
+#!/usr/bin/env python3
+
+import os
+import subprocess
+import sys
+
+import dateparser
+import pytz
+
+
+def main():
+    if len(sys.argv) < 2:
+        print("Usage: amenddate '<time expression>'")
+        print("Example: amenddate '12 hours ago'")
+        sys.exit(1)
+
+    time_expression = " ".join(sys.argv[1:])
+
+    parsed_date = dateparser.parse(time_expression)
+    if parsed_date is None:
+        print(f"Error: Could not parse time expression: '{time_expression}'")
+        sys.exit(1)
+
+    parsed_date = parsed_date.astimezone(pytz.timezone("US/Mountain"))
+
+    display = parsed_date.strftime("%a %b %d %H:%M:%S %Y %z")
+    print(f"\033[96m  -> setting to: {display}\033[0m\n")
+    env = os.environ.copy()
+    env.update({"GIT_COMMITTER_DATE": display})
+
+    subprocess.run(
+        f'git commit --amend --no-edit --date "{display}"',
+        env=env,
+        shell=True,
+    )
+
+
+if __name__ == "__main__":
+    main()
