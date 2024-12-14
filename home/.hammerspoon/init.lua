@@ -1,5 +1,6 @@
 local hyper = { "cmd", "alt", "ctrl" }
 local dock_margin = 25
+local wezterm_bin = "/opt/homebrew/bin/wezterm"
 
 -----------------------------------------------
 -- hyper d for left one half window
@@ -330,9 +331,16 @@ hs.hotkey.bind(hyper, "h", function()
 	hs.window.focusedWindow():focusWindowWest()
 end)
 
------------------------------------------------
--- Mission Control
------------------------------------------------
+----------------------------------------------
+-- Launch wezterm coding layout
+----------------------------------------------
 hs.hotkey.bind(hyper, "i", function()
-	hs.eventtap.keyStroke({ "control" }, "up")
+	hs.execute(wezterm_bin .. "-gui start --workspace=code &> /dev/null & disown")
+end)
+
+----------------------------------------------
+-- New terminal window
+----------------------------------------------
+hs.hotkey.bind(hyper, "y", function()
+	hs.execute(wezterm_bin .. " cli spawn --new-window --workspace=code &> /dev/null & disown")
 end)

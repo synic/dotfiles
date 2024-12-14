@@ -26,8 +26,16 @@ config.colors = {
 	},
 }
 
-local function open_coding_layout()
-	local main = wezterm.gui:gui_windows()[1]
+config.unix_domains = {
+	{
+		name = "unix",
+	},
+}
+
+local function open_coding_layout(main)
+	if main == nil then
+		main = wezterm.gui:gui_windows()[1]
+	end
 
 	main:active_pane():send_text("nvim\n")
 	main:set_inner_size(2580, 1298)
@@ -39,7 +47,9 @@ local function open_coding_layout()
 
 	local _, _, r2 = mux.spawn_window({ width = 122, height = 45 })
 	r2:gui_window():set_inner_size(860, 635)
-	r2:gui_window():set_position(2580, 710)
+	r2:gui_window():set_position(2580, 715)
+
+	main:focus()
 end
 
 -- keys
@@ -66,5 +76,13 @@ config.keys = {
 		action = wezterm.action_callback(open_coding_layout),
 	},
 }
+
+wezterm.on("gui-startup", function(cmd)
+	local _, _, window = mux.spawn_window(cmd or {})
+
+	if wezterm.mux.get_active_workspace() == "code" then
+		open_coding_layout(window:gui_window())
+	end
+end)
 
 return config
