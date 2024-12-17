@@ -56,6 +56,8 @@ export EDITOR="nvim"
 test -e "${HOME}/.zsh_secrets" && \
   source "${HOME}/.zsh_secrets"
 
+export ERL_AFLAGS="-kernel shell_history enabled"
+
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/synic/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/synic/Downloads/google-cloud-sdk/path.zsh.inc'; fi
 

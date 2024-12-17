@@ -1,7 +1,7 @@
 # customization options
 
-HISTSIZE=50000
-SAVEHIST=50000
+HISTSIZE=1000000
+SAVEHIST=1000000
 setopt no_auto_menu
 setopt interactivecomments
 setopt hist_ignore_dups
