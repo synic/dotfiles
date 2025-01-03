@@ -1,10 +1,6 @@
 ---
 version: 3
 final_space: true
-console_title_template: "{{ .Shell }} in {{ .Folder }}"
-
-var:
-  prompt_char: "❯"
 
 palette:
   black: "#262B44"
@@ -32,11 +28,27 @@ blocks:
         style: plain
         foreground: p:grey
         background: transparent
-        template: "{{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} <cyan>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>"
+        templates:
+          - "\uE0A0({{ .HEAD }}"
+          - "{{ if or (gt .Behind 0) (gt .Ahead 0) (.Working.Changed) (.Staging.Changed) }} [{{end}}"  # yamllint disable-line
+          - "{{ if or (.Working.Changed) (.Staging.Changed) }}<yellow>*</>{{ end }}"  # yamllint disable-line
+          - "<cyan>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>"  # yamllint disable-line
+          - "{{ if or (gt .Behind 0) (gt .Ahead 0) (.Working.Changed) (.Staging.Changed) }}]{{end}}"  # yamllint disable-line
+          - "{{ if or (gt .Behind 0) (gt .Ahead 0) (.Working.Changed) (.Staging.Changed) }}){{end}} "  # yamllint disable-line
         properties:
           branch_icon: ""
           commit_icon: "@"
           fetch_status: true
+
+      - type: status
+        style: plain
+        foreground: "p:blue"
+        foreground_templates:
+          - "{{ if .Error }}p:yellow{{ end }}"
+        trailing_diamond: 
+        template: "{{ if .Error }}[{{ reason .Code }}]!{{ end }}{{ if not .Error }}${{ end }}"  # yamllint disable-line
+        properties:
+          always_enabled: true
 
   - type: rprompt
     overflow: hidden
@@ -47,11 +59,11 @@ blocks:
         background: transparent
         template: "{{ .FormattedMs }}"
         properties:
-          threshold: 5000
+          threshold: 1
 
   - type: prompt
     alignment: left
-    newline: false
+    newline: true
     segments:
       - type: text
         style: plain
@@ -59,7 +71,15 @@ blocks:
           - "{{if gt .Code 0}}red{{end}}"
           - "{{if eq .Code 0}}magenta{{end}}"
         background: transparent
-        template: "{{ if .Env.POSH_VI_MODE }}{{ .Env.POSH_VI_MODE }}{{ else }}{{.Var.prompt_char}}{{ end }}"
+        template: "❯"
+
+transient_prompt:
+  foreground_templates:
+    - "{{if gt .Code 0}}red{{end}}"
+    - "{{if eq .Code 0}}magenta{{end}}"
+  background: transparent
+  template: "❯ "
+  newline: true
 
 secondary_prompt:
   foreground: magenta
