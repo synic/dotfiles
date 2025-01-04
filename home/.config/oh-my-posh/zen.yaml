@@ -7,6 +7,7 @@ palette:
   blue: "#4B95E9"
   green: "#59C9A5"
   orange: "#F07623"
+  purple: "#9B7BC7"
   red: "#D81E5B"
   white: "#E0DEF4"
   yellow: "#F3AE35"
@@ -16,37 +17,52 @@ blocks:
     alignment: left
     newline: true
     segments:
-      - type: path
+      - type: text
         style: plain
         background: transparent
-        foreground: p:blue
-        template: "{{ .Path }} "
+        template: "~> "
+
+      - type: sysinfo
+        template: "mem({{ round .PhysicalPercentUsed .Precision }}% used) "
+        foreground: p:purple
+        background: transparent
         properties:
-          style: full
+          precision: 2
+        style: plain
+
+      - type: kubectl
+        style: plain
+        foreground: p:orange
+        template: "k8s({{ .Context }})"
+        properties:
+          context_aliases:
+            gke_jump-dev-384216_us-central1-c_main: dev
+            gke_jump-376716_us-central1-c_main: prod
 
       - type: git
         style: plain
-        foreground: p:grey
+        foreground: p:green
         background: transparent
         templates:
-          - "\uE0A0({{ .HEAD }}"
-          - "{{ if or (gt .Behind 0) (gt .Ahead 0) (.Working.Changed) (.Staging.Changed) }} [{{end}}"  # yamllint disable-line
+          - " git({{ .HEAD }}"
+          - "{{ if or (gt .Behind 0) (gt .Ahead 0) (.Working.Changed) (.Staging.Changed) }}[{{ end }}"  # yamllint disable-line
           - "{{ if or (.Working.Changed) (.Staging.Changed) }}<yellow>*</>{{ end }}"  # yamllint disable-line
           - "<cyan>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>"  # yamllint disable-line
-          - "{{ if or (gt .Behind 0) (gt .Ahead 0) (.Working.Changed) (.Staging.Changed) }}]{{end}}"  # yamllint disable-line
-          - "{{ if or (gt .Behind 0) (gt .Ahead 0) (.Working.Changed) (.Staging.Changed) }}){{end}} "  # yamllint disable-line
+          - "{{ if or (gt .Behind 0) (gt .Ahead 0) (.Working.Changed) (.Staging.Changed) }}]{{ end }})"  # yamllint disable-line
         properties:
           branch_icon: ""
           commit_icon: "@"
+          branch_max_length: 35
           fetch_status: true
 
       - type: status
         style: plain
-        foreground: "p:blue"
+        foreground: p:blue
+        background: transparent
         foreground_templates:
           - "{{ if .Error }}p:yellow{{ end }}"
         trailing_diamond: 
-        template: "{{ if .Error }}[{{ reason .Code }}]!{{ end }}{{ if not .Error }}${{ end }}"  # yamllint disable-line
+        template: "{{ if .Error }} [{{ reason .Code }}]!{{ end }}{{ if not .Error }} ${{ end }}"  # yamllint disable-line
         properties:
           always_enabled: true
 
@@ -65,20 +81,25 @@ blocks:
     alignment: left
     newline: true
     segments:
+      - type: path
+        style: plain
+        background: transparent
+        foreground: p:blue
+        template: "{{ .Path }} "
+        properties:
+          style: full
+
       - type: text
         style: plain
         foreground_templates:
-          - "{{if gt .Code 0}}red{{end}}"
-          - "{{if eq .Code 0}}magenta{{end}}"
+          - "{{ if gt .Code 0 }}red{{ end }}"
+          - "{{ if eq .Code 0 }}magenta{{ end }}"
         background: transparent
         template: "❯"
 
 transient_prompt:
-  foreground_templates:
-    - "{{if gt .Code 0}}red{{end}}"
-    - "{{if eq .Code 0}}magenta{{end}}"
   background: transparent
-  template: "❯ "
+  template: "<p:blue>{{ .PWD }}</> <magenta>❯</> "
   newline: true
 
 secondary_prompt:
