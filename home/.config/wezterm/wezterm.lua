@@ -76,6 +76,11 @@ config.keys = {
 		mods = "CMD",
 		action = wezterm.action_callback(open_coding_layout),
 	},
+	{
+		key = "Enter",
+		mods = "ALT",
+		action = wezterm.action.DisableDefaultAssignment,
+	},
 }
 
 wezterm.on("gui-startup", function(cmd)
