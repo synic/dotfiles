@@ -54,6 +54,8 @@
 	# previous commit
 	pb = checkout @{-2}
 
+	nb = "!f() { git checkout main && git pull origin main && git checkout -b \"$1\"; }; f"
+
 	# save state
 	progress = "!git commit -m 'work in progress'"
 [diff]

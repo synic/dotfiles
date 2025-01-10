@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd ~/Projects/jump/scripts
+./prod-console.sh
