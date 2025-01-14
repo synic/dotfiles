@@ -6,6 +6,9 @@ local config = {}
 config.window_close_confirmation = "NeverPrompt"
 config.hide_tab_bar_if_only_one_tab = true
 config.scrollback_lines = 100000
+config.show_close_tab_button_in_tabs = false
+config.use_fancy_tab_bar = true
+config.show_new_tab_button_in_tab_bar = false
 
 -- appearance
 config.font = wezterm.font("Hack Nerd Font")
@@ -38,7 +41,7 @@ local function open_coding_layout(main)
 		main = wezterm.gui:gui_windows()[1]
 	end
 
-	main:active_pane():send_text("nvim\n")
+	-- main:active_pane():send_text("nvim\n")
 	main:set_inner_size(2580, 1298)
 	main:set_position(0, 0)
 

@@ -34,6 +34,10 @@ blocks:
         style: plain
         foreground: p:orange
         template: "k8s({{ .Context }})"
+        foreground_templates:
+          - '{{ if eq .Context "prod" }}p:black{{ end }}'
+        background_templates:
+          - '{{ if eq .Context "prod" }}p:red{{ end }}'
         properties:
           context_aliases:
             gke_jump-dev-384216_us-central1-c_main: dev
