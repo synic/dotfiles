@@ -18,6 +18,7 @@ config.window_padding = {
 	top = 1,
 	bottom = 1,
 }
+config.window_decorations = "RESIZE"
 
 config.color_scheme = "Tokyo Night Moon"
 -- config.color_scheme = "Gruvbox Material (Gogh)"
@@ -41,17 +42,17 @@ local function open_coding_layout(main)
 		main = wezterm.gui:gui_windows()[1]
 	end
 
-	-- main:active_pane():send_text("nvim\n")
-	main:set_inner_size(2580, 1298)
+	main:active_pane():send_text("nvim\n")
+	main:set_inner_size(2580, 1328)
 	main:set_position(0, 0)
 
-	local _, _, r1 = mux.spawn_window({ width = 122, height = 45 })
-	r1:gui_window():set_inner_size(860, 635)
+	local _, _, r1 = mux.spawn_window({ width = 122, height = 55 })
+	r1:gui_window():set_inner_size(860, 665)
 	r1:gui_window():set_position(2580, 0)
 
-	local _, _, r2 = mux.spawn_window({ width = 122, height = 45 })
-	r2:gui_window():set_inner_size(860, 635)
-	r2:gui_window():set_position(2580, 715)
+	local _, _, r2 = mux.spawn_window({ width = 122, height = 55 })
+	r2:gui_window():set_inner_size(850, 665)
+	r2:gui_window():set_position(2580, 690)
 
 	main:focus()
 end
