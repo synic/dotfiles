@@ -335,7 +335,7 @@ end)
 -- Launch wezterm coding layout
 ----------------------------------------------
 hs.hotkey.bind(hyper, "i", function()
-	hs.execute(wezterm_bin .. "-gui start --workspace=code &> /dev/null & disown")
+	hs.execute(wezterm_bin .. " start --workspace=code &> /dev/null & disown")
 end)
 
 ----------------------------------------------

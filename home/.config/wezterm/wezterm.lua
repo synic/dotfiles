@@ -42,7 +42,7 @@ local function open_coding_layout(main)
 		main = wezterm.gui:gui_windows()[1]
 	end
 
-	main:active_pane():send_text("nvim\n")
+	-- main:active_pane():send_text("nvim\n")
 	main:set_inner_size(2580, 1328)
 	main:set_position(0, 0)
 
@@ -93,6 +93,22 @@ wezterm.on("gui-startup", function(cmd)
 	if wezterm.mux.get_active_workspace() == "code" then
 		open_coding_layout(window:gui_window())
 	end
+end)
+
+wezterm.on("format-window-title", function(tab, _, tabs, _, _)
+	local zoomed = ""
+	if tab.active_pane.is_zoomed then
+		zoomed = "[Z] "
+	end
+
+	local index = ""
+	if #tabs > 1 then
+		index = string.format("[%d/%d] ", tab.tab_index + 1, #tabs)
+	end
+
+	local title = zoomed .. index .. tab.active_pane.title
+	print(title)
+	return title
 end)
 
 return config
