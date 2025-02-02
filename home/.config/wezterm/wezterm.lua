@@ -13,10 +13,10 @@ config.show_new_tab_button_in_tab_bar = false
 -- appearance
 config.font = wezterm.font("Hack Nerd Font")
 config.window_padding = {
-	left = 1,
-	right = 1,
-	top = 1,
-	bottom = 1,
+	left = 5,
+	right = 5,
+	top = 5,
+	bottom = 5,
 }
 config.window_decorations = "RESIZE"
 
