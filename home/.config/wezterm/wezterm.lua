@@ -21,12 +21,27 @@ config.window_padding = {
 config.window_decorations = "RESIZE"
 
 config.color_scheme = "Tokyo Night Moon"
+config.color_scheme = "nord"
 -- config.color_scheme = "Gruvbox Material (Gogh)"
+
+-- tokyonight
+-- config.colors = {
+-- 	tab_bar = {
+-- 		active_tab = {
+-- 			bg_color = "#272727",
+-- 			fg_color = "#c0c0c0",
+-- 		},
+-- 	},
+-- }
+
+-- nord
 config.colors = {
+	background = "#242933",
 	tab_bar = {
+		background = "#2E3440",
 		active_tab = {
-			bg_color = "#272727",
-			fg_color = "#c0c0c0",
+			bg_color = "#A3BE8C",
+			fg_color = "#191D24",
 		},
 	},
 }

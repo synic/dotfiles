@@ -100,7 +100,6 @@
 	helper = osxkeychain
 
 [core]
-	pager = delta
 	trustctime = false
 
 [hub]
