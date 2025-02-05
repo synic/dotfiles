@@ -1,4 +1,5 @@
 local wezterm = require("wezterm")
+local theme = require("theme")
 local mux = wezterm.mux
 local config = {}
 
@@ -11,6 +12,7 @@ config.use_fancy_tab_bar = true
 config.show_new_tab_button_in_tab_bar = false
 
 -- appearance
+theme["rose-pine-moon"].apply_to_config(config)
 config.font = wezterm.font("Hack Nerd Font")
 config.window_padding = {
 	left = 5,
@@ -19,32 +21,6 @@ config.window_padding = {
 	bottom = 5,
 }
 config.window_decorations = "RESIZE"
-
-config.color_scheme = "Tokyo Night Moon"
-config.color_scheme = "nord"
--- config.color_scheme = "Gruvbox Material (Gogh)"
-
--- tokyonight
--- config.colors = {
--- 	tab_bar = {
--- 		active_tab = {
--- 			bg_color = "#272727",
--- 			fg_color = "#c0c0c0",
--- 		},
--- 	},
--- }
-
--- nord
-config.colors = {
-	background = "#242933",
-	tab_bar = {
-		background = "#2E3440",
-		active_tab = {
-			bg_color = "#A3BE8C",
-			fg_color = "#191D24",
-		},
-	},
-}
 
 config.unix_domains = {
 	{
