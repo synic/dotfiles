@@ -8,12 +8,19 @@ config.window_close_confirmation = "NeverPrompt"
 config.hide_tab_bar_if_only_one_tab = true
 config.scrollback_lines = 100000
 config.show_close_tab_button_in_tabs = false
-config.use_fancy_tab_bar = true
+config.use_fancy_tab_bar = false
 config.show_new_tab_button_in_tab_bar = false
 
--- appearance
 theme["rose-pine-moon"].apply_to_config(config)
-config.font = wezterm.font("Hack Nerd Font")
+config.font = wezterm.font("PragmataPro Mono Liga", { weight = "Regular" })
+config.cell_width = 0.9
+config.font_size = 14
+--
+-- config.font = wezterm.font("FiraCode Nerd Font")
+config.font = wezterm.font("Hack Nerd Font Mono AO")
+config.font_size = 12
+-- config.font = wezterm.font("Berkeley Mono")
+-- config.font_size = 12
 config.window_padding = {
 	left = 5,
 	right = 5,
@@ -22,11 +29,7 @@ config.window_padding = {
 }
 config.window_decorations = "RESIZE"
 
-config.unix_domains = {
-	{
-		name = "unix",
-	},
-}
+config.unix_domains = { { name = "unix" } }
 
 local function open_coding_layout(main)
 	if main == nil then
