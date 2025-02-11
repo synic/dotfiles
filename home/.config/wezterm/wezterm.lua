@@ -11,21 +11,14 @@ config.show_close_tab_button_in_tabs = false
 config.use_fancy_tab_bar = false
 config.show_new_tab_button_in_tab_bar = false
 
-theme["rose-pine-moon"].apply_to_config(config)
-config.font = wezterm.font("PragmataPro Mono Liga", { weight = "Regular" })
-config.cell_width = 0.9
+theme["catppuccin"].apply_to_config(config)
+config.font = wezterm.font("IosevkaTerm Nerd Font Mono")
 config.font_size = 14
---
--- config.font = wezterm.font("FiraCode Nerd Font")
-config.font = wezterm.font("Hack Nerd Font Mono AO")
-config.font_size = 12
--- config.font = wezterm.font("Berkeley Mono")
--- config.font_size = 12
 config.window_padding = {
 	left = 5,
 	right = 5,
-	top = 5,
-	bottom = 5,
+	top = 2,
+	bottom = 2,
 }
 config.window_decorations = "RESIZE"
 

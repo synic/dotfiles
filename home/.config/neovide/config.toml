@@ -12,27 +12,9 @@ title-hidden = true
 vsync = true
 wsl = false
 
-# [font]
-# normal = ["Hack Nerd Font Mono AO"]
-# size = 12.0
-#
-# [font]
-# normal = ["Berkeley Mono"]
-# size = 12.0
-# weight = "Retina"
-
 [font]
-normal = ["Hack Nerd Font Mono AO"]
 size = 12.0
 
-# [font]
-# normal = ["FiraCode Nerd Font"]
-# size = 12.0
-
-# [font]
-# normal = ["PragmataPro Mono Liga"]
-# size = 12.0
-#
-[font.features]
-"PragmataPro Mono Liga" = [ "-ss03", "-ss04", "-ss06", "-ss07", "-aalt" ]
-"FiraCode Nerd Font" = [ "+ss05" ]
+[font.normal]
+family = "IosevkaTerm Nerd Font Mono"
+style = "SemiBold"

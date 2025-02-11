@@ -31,6 +31,11 @@ return {
 			}
 		end,
 	},
+	catppuccin = {
+		apply_to_config = function(config)
+			config.color_scheme = "Catppuccin Macchiato"
+		end,
+	},
 	nord = {
 		apply_to_config = function(config)
 			config.color_scheme = "nord"
