@@ -16,5 +16,4 @@ wsl = false
 size = 12.0
 
 [font.normal]
-family = "IosevkaTerm Nerd Font Mono"
-style = "SemiBold"
+family = "PragmataPro Mono Liga"
