@@ -12,8 +12,8 @@ config.use_fancy_tab_bar = false
 config.show_new_tab_button_in_tab_bar = false
 
 theme["catppuccin"].apply_to_config(config)
-config.font = wezterm.font("IosevkaTerm Nerd Font Mono")
-config.font_size = 14
+config.font = wezterm.font("Hack Nerd Font Mono AO")
+config.font_size = 12
 config.window_padding = {
 	left = 5,
 	right = 5,
