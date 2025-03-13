@@ -13,5 +13,5 @@ vsync = true
 wsl = false
 
 [font]
-normal = "Hack Nerd Font Mono AO"
+normal = "PragmataPro Mono Liga"
 size = 12.0
