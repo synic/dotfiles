@@ -35,6 +35,9 @@ export PYTHONBREAKPOINT=ipdb.set_trace
 VENV_WRAPPER=/opt/homebrew/bin/virtualenvwrapper.sh
 source $VENV_WRAPPER
 
+# Elixir/ASDF setup
+export ASDF_DIR=~/.asdf
+
 # Docker setup
 export DOCKER_MACHINE_NAME=default
 
