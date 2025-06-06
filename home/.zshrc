@@ -66,7 +66,6 @@ zstyle ':completion:*' menu no
 
 # aliases
 alias dc="docker-compose"
-alias imgcat="wezterm imgcat"
 alias ls="$lsprog --color=auto --human-readable --group-directories-first --classify"
 
 if (( $+commands[nvim] )); then
