@@ -35,9 +35,6 @@ export PYTHONBREAKPOINT=ipdb.set_trace
 VENV_WRAPPER=/opt/homebrew/bin/virtualenvwrapper.sh
 source $VENV_WRAPPER
 
-# Elixir/ASDF setup
-export ASDF_DIR=~/.asdf
-
 # Docker setup
 export DOCKER_MACHINE_NAME=default
 
@@ -68,3 +65,5 @@ if [ -f '/opt/homebrew/google-cloud-sdk/path.zsh.inc' ]; then . '/opt/homebrew/g
 if [ -f '/opt/homebrew/google-cloud-sdk/completion.zsh.inc' ]; then . '/opt/homebrew/google-cloud-sdk/completion.zsh.inc'; fi
 
 [ -f /opt/homebrew/opt/asdf/libexec/asdf.sh ] && . /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+export ARDMK_DIR=/opt/homebrew/opt/arduino-mk

@@ -16,7 +16,6 @@ fi
 source "${ZGEN_HOME}/zgen.zsh"
 
 if ! zgen saved; then
-  zgen oh-my-zsh plugins/wd
   zgen oh-my-zsh plugins/command-not-found
   zgen oh-my-zsh plugins/kubectl
   zgen oh-my-zsh plugins/kubectx
@@ -67,14 +66,15 @@ zstyle ':completion:*' menu no
 
 # aliases
 alias dc="docker-compose"
-alias vim="nvim"
 alias imgcat="wezterm imgcat"
 alias ls="$lsprog --color=auto --human-readable --group-directories-first --classify"
-if (( $+commands[bat] )); then
-  alias cat="bat --pager=never --theme=Coldark-Dark"
+
+if (( $+commands[nvim] )); then
+  alias vim="nvim"
 fi
-if (( $+commands[zoxide] )); then
-  alias cd="z"
+
+if [[ $TERM_PROGRAM == "WezTerm" ]]; then
+  alias imgcat="wezterm imgcat"
 fi
 
 # functions
@@ -104,7 +104,11 @@ else
 fi
 
 if command -v zoxide >/dev/null 2>&1; then
-  eval "$(zoxide init zsh)"
+  eval "$(zoxide init zsh --cmd cd)"
+fi
+
+if command -v direnv >/dev/null 2>&1; then
+  eval "$(direnv hook zsh)"
 fi
 
 if command -v fortune >/dev/null 2>&1; then

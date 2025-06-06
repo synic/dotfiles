@@ -101,6 +101,7 @@
 
 [core]
 	trustctime = false
+	editor = nvim
 
 [hub]
 	protocol = ssh

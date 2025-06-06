@@ -74,6 +74,11 @@ config.keys = {
 		mods = "ALT",
 		action = wezterm.action.DisableDefaultAssignment,
 	},
+	{
+		key = "Enter",
+		mods = "SHIFT",
+		action = wezterm.action.SendString("\n"),
+	},
 }
 
 wezterm.on("gui-startup", function(cmd)
