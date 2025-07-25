@@ -1,0 +1,9 @@
+.kube/
+.ssh/
+.gnupg/
+.aws/
+.wakatime/
+.config/gcloud
+.docker/config.json
+.config/gh/hosts.yml
+.config/hub

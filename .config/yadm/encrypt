@@ -1,0 +1,4 @@
+.wakatime.cfg
+bin/amenddate
+bin/prod-proxy
+bin/prod-console

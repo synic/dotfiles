@@ -1,0 +1,17 @@
+backtraces_path = "/path/to/neovide_backtraces.log" # see below for the default platform specific location
+fork = false
+frame = "none"
+idle = true
+maximized = false
+mouse-cursor-icon = "arrow"
+no-multigrid = false
+srgb = false
+tabs = true
+theme = "auto"
+title-hidden = true
+vsync = true
+wsl = false
+
+[font]
+normal = "PragmataPro Mono Liga"
+size = 14.0
