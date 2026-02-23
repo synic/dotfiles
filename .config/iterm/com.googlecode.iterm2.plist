@@ -1053,11 +1053,17 @@ The script should do this: \(ai.prompt)</string>
 	<string>coding</string>
 	<key>Default Bookmark Guid</key>
 	<string>92953740-0355-4F97-B9E3-0F5440CE146E</string>
+	<key>Default Browser Profile Guid</key>
+	<string>CA12EC56-6D4F-4BA4-AADB-7E5B4BACA70D</string>
 	<key>DimBackgroundWindows</key>
 	<true/>
 	<key>DimOnlyText</key>
 	<false/>
+	<key>DisableWindowSizeSnap</key>
+	<true/>
 	<key>DoubleClickPerformsSmartSelection</key>
+	<true/>
+	<key>EnableAPIServer</key>
 	<true/>
 	<key>EnableDivisionView</key>
 	<true/>
@@ -2114,7 +2120,7 @@ The script should do this: \(ai.prompt)</string>
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>PragmataProMonoLiga-Regular 12</string>
+			<string>PragmataProMonoLiga-Regular 13</string>
 			<key>Only The Default BG Color Uses Transparency</key>
 			<true/>
 			<key>Option Key Sends</key>

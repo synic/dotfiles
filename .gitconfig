@@ -1,0 +1,133 @@
+[user]
+	name = Adam Olsen
+	email = arolsen@gmail.com
+
+[magit]
+	hideCampaign = true
+
+[push]
+	default = simple
+	autoSetupRemote = true
+
+[include]
+	path = ~/.gitconfig.local
+
+[include]
+	path = ~/.dotfiles/gitcredentials
+
+[include]
+	path = ~/.dotfiles/home/.config/delta/themes.gitconfig
+
+[alias]
+	# common operations
+	cp = cherry-pick
+	ci = commit
+	co = checkout
+	br = branch
+	uncommit = reset --soft HEAD~1
+
+	# sort branches by last update
+	b = "!f() { branch=$(git for-each-ref refs/heads/ --sort=-committerdate --format='%(refname:short)' | fzf) && [ -n \"$branch\" ] && git checkout $branch; }; f"
+
+	# log as a graph
+	graph = log --graph --oneline --decorate --all
+	lq = !git --no-pager log --oneline --decorate --all -10
+
+	# one-line log
+	l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+	# one-line log with list of files changed
+	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+
+	# set the upstream
+	sup = "!f() { git branch --set-upstream-to=$1/`git symbolic-ref --short HEAD`; }; f"
+
+	# cleanup old branches
+	audit = "!git branch --merged | grep -v '\\*\\|master\\|develop\\|release-'"
+	clean-audit = "!git branch --merged | grep -v '\\*\\|master\\|develop\\|release-' | xargs -n 1 git branch -d"
+
+	# squash the currently staged files into the previous commit
+	# note that if you have already pushed the branch, you will probably
+	# need to push with `git push -f`
+	fixup = "!git commit --amend"
+
+	# Thin out older metadata within the repository, reduceses filesystem footprint
+	trim = !git reflog expire --expire=now --all && git gc --prune=now
+
+	# list git aliases
+	la = "!git config -l | grep alias | cut -c 7-"
+
+	# quick ammend
+	amend = "!git add -u && git commit --amend -a --no-edit"
+
+	# previous commit
+	pb = checkout @{-2}
+
+    # checkout default branch (main/master), update it, and create new branch from it
+	nb = "!f() { DEFAULT_BRANCH=$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@') && git checkout $DEFAULT_BRANCH && git pull origin $DEFAULT_BRANCH && git checkout -b \"$1\"; }; f"
+
+	# checkout default branch (main/master) and update it
+	upmain = "!f() { DEFAULT_BRANCH=$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@') && git checkout $DEFAULT_BRANCH && git pull origin $DEFAULT_BRANCH; }; f"
+
+	# rebase main into current branch
+	rebmain = "!git pull --rebase origin main"
+
+	# save state
+	progress = "!git commit -m 'work in progress'"
+
+[diff]
+	# Use better, descriptive initials (c, i, w) instead of a/b.
+	mnemonicPrefix = true
+
+[rerere]
+	enabled = 1
+	autoupdate = 1
+
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true
+
+[rebase]
+	autosquash = true
+
+[diff]
+	compactionHeuristic = true
+
+[log]
+	# Use abbrev SHAs whenever possible/relevant instead of full 40 chars
+	abbrevCommit = true
+
+[credential]
+	helper = osxkeychain
+
+[core]
+	trustctime = false
+	editor = nvim
+
+[hub]
+	protocol = ssh
+
+[pull]
+	rebase = false
+
+[init]
+	defaultBranch = main
+
+[branch]
+	sort = -committerdate
+
+[gpg]
+	format = ssh
+
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+
+[commit]
+	gpgsign = true
+
+[delta]
+	features = chameleon
+    navigate = true
+    line-numbers = true
+
+# vim:noet:sts=0 ts=4

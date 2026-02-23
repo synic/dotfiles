@@ -118,3 +118,6 @@ if command -v fortune >/dev/null 2>&1; then
   fortune
   echo ""
 fi
+
+# bun completions
+[ -s "/Users/synic/.bun/_bun" ] && source "/Users/synic/.bun/_bun"

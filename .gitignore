@@ -7,3 +7,4 @@
 .docker/config.json
 .config/gh/hosts.yml
 .config/hub
+.gitconfig.local
