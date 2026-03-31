@@ -9513,6 +9513,8 @@ The script should do this: \(ai.prompt)</string>
 	</dict>
 	<key>WindowNumber</key>
 	<false/>
+	<key>com.apple.WebPrivacy.ResourceMonitorURLsVersion</key>
+	<string>qrsAAAGXnXBrwGxMO6s=</string>
 	<key>findMode_iTerm</key>
 	<integer>0</integer>
 </dict>

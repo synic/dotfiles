@@ -8,6 +8,7 @@
 [push]
 	default = simple
 	autoSetupRemote = true
+	followTags = true
 
 [include]
 	path = ~/.gitconfig.local
@@ -83,9 +84,10 @@
 	autoupdate = 1
 
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
 	required = true
+	process = git-lfs filter-process
 
 [rebase]
 	autosquash = true

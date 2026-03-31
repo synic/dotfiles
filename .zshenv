@@ -16,10 +16,11 @@ PATHS=(
   "${HOME}/.bun/bin"
   "/opt/homebrew/opt/libpq/bin"
 )
-export GOROOT="$HOME/.gobrew/current/go"
-export GOPATH="$HOME/.go"
 JOINED_PATHS=${"${PATHS[*]}"// /:}
 export PATH=$JOINED_PATHS:$PATH
+
+export GOROOT="$HOME/.gobrew/current/go"
+export GOPATH="$HOME/.go"
 
 # Homebrew
 eval $(/opt/homebrew/bin/brew shellenv)
