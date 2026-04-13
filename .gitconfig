@@ -28,7 +28,6 @@
 	uncommit = reset --soft HEAD~1
 
 	# sort branches by last update
-	b = "!f() { branch=$(git for-each-ref refs/heads/ --sort=-committerdate --format='%(refname:short)' | fzf) && [ -n \"$branch\" ] && git checkout $branch; }; f"
 
 	# log as a graph
 	graph = log --graph --oneline --decorate --all
@@ -63,7 +62,7 @@
 	# previous commit
 	pb = checkout @{-2}
 
-    # checkout default branch (main/master), update it, and create new branch from it
+	# checkout default branch (main/master), update it, and create new branch from it
 	nb = "!f() { DEFAULT_BRANCH=$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@') && git checkout $DEFAULT_BRANCH && git pull origin $DEFAULT_BRANCH && git checkout -b \"$1\"; }; f"
 
 	# checkout default branch (main/master) and update it
@@ -129,7 +128,7 @@
 
 [delta]
 	features = chameleon
-    navigate = true
-    line-numbers = true
+	navigate = true
+	line-numbers = true
 
 # vim:noet:sts=0 ts=4

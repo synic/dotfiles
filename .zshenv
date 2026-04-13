@@ -19,7 +19,7 @@ PATHS=(
 JOINED_PATHS=${"${PATHS[*]}"// /:}
 export PATH=$JOINED_PATHS:$PATH
 
-export GOROOT="$HOME/.gobrew/current/go"
+export GOROOT="$(brew --prefix golang)/libexec"
 export GOPATH="$HOME/.go"
 
 # Homebrew

@@ -22,6 +22,7 @@ if ! zgen saved; then
   zgen load zsh-users/zsh-completions
   zgen load zsh-users/zsh-syntax-highlighting
   zgen load unixorn/fzf-zsh-plugin
+  zgen load jimhester/per-directory-history
 
   zgen save
 fi
@@ -44,13 +45,16 @@ fi
 # options
 setopt no_auto_menu
 setopt interactivecomments
-setopt hist_ignore_dups
 setopt noflowcontrol
-setopt inc_append_history
-setopt no_share_history
+setopt inc_append_history     # write commands to histfile immediately (local-first)
+setopt extended_history       # record timestamp + duration
+setopt hist_ignore_all_dups   # drop older duplicate when a new one is added
+setopt hist_ignore_space      # don't record commands prefixed with a space
+setopt hist_reduce_blanks     # tidy whitespace before saving
+setopt hist_verify            # show !! expansions before running
+HISTFILE=~/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
-HISTDUP=erase
 KEYTIMEOUT=1
 (( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[path]=none
@@ -86,6 +90,16 @@ p() {
   result=$(~/bin/project_finder.py "$@")
   if [ $? -eq 0 ]; then
     cd "$result"
+  fi
+}
+
+git() {
+  if [[ "$1" == "b" ]]; then
+    local branch
+    branch=$(command git for-each-ref refs/heads/ --sort=-committerdate --format='%(refname:short)' | fzf)
+    [[ -n "$branch" ]] && { print -s "git checkout $branch"; command git checkout "$branch"; }
+  else
+    command git "$@"
   fi
 }
 
