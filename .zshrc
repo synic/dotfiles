@@ -1,3 +1,5 @@
+autoload -U compinit && compinit
+
 # variables
 export LS_COLORS='di=1;34:fi=37:ln=96:pi=93:so=93:bd=93:cd=93:or=91:mi=91:ex=1;32:*.rpm=90'
 lsprog="ls"
@@ -27,7 +29,6 @@ if ! zgen saved; then
   zgen save
 fi
 
-autoload -U compinit && compinit
 
 # vim mode
 bindkey -v
@@ -135,3 +136,7 @@ fi
 
 # bun completions
 [ -s "/Users/synic/.bun/_bun" ] && source "/Users/synic/.bun/_bun"
+
+
+# Added by Antigravity CLI installer
+export PATH="/Users/synic/.local/bin:$PATH"
