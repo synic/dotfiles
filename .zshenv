@@ -19,11 +19,13 @@ PATHS=(
 JOINED_PATHS=${"${PATHS[*]}"// /:}
 export PATH=$JOINED_PATHS:$PATH
 
-export GOROOT="$(brew --prefix golang)/libexec"
 export GOPATH="$HOME/.go"
 
 # Homebrew
-eval $(/opt/homebrew/bin/brew shellenv)
+if [[ -x /opt/homebrew/bin/brew ]]; then
+  export GOROOT="$(/opt/homebrew/bin/brew --prefix golang)/libexec"
+  eval $(/opt/homebrew/bin/brew shellenv)
+fi
 
 # Python setup
 if command -v pyenv 1>/dev/null 2>&1; then
@@ -34,7 +36,7 @@ export PIP_VIRTUALENV_BASE=$WORKON_HOME
 export PIP_RESPECT_VIRTUALENV=true
 export PYTHONBREAKPOINT=ipdb.set_trace
 VENV_WRAPPER=/opt/homebrew/bin/virtualenvwrapper.sh
-source $VENV_WRAPPER
+[ -s "$VENV_WRAPPER" ] && source $VENV_WRAPPER
 
 # Docker setup
 export DOCKER_MACHINE_NAME=default
@@ -60,5 +62,9 @@ test -e "${HOME}/.zsh_secrets" && \
 export ERL_AFLAGS="-kernel shell_history enabled"
 
 [ -f /opt/homebrew/opt/asdf/libexec/asdf.sh ] && . /opt/homebrew/opt/asdf/libexec/asdf.sh
+if (( $+commands[mise] )); then
+  eval "$(mise activate zsh)"
+fi
+
 
 export ARDMK_DIR=/opt/homebrew/opt/arduino-mk

@@ -10,14 +10,18 @@
 	autoSetupRemote = true
 	followTags = true
 
-[include]
-	path = ~/.gitconfig.local
+[user]
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGcKLNp6voWsldKb3EPN013JvV43rQqJgUSc6hcuKuwF
 
-[include]
-	path = ~/.dotfiles/gitcredentials
+[gpg]
+  format = ssh
 
-[include]
-	path = ~/.dotfiles/home/.config/delta/themes.gitconfig
+[gpg "ssh"]
+  program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
+[commit]
+  gpgsign = true
+
 
 [alias]
 	# common operations
@@ -74,6 +78,8 @@
 	# save state
 	progress = "!git commit -m 'work in progress'"
 
+	release = "!f() { ver=\"${1#v}\"; if [ -z \"$ver\" ]; then latest=$(git tag -l 'v[0-9]*' '[0-9]*' --sort=-v:refname | head -n 1); if [ -z \"$latest\" ]; then echo \"No version tags found. Please specify a version (e.g. git release 1.0.0)\" >&2; return 1; fi; ver=$(echo \"${latest#v}\" | awk -F. -v OFS=. '{$NF = $NF + 1; print}'); fi; git tag -a -m \"Release $ver\" \"v$ver\" && echo \"Created tag v$ver\"; }; f"
+
 [diff]
 	# Use better, descriptive initials (c, i, w) instead of a/b.
 	mnemonicPrefix = true
@@ -117,15 +123,6 @@
 [branch]
 	sort = -committerdate
 	autoSetupMerge = simple
-
-[gpg]
-	format = ssh
-
-[gpg "ssh"]
-	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
-
-[commit]
-	gpgsign = true
 
 [delta]
 	features = chameleon

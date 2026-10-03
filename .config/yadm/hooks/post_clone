@@ -3,7 +3,8 @@
 # Clone dotvim repo to ~/.config/nvim if it doesn't exist
 if [ ! -d "$HOME/.config/nvim" ]; then
     echo "Cloning dotvim repository to ~/.config/nvim..."
-    git clone git@github.com:synic/dotvim "$HOME/.config/nvim"
+    git clone git@github.com:synic/dotnvim "$HOME/.config/nvim" ||
+        git clone https://github.com/synic/dotnvim "$HOME/.config/nvim"
 fi
 
 # Create symlink ~/.vim → ~/.config/nvim if it doesn't exist

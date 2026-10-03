@@ -23,7 +23,6 @@ if ! zgen saved; then
   zgen oh-my-zsh plugins/kubectx
   zgen load zsh-users/zsh-completions
   zgen load zsh-users/zsh-syntax-highlighting
-  zgen load unixorn/fzf-zsh-plugin
   zgen load jimhester/per-directory-history
 
   zgen save
@@ -39,8 +38,6 @@ bindkey  "^[[3~"  delete-char
 # prompt
 if command -v oh-my-posh >/dev/null 2>&1; then
   eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/zen.yaml)"
-else
-  echo "oh-my-posh not installed, not setting up prompt"
 fi
 
 # options
