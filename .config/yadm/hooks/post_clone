@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Clone dotvim repo to ~/.config/nvim if it doesn't exist
 if [ ! -d "$HOME/.config/nvim" ]; then
