@@ -69,7 +69,8 @@
 	# save state
 	progress = "!git commit -m 'work in progress'"
 
-	release = "!f() { ver=\"${1#v}\"; if [ -z \"$ver\" ]; then latest=$(git tag -l 'v[0-9]*' '[0-9]*' --sort=-v:refname | head -n 1); if [ -z \"$latest\" ]; then echo \"No version tags found. Please specify a version (e.g. git release 1.0.0)\" >&2; return 1; fi; ver=$(echo \"${latest#v}\" | awk -F. -v OFS=. '{$NF = $NF + 1; print}'); fi; git tag -a -m \"Release $ver\" \"v$ver\" && echo \"Created tag v$ver\"; }; f"
+	tag-release = "!f() { ver=\"${1#v}\"; if [ -z \"$ver\" ]; then latest=$(git tag -l 'v[0-9]*' '[0-9]*' --sort=-v:refname | head -n 1); if [ -z \"$latest\" ]; then echo \"No version tags found. Please specify a version (e.g. git release 1.0.0)\" >&2; return 1; fi; ver=$(echo \"${latest#v}\" | awk -F. -v OFS=. '{$NF = $NF + 1; print}'); fi; git tag -a -m \"Release $ver\" \"v$ver\" && echo \"Created tag v$ver\"; }; f"
+	release = "!git tag-release && git push --follow-tags"
 
 [diff]
 	# Use better, descriptive initials (c, i, w) instead of a/b.
