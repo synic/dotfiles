@@ -295,12 +295,12 @@ end)
 -- Reload config on write
 -----------------------------------------------
 
-hs.hotkey.bind(hyper, "R", function()
+hs.hotkey.bind({ "cmd", "alt", "ctrl", "shift" }, "r", function()
 	hs.reload()
 	hs.alert("Config loaded")
 end)
 
-hs.pathwatcher.new(os.getenv("HOME") .. "/.dotfiles/home/.hammerspoon/", hs.reload):start()
+hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", hs.reload):start()
 hs.alert.show("Config loaded")
 
 -----------------------------------------------
