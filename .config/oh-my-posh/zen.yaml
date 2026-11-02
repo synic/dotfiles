@@ -96,6 +96,13 @@ blocks:
     alignment: left
     newline: true
     segments:
+      - type: session
+        style: plain
+        background: transparent
+        foreground_templates:
+          - "{{ $c := list \"p:blue\" \"p:green\" \"p:orange\" \"p:purple\" \"p:yellow\" }}{{ index $c (mod (atoi (adler32sum (trimSuffix \".local\" .HostName))) (len $c)) }}"  # yamllint disable-line
+        template: "{{ .UserName }}@{{ trimSuffix \".local\" .HostName }} "
+
       - type: path
         style: plain
         background: transparent
@@ -114,7 +121,7 @@ blocks:
 
 transient_prompt:
   background: transparent
-  template: "<p:blue>{{ .PWD }}</> <magenta>❯</> "
+  template: "{{ $c := list \"p:blue\" \"p:green\" \"p:orange\" \"p:purple\" \"p:yellow\" }}<{{ index $c (mod (atoi (adler32sum (trimSuffix \".local\" .HostName))) (len $c)) }}>{{ .UserName }}@{{ trimSuffix \".local\" .HostName }}</> <p:blue>{{ .PWD }}</> <magenta>❯</> "  # yamllint disable-line
   newline: true
 
 secondary_prompt:
